@@ -186,10 +186,6 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0 \
     android.hidl.manager@1.0-java
 
-# IMS
-PRODUCT_PACKAGES += \
-    ims-ext-common
-
 # Init
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/etc/fstab.joan:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.joan \
@@ -378,6 +374,10 @@ PRODUCT_PACKAGES += \
 
 # VNDK
 PRODUCT_PACKAGES += vndk-sp
+
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v27/arm64/arch-arm64-armv8-a/shared/vndk-core/android.hardware.gnss@1.0.so:$(TARGET_COPY_OUT_VENDOR)/lib64/android.hardware.gnss@1.0-v27.so
+
 
 PRODUCT_PACKAGES += vndk-27
 
