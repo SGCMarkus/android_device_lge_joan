@@ -340,8 +340,6 @@ etc/permissions/com.quicinc.cne.xml
 framework/cneapiclient.jar
 framework/com.quicinc.cne.api-V1.0-java.jar
 framework/com.quicinc.cne.jar
--priv-app/CNEService/CNEService.apk
-vendor/bin/cnd
 vendor/etc/cne/wqeclient/ATT/ATT_profile1.xml
 vendor/etc/cne/wqeclient/ATT/ATT_profile2.xml
 vendor/etc/cne/wqeclient/ATT/ATT_profile3.xml
@@ -413,14 +411,6 @@ vendor/lib64/libspl.so
 vendor/lib64/libssd.so
 vendor/lib64/libStDrvInt.so
 vendor/lib64/libtzdrmgenprov.so
-
-# DRM - Qualcomm Trusted Execution Enviornment
-vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
-vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
-vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
-vendor/lib/vendor.qti.hardware.qteeconnector@1.0_vendor.so
-vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.qteeconnector@1.0_vendor.so
 
 # DRM - Widevine
 vendor/bin/hw/android.hardware.drm@1.0-service.widevine
@@ -674,7 +664,6 @@ vendor/etc/perf/perf-profile3.conf
 vendor/etc/perf/perf-profile4.conf
 vendor/etc/perf/perf-profile5.conf
 vendor/etc/perf/perf-profile6.conf
-vendor/etc/perf/perfboostsconfig.xml
 vendor/lib/libfeedbackhandler.so
 vendor/lib/libperfgluelayer.so
 vendor/lib/libqti-perfd.so
@@ -691,23 +680,18 @@ vendor/lib64/vendor.qti.hardware.perf@1.0_vendor.so
 # Peripheral manager
 vendor/bin/pm-proxy
 vendor/bin/pm-service
-vendor/bin/spdaemon
 vendor/lib/libperipheral_client.so
 vendor/lib/libspcom.so
 vendor/lib64/libperipheral_client.so
 vendor/lib64/libspcom.so
 
 # Postprocessing
-etc/permissions/com.qti.snapdragon.sdk.display.xml
-framework/com.qti.snapdragon.sdk.display.jar
--vendor/app/colorservice/colorservice.apk
 vendor/bin/mm-pp-dpps
 vendor/etc/qdcm_calib_data_SW43402_cmd_mode_dsc_dsi_panel.xml
 vendor/lib64/libdisp-aba.so
 
 # QMI
 etc/permissions/qti_libpermissions.xml:vendor/etc/permissions/qti_libpermissions.xml|ef3c88495f2f61a2d16e1445113a9d80f8db0e0a
-etc/permissions/qti_permissions.xml:vendor/etc/permissions/qti_permissions.xml
 vendor/bin/irsc_util
 vendor/lib/libdiag.so
 -vendor/lib/libdsi_netctrl.so
@@ -746,32 +730,24 @@ vendor/lib64/libsmemlog.so
 vendor/bin/hvdcp_opti
 
 # Radio
--app/embms/embms.apk:vendor/app/embms/embms.apk
-etc/permissions/embms.xml:vendor/etc/permissions/embms.xml|a2137c642ce17e9796872ddb8390162d1324c6c9
-framework/embmslibrary.jar:vendor/framework/embmslibrary.jar
-framework/qti-telephony-common.jar|e080a3e800bf43c894c6653954e2f4e1415e645c
+-app/QtiTelephonyService/QtiTelephonyService.apk
+etc/permissions/qcrilhook.xml
+etc/permissions/telephonyservice.xml
+framework/qcrilhook.jar
+framework/qti-telephony-common.jar
+framework/QtiTelephonyServicelibrary.jar
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
--vendor/app/datastatusnotification/datastatusnotification.apk
--vendor/app/QtiTelephonyService/QtiTelephonyService.apk
--vendor/app/radioconfig/radioconfig.apk
 -vendor/app/SVIService/SVIService.apk
 vendor/bin/ATFWD-daemon
 vendor/bin/ipacm-diag
 vendor/bin/netmgrd
 vendor/bin/pd-mapper
 vendor/bin/port-bridge
-vendor/bin/qmi_tsext_hook
 vendor/bin/qti
 vendor/bin/rmt_storage
 vendor/bin/tftp_server
 vendor/etc/data/dsi_config.xml
 vendor/etc/data/netmgr_config.xml
-vendor/etc/permissions/qcrilhook.xml
-vendor/etc/permissions/radioconfig.xml
-vendor/etc/permissions/radioconfiginterface.xml
-vendor/etc/permissions/telephonyservice.xml
-vendor/framework/qcrilhook.jar
-vendor/framework/QtiTelephonyServicelibrary.jar
 vendor/lib/libmdmdetect.so
 vendor/lib/libpdmapper.so
 vendor/lib/libpdnotifier.so
@@ -798,7 +774,6 @@ vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
 vendor/lib64/libsettings.so
 vendor/lib64/libsystem_health_mon.so
-vendor/lib64/libtsext_inf.so
 vendor/lib64/vendor.qti.hardware.radio.am@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.radio.lpa@1.0_vendor.so
@@ -808,63 +783,6 @@ vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.radio.uim@1.0_vendor.so
 vendor/radio/qcril_database/qcril.db
-
-# Radio - IMS
--app/uceShimService/uceShimService.apk:vendor/app/uceShimService/uceShimService.apk
-etc/permissions/qti-vzw-ims-internal.xml:vendor/etc/permissions/qti-vzw-ims-internal.xml|89409c5f355acbd65a45b13f12e1baafb13baf46
-lib/lib-imscamera.so
-lib/lib-imsvideocodec.so
-lib/lib-imsvtextutils.so
-lib/lib-imsvtutils.so
-lib/libdiag_system.so
-lib/librcc.so
-lib/vendor.qti.imsrtpservice@1.0.so
-lib64/lib-imscamera.so
-lib64/lib-imsvideocodec.so
-lib64/lib-imsvt.so
-lib64/lib-imsvtextutils.so
-lib64/lib-imsvtutils.so
-lib64/libdiag_system.so
-lib64/librcc.so
-lib64/vendor.qti.imsrtpservice@1.0.so
--vendor/app/ims/ims.apk
-vendor/bin/ims_rtp_daemon
-vendor/bin/imsdatadaemon
-vendor/bin/imsqmidaemon
-vendor/bin/imsrcsd
-vendor/framework/qti-vzw-ims-internal.jar
-vendor/lib/com.qualcomm.qti.imscmservice@1.0_vendor.so
-vendor/lib/lib-imscmservice.so
-vendor/lib/lib-imsdpl.so
-vendor/lib/lib-imsqimf.so
-vendor/lib/lib-imsrcs-v2.so
-vendor/lib/lib-imsxml.so
-vendor/lib/lib-rtpcommon.so
-vendor/lib/lib-rtpcore.so
-vendor/lib/lib-rtpdaemoninterface.so
-vendor/lib/lib-rtpsl.so
-lib/libimscamera_jni.so:vendor/lib/libimscamera_jni.so
-lib/libimsmedia_jni.so:vendor/lib/libimsmedia_jni.so
-vendor/lib/vendor.qti.hardware.radio.ims@1.0_vendor.so
-vendor/lib/vendor.qti.imsrtpservice@1.0_vendor.so
-vendor/lib/vendor.qti.imsrtpservice@1.0-service-Impl.so
-vendor/lib64/com.qualcomm.qti.imscmservice@1.0_vendor.so
-vendor/lib64/lib-dplmedia.so
-vendor/lib64/lib-imscmservice.so
-vendor/lib64/lib-imsdpl.so
-vendor/lib64/lib-imsqimf.so
-vendor/lib64/lib-imsrcs-v2.so
-vendor/lib64/lib-imsxml.so
-vendor/lib64/lib-rtpcommon.so
-vendor/lib64/lib-rtpcore.so
-vendor/lib64/lib-rtpdaemoninterface.so
-vendor/lib64/lib-rtpsl.so
-vendor/lib64/lib-uceservice.so
-lib64/libimscamera_jni.so:vendor/lib64/libimscamera_jni.so
-lib64/libimsmedia_jni.so:vendor/lib64/libimsmedia_jni.so
-vendor/lib64/vendor.qti.hardware.radio.ims@1.0_vendor.so
-vendor/lib64/vendor.qti.imsrtpservice@1.0_vendor.so
-vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 
 # Sensors
 vendor/bin/sensors.qcom
