@@ -1,0 +1,212 @@
+# Copyright (c) 2017, LG Eletronics. All rights reserved.
+#
+
+import /vendor/etc/init/hw/init.lge.power.rc
+
+# triton service
+service triton /system/bin/triton
+   class main
+   user root
+   group system
+   socket triton-client stream 660 system system
+   disabled
+
+#Temporarily, disable Triton for lucye.
+on property:sys.boot_completed=1
+   start triton
+#store default values
+   write /sys/devices/system/cpu/triton/debug 16
+   write /sys/devices/system/cpu/triton/enable 1
+   write /sys/devices/system/cpu/triton/enforce 0
+   write /sys/devices/system/cpu/triton/cur_policy 0
+   chown -h system system /sys/devices/system/cpu/triton/enable
+   chmod -h 664 /sys/devices/system/cpu/triton/enable
+   chmod -h 600 /sys/devices/system/cpu/triton/aevents
+   chmod -h 600 /sys/devices/system/cpu/triton/bevents
+   chown -h system system /sys/devices/system/cpu/triton/cur_policy
+   chmod -h 664 /sys/devices/system/cpu/triton/cur_policy
+   chmod -h 664 /sys/devices/system/cpu/triton/debug
+
+on boot
+   chown -h system system /sys/devices/system/cpu/triton/enable
+   chmod -h 644 /sys/devices/system/cpu/triton/enable
+
+# battery fake mode
+on property:persist.service.fakebatt=1
+   write /sys/class/lge_power/pseudo_battery/pseudo_batt 1
+on property:persist.service.fakebatt=0
+   write /sys/class/lge_power/pseudo_battery/pseudo_batt 0
+
+# llk mode
+on property:persist.sys.store_demo_enabled=1
+   write /sys/class/lge_power/lge_sm/store_demo_enabled 1
+on property:persist.sys.store_demo_enabled=0
+   write /sys/class/lge_power/lge_sm/store_demo_enabled 0
+
+#usb current max mode property
+on property:persist.service.usbcurrentmax=1
+   write /sys/class/lge_power/lge_cable_detect/usb_current_max_mode 1
+on property:persist.service.usbcurrentmax=0
+   write /sys/class/lge_power/lge_cable_detect/usb_current_max_mode 0
+
+#fake hvdcp mode property
+on property:persist.service.hvdcpfakemode=1
+   write /sys/class/lge_power/lge_cc/fake_hvdcp_mode 1
+on property:persist.service.hvdcpfakemode=0
+   write /sys/class/lge_power/lge_cc/fake_hvdcp_mode 0
+
+on boot
+# charging_enable
+   chown system system /sys/class/power_supply/battery/input_suspend
+# For quick_charging status
+   chown root system /sys/module/lge_power_class_charging_controller/parameters/restricted_charging
+   chmod 0664 /sys/module/lge_power_class_charging_controller/parameters/restricted_charging
+
+on chargerlogo_exec
+   setprop persist.therm_bal.disallowed 1
+   setprop persist.ctm.disallowed 1
+   start qni
+   write /sys/class/power_supply/bms/lge_cycle_enable 0
+   write /sys/class/power_supply/battery/lge_step_charging_enable 0
+   write /sys/class/lge_power/lge_cc/otp_enable 1
+   start hvdcp_opti
+   write /sys/module/msm_show_resume_irq/parameters/debug_mask 1
+   write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 672000
+
+   mount configfs none /config
+   mkdir /config/usb_gadget/g1 0770 shell shell
+   mkdir /config/usb_gadget/g1/strings/0x409 0770 shell shell
+   write /config/usb_gadget/g1/bcdUSB 0x0200
+   write /config/usb_gadget/g1/os_desc/use 1
+   write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
+   write /config/usb_gadget/g1/strings/0x409/manufacturer "LGE"
+   write /config/usb_gadget/g1/strings/0x409/product "LGE"
+   mkdir /config/usb_gadget/g1/functions/hid.charge
+   mkdir /config/usb_gadget/g1/configs/b.1 0770 shell shell
+   mkdir /config/usb_gadget/g1/configs/b.1/strings/0x409 0770 shell shell
+   write /config/usb_gadget/g1/os_desc/b_vendor_code 0x1
+   write /config/usb_gadget/g1/os_desc/qw_sign "MSFT100"
+   symlink /config/usb_gadget/g1/configs/b.1 /config/usb_gadget/g1/os_desc/b.1
+   write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "charge"
+   rm /config/usb_gadget/g1/configs/b.1/f1
+   rm /config/usb_gadget/g1/configs/b.1/f2
+   rm /config/usb_gadget/g1/configs/b.1/f3
+   rm /config/usb_gadget/g1/configs/b.1/f4
+   rm /config/usb_gadget/g1/configs/b.1/f5
+   rm /config/usb_gadget/g1/configs/b.2/f1
+   rm /config/usb_gadget/g1/configs/b.2/f2
+   rm /config/usb_gadget/g1/configs/b.2/f3
+   rm /config/usb_gadget/g1/configs/b.2/f4
+   rm /config/usb_gadget/g1/configs/b.2/f5
+   rm /config/usb_gadget/g1/configs/b.2/strings/0x409/configuration
+   rmdir /config/usb_gadget/g1/configs/b.2/strings/0x409
+   rmdir /config/usb_gadget/g1/configs/b.2
+   write /config/usb_gadget/g1/idVendor 0x1004
+   write /config/usb_gadget/g1/idProduct 0x6300
+   write /config/usb_gadget/g1/bDeviceClass 0
+   write /config/usb_gadget/g1/bDeviceSubClass 0
+   write /config/usb_gadget/g1/bDeviceProtocol 0
+   symlink /config/usb_gadget/g1/functions/hid.charge /config/usb_gadget/g1/configs/b.1/f1
+   write /config/usb_gadget/g1/UDC "a800000.dwc3"
+   trigger chargerlogo_after
+
+on chargerlogo_after
+   exec u:r:chargerlogo:s0 -- /sbin/chargerlogo
+   trigger chargerlogo_after
+
+on property:sys.shutdown.requested=*
+   stop qni
+   write /sys/class/qnovo/qnovo_enable 0
+
+on property:persist.service.chg_mode=LGE
+   stop qni
+   write /sys/class/power_supply/bms/lge_cycle_enable 1
+   write /sys/class/power_supply/battery/lge_step_charging_enable 1
+   write /sys/class/lge_power/lge_cc/otp_enable 1
+   write /sys/class/qnovo/qnovo_enable 0
+
+on property:persist.service.chg_mode=LGE,QNOVO
+   start qni
+   write /sys/class/power_supply/bms/lge_cycle_enable 0
+   write /sys/class/power_supply/battery/lge_step_charging_enable 0
+   write /sys/class/lge_power/lge_cc/otp_enable 1
+
+on property:persist.service.chg_mode=QNOVO
+   start qni
+   write /sys/class/power_supply/bms/lge_cycle_enable 0
+   write /sys/class/power_supply/battery/lge_step_charging_enable 0
+   write /sys/class/lge_power/lge_cc/otp_enable 0
+
+service qni /system/bin/qni -d /qni -l /qni -o 2
+   socket qnibsd stream 660 qni system
+   disabled
+
+service gbmd /system/bin/gbmd
+   class main
+   socket gbm-client stream 660 system system
+   user system
+   group system
+
+service prmd /system/bin/prmd
+   class main
+   socket prm-client stream 660 system system
+   user system
+   group system
+
+on boot
+# setup permissions for fb0 related nodes
+   chown system system /sys/class/graphics/fb0/mdp/vfps
+   chmod 664 /sys/class/graphics/fb0/mdp/vfps
+   chown system system /sys/class/graphics/fb0/mdp/vfps_fcnt
+   chmod 664 /sys/class/graphics/fb0/mdp/vfps_fcnt
+   chown system system /sys/class/graphics/fb0/mdp/vfps_ratio
+   chmod 664 /sys/class/graphics/fb0/mdp/vfps_ratio
+   chown system system /sys/class/panel/img_tune/image_enhance_set
+   chmod 664 /sys/class/panel/img_tune/image_enhance_set
+   chown system system /sys/class/graphics/fb0/fbcn_en
+   chmod 644 /sys/class/graphics/fb0/fbcn_en
+   chown system system /sys/class/graphics/fb0/fbcn_interval
+   chmod 644 /sys/class/graphics/fb0/fbcn_interval
+   chown system system /sys/class/graphics/fb0/fbcn_i
+   chmod 644 /sys/class/graphics/fb0/fbcn_i
+
+# restricted charging for tdmb mode
+on property:tdmb.mode.on=1
+   write /sys/module/lge_power_class_charging_controller/parameters/restricted_charging "TDMB MODE1"
+on property:tdmb.mode.on=0
+   write /sys/module/lge_power_class_charging_controller/parameters/restricted_charging "TDMB OFF"
+
+# restricted charging for Fullseg mode
+on property:jfullseg.mode.on=1
+   write /sys/module/lge_power_class_charging_controller/parameters/restricted_charging "TDMB MODE2"
+on property:jfullseg.mode.on=0
+   write /sys/module/lge_power_class_charging_controller/parameters/restricted_charging "TDMB OFF"
+
+# fuel gauge dumper for debug
+service fg-dump /system/vendor/bin/fg_dump.sh 10 /data/logger/fg.log
+   user root
+   group root system
+   class main
+   disabled
+   oneshot
+
+on property:persist.service.fg.enable=0
+   stop fg-dump
+on property:persist.service.fg.enable=1
+   start fg-dump
+on property:persist.service.fg.enable=2
+   start fg-dump
+on property:persist.service.fg.enable=3
+   start fg-dump
+on property:persist.service.fg.enable=4
+   start fg-dump
+on property:persist.service.fg.enable=5
+   restart fg-dump
+
+on property:vrcore.mode.on=true
+  write /sys/module/cpu_boost/parameters/input_boost_freq 0
+  write /sys/module/cpu_boost/parameters/multi_boost_freq 0
+
+on property:vrcore.mode.on=false
+  write /sys/module/cpu_boost/parameters/input_boost_freq "0:1824000 4:1056000"
+  write /sys/module/cpu_boost/parameters/multi_boost_freq "0:1824000 4:1056000"

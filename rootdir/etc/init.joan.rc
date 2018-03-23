@@ -1,0 +1,11 @@
+# This file will be installed as /init.{ro.hardware}.rc
+import /vendor/etc/init/hw/init.qcom.rc
+
+# to override init.qcom.rc and init.target.rc
+import /vendor/etc/init/hw/init.lge.usb.rc
+import /vendor/etc/init/hw/init.lge.usb.configfs.rc
+import /vendor/etc/init/hw/init.lge.fs.rc
+import /vendor/etc/init/hw/init.lge.ima.rc
+import /vendor/etc/init/hw/init.${ro.hardware}.power.rc
+
+import /vendor/etc/init/hw/init.msm8998_core.rc

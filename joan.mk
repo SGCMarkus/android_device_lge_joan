@@ -134,6 +134,11 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service
 
+#Filesystem management tools
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    setup_fs
+
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1
@@ -175,18 +180,11 @@ PRODUCT_PACKAGES += \
     ims-ext-common
 
 # Init
-PRODUCT_PACKAGES += \
-    fstab.mata \
-    init.mata.ramdump.rc \
-    init.mata.rc \
-    init.mata.usb.rc \
-    init.qcom.devstart.sh \
-    init.qcom.early_boot.sh \
-    init.qcom.power.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.sensors.sh \
-    init.qcom.sh \
-    ueventd.mata.rc
+PRODUCT_COPY_FILES +=
+    $(COMMON_PATH)/rootdir/etc/fstab.joan:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.joan \
+    $(COMMON_PATH)/rootdir/etc/ueventd.joan.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
+$(foreach f,$(wildcard $(COMMON_PATH)/rootdir/etc/*.rc),\
+        $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/$(notdir $f)))
 
 # IPACM
 PRODUCT_PACKAGES += \

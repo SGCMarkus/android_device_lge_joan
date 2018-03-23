@@ -1,0 +1,397 @@
+on post-fs-data
+    mkdir /data/logger 0775 system system
+    mkdir /data/ccaudit 0775 system system
+    mkdir /data/logger/setup 0770 system system
+    mkdir /cache/encryption_log 0775 system system
+    mkdir /persist/encryption_log 0775 system system
+
+# kernel log
+service log-kernel /system/bin/sh /system/bin/logger_kernel.sh
+    class main
+    disabled
+    oneshot
+    seclabel u:r:log_services:s0
+
+# kernel_logger is only running when cc_mode is enabled with user mode, DO NOT USE this value for other purpose.
+on property:persist.service.kernel.enable=99
+    restart log-kernel
+
+on property:persist.service.kernel.enable=6
+    restart log-kernel
+
+on property:persist.service.kernel.enable=5
+    restart log-kernel
+
+on property:persist.service.kernel.enable=4
+    restart log-kernel
+
+on property:persist.service.kernel.enable=3
+    restart log-kernel
+
+on property:persist.service.kernel.enable=2
+    restart log-kernel
+
+on property:persist.service.kernel.enable=1
+    restart log-kernel
+
+on property:persist.service.kernel.enable=0
+    stop log-kernel
+
+# Enable CC Audit for MDFPP [S]
+on property:vold.decrypt=trigger_restart_framework
+    restart logcat-ccaudit
+
+on property:vold.encrypt_progress=0
+    restart logcat-ccaudit
+
+on property:vold.decrypt=trigger_restart_min_framework
+    restart logcat-ccaudit
+
+service logcat-ccaudit /system/bin/sh /system/bin/logger_ccaudit.sh
+    class main
+    disabled
+    oneshot
+    seclabel u:r:log_services:s0
+
+on property:persist.service.ccaudit.enable=1
+    restart logcat-ccaudit
+
+on property:persist.service.ccaudit.enable=0
+    stop logcat-ccaudit
+# Enable CC Audit for MDFPP [E]
+
+
+# power log
+service log-power /system/bin/logger_power.sh
+    class main
+    disabled
+    oneshot
+
+on property:persist.service.power.enable=6
+    restart log-power
+
+on property:persist.service.power.enable=5
+    restart log-power
+
+on property:persist.service.power.enable=4
+    restart log-power
+
+on property:persist.service.power.enable=3
+    restart log-power
+
+on property:persist.service.power.enable=2
+    restart log-power
+
+on property:persist.service.power.enable=1
+    restart log-power
+
+on property:persist.service.power.enable=0
+    stop log-power
+
+
+# logcat main
+service logcat-main /system/bin/sh /system/bin/logger_main.sh
+    class main
+    disabled
+    oneshot
+    seclabel u:r:log_services:s0
+
+on property:persist.service.main.enable=6
+    restart logcat-main
+
+on property:persist.service.main.enable=5
+    restart logcat-main
+
+on property:persist.service.main.enable=4
+    restart logcat-main
+
+on property:persist.service.main.enable=3
+    restart logcat-main
+
+on property:persist.service.main.enable=2
+    restart logcat-main
+
+on property:persist.service.main.enable=1
+    restart logcat-main
+
+on property:persist.service.main.enable=0
+    stop logcat-main
+
+# logcat system
+service logcat-system /system/bin/sh /system/bin/logger_system.sh
+    class main
+    disabled
+    oneshot
+    seclabel u:r:log_services:s0
+
+on property:persist.service.system.enable=6
+    restart logcat-system
+
+on property:persist.service.system.enable=5
+    restart logcat-system
+
+on property:persist.service.system.enable=4
+    restart logcat-system
+
+on property:persist.service.system.enable=3
+    restart logcat-system
+
+on property:persist.service.system.enable=2
+    restart logcat-system
+
+on property:persist.service.system.enable=1
+    restart logcat-system
+
+on property:persist.service.system.enable=0
+    stop logcat-system
+
+# logcat radio
+service logcat-radio /system/bin/sh /system/bin/logger_radio.sh
+    class main
+    disabled
+    oneshot
+    seclabel u:r:log_services:s0
+
+on property:persist.service.radio.enable=6
+    restart logcat-radio
+
+on property:persist.service.radio.enable=5
+    restart logcat-radio
+
+on property:persist.service.radio.enable=4
+    restart logcat-radio
+
+on property:persist.service.radio.enable=3
+    restart logcat-radio
+
+on property:persist.service.radio.enable=2
+    restart logcat-radio
+
+on property:persist.service.radio.enable=1
+    restart logcat-radio
+
+on property:persist.service.radio.enable=0
+    stop logcat-radio
+
+# logcat events
+service logcat-events /system/bin/sh /system/bin/logger_events.sh
+    class main
+    disabled
+    oneshot
+    seclabel u:r:log_services:s0
+
+on property:persist.service.events.enable=6
+    restart logcat-events
+
+on property:persist.service.events.enable=5
+    restart logcat-events
+
+on property:persist.service.events.enable=4
+    restart logcat-events
+
+on property:persist.service.events.enable=3
+    restart logcat-events
+
+on property:persist.service.events.enable=2
+    restart logcat-events
+
+on property:persist.service.events.enable=1
+    restart logcat-events
+
+on property:persist.service.events.enable=0
+    stop logcat-events
+
+on property:persist.service.logger.low=1
+    restart log-kernel
+    restart log-power
+    restart logcat-main
+    restart logcat-system
+    restart logcat-radio
+    restart logcat-events
+    restart logcat-memory
+
+
+on property:persist.service.logger.low=0
+    restart log-kernel
+    restart log-power
+    restart logcat-main
+    restart logcat-system
+    restart logcat-radio
+    restart logcat-events
+    restart logcat-memory
+
+on property:persist.service.logger.full=1
+    restart log-kernel
+    restart log-power
+    restart logcat-main
+    restart logcat-system
+    restart logcat-radio
+    restart logcat-events
+    restart logcat-memory
+
+on property:persist.service.logger.full=0
+    restart log-kernel
+    restart log-power
+    restart logcat-main
+    restart logcat-system
+    restart logcat-radio
+    restart logcat-events
+    restart logcat-memory
+
+on property:persist.service.logsize.enable=1
+    restart log-kernel
+    restart log-power
+    restart logcat-main
+    restart logcat-system
+    restart logcat-radio
+    restart logcat-events
+    restart logcat-memory
+
+on property:persist.service.logsize.enable=0
+    restart log-kernel
+    restart log-power
+    restart logcat-main
+    restart logcat-system
+    restart logcat-radio
+    restart logcat-events
+    restart logcat-memory
+
+# locat setupwizard
+    service logcat-setwiz /system/bin/sh /system/bin/logger_setupwizard.sh
+    class main
+    disabled
+    oneshot
+
+on property:persist.service.setwiz.enable=1
+    restart logcat-setwiz
+
+on property:persist.service.setwiz.enable=0
+    stop logcat-setwiz
+
+#tcpdump - packet log
+service log-packet /system/bin/sh /system/bin/logger_packet.sh
+    class main
+    disabled
+    oneshot
+    seclabel u:r:log_services:s0
+
+on property:persist.service.packet.enable=1
+    restart log-packet
+
+on property:persist.service.packet.enable=2
+    restart log-packet
+
+on property:persist.service.packet.enable=0
+    stop log-packet
+
+on property:vold.decrypt=trigger_restart_framework
+    restart log-kernel
+    restart log-power
+    restart logcat-main
+    restart logcat-system
+    restart logcat-radio
+    restart logcat-events
+    restart log-packet
+    restart log-xfrm
+    restart logcat-memory
+    restart fg-dump
+
+on property:vold.encrypt_progress=0
+    restart log-kernel
+    restart log-power
+    restart logcat-main
+    restart logcat-system
+    restart logcat-radio
+    restart logcat-events
+    restart log-packet
+    restart logcat-memory
+    restart log-xfrm
+
+service presslog /system/bin/presslog
+    disabled
+    oneshot
+
+on property:persist.service.presslog.enable=1
+    start presslog
+
+on property:persist.service.presslog.enable=0
+    stop presslog
+
+# memory log
+service logcat-memory /system/bin/logger_memory.sh
+    class main
+    disabled
+    oneshot
+
+on property:persist.service.memory.enable=6
+    restart logcat-memory
+
+on property:persist.service.memory.enable=5
+    restart logcat-memory
+
+on property:persist.service.memory.enable=4
+    restart logcat-memory
+
+on property:persist.service.memory.enable=3
+    restart logcat-memory
+
+on property:persist.service.memory.enable=2
+    restart logcat-memory
+
+on property:persist.service.memory.enable=1
+    restart logcat-memory
+
+on property:persist.service.memory.enable=0
+    stop logcat-memory
+
+#On FDE related issues such as lockup on boot, retore logs to cache partition.
+on property:vold.copy_logs_to_cache=1
+    setprop persist.service.kernel.enable 1
+    setprop persist.service.main.enable 1
+    setprop persist.service.system.enable 1
+
+on property:vold.copy_logs_to_cache=0
+    stop log-kernel
+    stop logcat-main
+    stop logcat-system
+
+on property:keymaster.copy_logs_to_cache=1
+    copy /data/logger/kernel.log /cache/encryption_log/kernel.log
+    copy /data/logger/main.log /cache/encryption_log/main.log
+    copy /data/logger/system.log /cache/encryption_log/system.log
+    copy /data/mtslog/sensor/Fingerprint_qsee/qsee_log.0 /cache/encryption_log/qsee_log
+
+# log xfrm
+service log-xfrm /system/bin/sh /system/bin/logger_xfrm.sh
+    class main
+    disabled
+    oneshot
+    seclabel u:r:log_services:s0
+
+
+on property:persist.service.xfrm.enable=1
+    start log-xfrm
+
+on property:persist.service.xfrm.enable=0
+    stop log-xfrm
+
+
+#tcpdump - ims packet log
+service log-ims /system/bin/sh /system/bin/logger_ims_packet.sh
+    class main
+    disabled
+    oneshot
+    seclabel u:r:log_services:s0
+
+on property:persist.service.ims.packet.enable=1
+    start log-ims
+
+on property:persist.service.ims.packet.enable=0
+    stop log-ims
+
+on property:persist.service.removelog=1
+    exec /system/bin/rm -r /data/logger
+    mkdir /data/logger 0775 system system
+    mkdir /data/logger/setup 0770 system system
+    setprop persist.service.removelog 0
+

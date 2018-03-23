@@ -1,0 +1,15 @@
+service atd /system/bin/atd
+    socket atd stream 0660 system system
+    class main
+
+service frstd /system/bin/frstd
+    class main
+
+on property:frstd.ctrl.run=yes
+    restart frstd
+on property:frstd.ctrl.run=no
+    stop frstd
+
+# create dir for logsave
+on post-fs-data
+    mkdir /data/factory 0775 system system

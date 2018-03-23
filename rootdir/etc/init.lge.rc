@@ -1,0 +1,396 @@
+#CAPP_CKERROR_REPORTER
+import init.ckerror.rc
+import init.hdump.rc
+import init.lduma.rc
+
+# LGE_LAOP_0001 START
+import init.laop.rc
+# LGE_LAOP_0001 END
+# lgstability test
+#import init.lge.stability.rc
+
+on post-fs
+    mkdir /persist-lg/property 0771 system radio
+    mkdir /persist-lg/autosimlock 0770 system system
+    mkdir /persist-lg/poweron 0775 system system
+    mkdir /persist-lg/tmo 0771 radio radio
+    #For U+ call-frw
+    mkdir /persist-lg/callfw 0770 radio radio
+    #For LGKM default key storage
+    mkdir /persist-lg/kmstore 0770 system system
+
+    #USE_SECUREBOOT
+    verity_update_state
+    determine_run_wallpaper
+
+    #QFUSE
+    write /sys/devices/platform/lge-qfprom/sec_read 0
+
+    # WLAN RUNTIME SERVICE
+     start wlan_runtime
+
+on post-fs-data
+    #CAPP_FONTS
+    mkdir /data/font 775 system system
+    chmod 775 /data/font
+    mkdir /data/font/config 775 system system
+    chmod 775 /data/font/config
+    mkdir /data/font/download 775 system system
+    chmod 775 /data/font/download
+
+    #LG THEME
+    mkdir /data/theme 775 system system
+    chmod 775 /data/theme
+
+# 2014-11-10 hyukbin.ko@lge.com LGP_DATA_APN_BACKUP_SPRINT [START]
+    mkdir /persist-lg/lgdata 0771 radio radio
+# 2014-11-10 hyukbin.ko@lge.com LGP_DATA_APN_BACKUP_SPRINT [END]
+    #LGDRM
+    mkdir /data/lgdrm 0770 oem_4001 oem_4002
+    mkdir /persist-lg/lgdrm 0770 oem_4001 oem_4002
+
+    #Widevine
+    mkdir /persist-lg/widevine 0770 drm system
+
+    #Widevine firmware
+    mkdir /persist-lg/firmware 0771 system system
+
+    #Secure clock
+    mkdir /persist-lg/secclk 0700 system system
+
+    #chargerlogo
+    mkdir /persist-lg/chargerlogo 0770 system system
+
+    #Kill-Switch
+    mkdir /persist-lg/mms 0770 system oem_7001
+
+    #MM Proxy
+    mkdir /persist-lg/mmoprt 0771 system system
+
+    #Encryption
+    mkdir /persist-lg/encryption 0771 system system
+
+    #secureks
+    mkdir /persist-lg/secureks 0770 system system
+
+    # STB
+    mkdir /persist-lg/stblvd 0771 system system
+    chmod 770 /persist-lg/stblvd/dkp
+    chmod 770 /persist-lg/stblvd/srmp
+
+    #KDDI SIMLock Management
+    mkdir /persist-lg/cardinal 0770 system system
+
+    #CAPP_BLUEERROR_HANDLER: temp version, it will be removed
+    chown root system /data/dontpanic
+    chmod 0775 /data/dontpanic
+
+    #LGMDM [lge-mdm-dev@lge.com][ID-MDM-77][ID-MDM-289]
+    mkdir /data/system 0775 system system
+    mkdir /data/system/lgmdm 0700 system system
+
+    #safety_timer hidden menu support
+    chown system system /sys/class/power_supply/battery/safety_timer
+    chown system system /sys/class/power_supply/battery/safety_timer_enabled
+
+	# LGE_CHANGE_S, [display] feature : SP MIRRORING
+	chmod 0660 /sys/class/graphics/fb0/sp_link_backlight_off
+	chown system system /sys/class/graphics/fb0/sp_link_backlight_off
+	chmod 0660 /sys/devices/virtual/input/lge_touch/sp_link_touch_off
+	chown system system /sys/devices/virtual/input/lge_touch/sp_link_touch_off
+	# LGE_CHANGE_E, [display] feature : SP MIRRORING
+
+    # CAPP_INTEGRITY, LGIS [lge-is-dev@lge.com]
+    mkdir /data/system/lgis 0700 system system
+
+    #NTCODE_LISTING
+    mkdir /data/app-system 0771 system system
+
+    #SELinux
+    mkdir /data/misc/audit 00750 system system
+
+#/* 2013-06-24, juhyup.kim@lge.com LGP_DATA_APN_BACKUP [START] */
+    mkdir /persist-lg/lgdata 0775 radio radio
+#/* 2013-06-24, juhyup.kim@lge.com LGP_DATA_APN_BACKUP [END] */
+#/* 2016-03-02 protocol-iwlan@lge.com LGP_DATA_IWLAN [START] */
+    mkdir /data/misc/setkey 0666 root system
+    restorecon /data/misc/setkey
+#/* 2016-03-02 protocol-iwlan@lge.com LGP_DATA_IWLAN [END] */
+#/* GONS Modem DB Updator [START] */
+    mkdir /persist-lg/gons 0771 radio radio
+#/* GONS Modem DB Updator [END] */
+    # LGBackup Removing Unlabeled Resource
+    rm /data/data/.bnr_fifo_rly
+    rm /data/data/.bnr_fifo_req
+
+    # dms-ua@lge.com fota [START]
+    mkdir /data/fota 0770 system system
+    mkdir /cache/fota 0770 system system
+    chown system system /cache/fota
+    chmod 0775 /cache/fota
+    chown system system /cache/fota/usd.dat
+    chmod 0775 /cache/fota/usd.dat
+    # dms-ua@lge.com fota [END]
+
+    #labeling lg partitions
+    restorecon_recursive /persist-lg
+    restorecon /sns
+    restorecon_recursive /sns
+    restorecon /mpt
+    restorecon_recursive /mpt
+    restorecon /srtc
+    restorecon_recursive /srtc
+    restorecon /persist
+    restorecon_recursive /persist
+    restorecon /cust
+    restorecon_recursive /cust
+    restorecon /eri
+    restorecon_recursive /eri
+    restorecon /vzw/quality
+    restorecon_recursive /vzw/quality
+    restorecon /carrier
+    restorecon_recursive /carrier
+    restorecon /ve
+    restorecon_recursive /ve
+    restorecon /OneSeg
+    restorecon_recursive /OneSeg
+    restorecon /dev/iwland
+    restorecon /data/preload
+    restorecon_recursive /data/preload
+    restorecon /qni
+    restorecon_recursive /qni
+    restorecon /power
+    restorecon_recursive /power
+
+    #Widevine firmware copy
+    exec /system/bin/cpfirmware widevine /persist-lg/firmware
+    #DCM PlayReady firmware copy
+    exec /system/bin/cpfirmware dcmplayready /persist-lg/firmware
+
+    #Create callduration file
+    mkdir /persist-lg/callduration 0770 system radio
+
+    #Create rtnlastdate file
+    mkdir /persist-lg/rtnlastdate 0770 system radio
+
+    #Create roaming dir for Sprint roaming setting
+    mkdir /persist-lg/roaming 0771 system radio
+
+on boot
+    # Assign TCP buffer thresholds to be ceiling value of technology maximums
+    # Increased technology maximums should be reflected here.
+    # LGP_DATA
+    write /proc/sys/net/core/rmem_max  8388608
+    write /proc/sys/net/core/wmem_max  8388608
+
+# LGP_DATA_PERFORMANCE_HELPING_CODE, y01.jeong@lge.com
+on property:ro.build.product=z2
+    write /proc/sys/net/core/netdev_max_backlog 5000
+
+on property:ro.build.product=p1
+    write /proc/sys/net/core/netdev_max_backlog 5000
+
+on property:ro.build.product=h1
+    write /proc/sys/net/core/netdev_max_backlog 5000
+
+on property:ro.build.product=elsa
+    write /proc/sys/net/core/netdev_max_backlog 5000
+
+on property:ro.build.product=mlv5
+    write /proc/sys/net/core/netdev_max_backlog 5000
+
+on property:ro.build.product=mlv5n
+    write /proc/sys/net/core/netdev_max_backlog 5000
+
+on property:ro.build.product=mlv7
+    write /proc/sys/net/core/netdev_max_backlog 5000
+
+on property:ro.build.product=msf3
+    write /proc/sys/net/core/netdev_max_backlog 5000
+# LGP_DATA_PERFORMANCE_HELPING_CODE, y01.jeong@lge.com
+
+#SELinux
+#service auditd /system/bin/auditd -k
+#    class main
+
+#CAPP_POWEROFF_ANI
+service shutdownanim /system/bin/shutdownanimation
+    class main
+    user graphics
+    group graphics system
+    disabled
+    oneshot
+    shutdown critical
+
+#CAPP_NFS
+service nfsserversetup /system/bin/nfsserversetup
+    class late_start
+    user root
+    oneshot
+
+#CAPP_MPROFILER
+service lgprofd /system/bin/lgprofd
+    socket lgprofd stream 666
+
+#Application Manager ENABLE_UNINSTALL
+service enable_uninstall  /system/vendor/bin/enable_uninstall.sh
+    disabled
+    oneshot
+
+#Application Manager ENABLE_UNINSTALL
+on property:vold.post_fs_data_done=1
+    start enable_uninstall
+    start gons_update
+
+#CAPP_NFS
+service nfskill /system/bin/nfskillprocess
+    disabled
+    oneshot
+    user root
+
+on property:vold.decrypt=trigger_shutdown_framework
+    start nfskill
+
+# CAPP_INTEGRITY, LGIS [lge-is-dev@lge.com]
+service lghashstorage /system/bin/lghashstorageserver
+    class main
+    user system
+    group system oem_4002 sdcard_rw media_rw
+
+service gons_update /system/vendor/bin/init.lge.gons.sh
+    user radio
+    group radio
+    oneshot
+
+#LGBackup System service daemon
+service bnrd /sbin/bnrd
+    class main
+    socket bnrd stream 660 root system
+    user root
+    group system radio sdcard_rw
+    disabled
+    seclabel u:r:installd:s0
+
+on property:sys.lge.bnrd=1
+    start bnrd
+
+on property:sys.lge.bnrd=0
+    stop bnrd
+
+#LGP_DATA_DSQN [START]
+service dsqn /system/bin/dsqn
+    disabled
+    user root
+
+    on property:persist.lg.data.dsqn=1
+        start dsqn
+
+    on property:persist.lg.data.dsqn=0
+        stop dsqn
+#LGP_DATA_DSQN [END]
+
+# 2015-06-11 hyoseab.song@lge.com LGP_DATA_TCPIP_MPTCP_SOCKS [START]
+service socks /system/xbin/redsocks -c /system/etc/redsocks.conf
+    disabled
+    user root
+
+    on property:lg.data.socks=1
+        start socks
+
+    on property:lg.data.socks=0
+        stop socks
+# 2015-06-11 hyoseab.song@lge.com LGP_DATA_TCPIP_MPTCP_SOCKS [END]
+# bugreport is triggered by holding down volume down, volume up and power
+service bugreport /system/bin/dumpstate -d -p -B -z \
+        -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
+    class main
+    disabled
+    oneshot
+    keycodes 114 115 116
+
+# resource parallel loading
+service rmplb /system/vendor/bin/rmplb.sh
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+    start rmplb
+
+on run-wallpaper
+    exec u:r:wallpaper:s0 -- /sbin/wallpaper
+
+# LG RCT(Rooting Check Tool)
+service rctd /sbin/rctd
+    class late_start
+    user root
+    group root
+    seclabel u:r:rctd:s0
+
+service ccmd /system/bin/ccmd
+    class core
+    user system
+    group system
+    socket ccmd stream 0660 root system
+
+service lgkmd /system/bin/lgkmd
+    class core
+    user system
+    group system drmrpc
+    socket lgkmd stream 0660 system drmrpc
+
+# LGE_CHANGE_S, [display] feature : SP MIRRORING
+on property:com.lge.splink_screen_off=0
+    write /sys/class/graphics/fb0/sp_link_backlight_off 0
+    write /sys/devices/virtual/input/lge_touch/sp_link_touch_off 0
+
+on property:com.lge.splink_screen_off=1
+    write /sys/class/graphics/fb0/sp_link_backlight_off 1
+    write /sys/devices/virtual/input/lge_touch/sp_link_touch_off 1
+# LGE_CHANGE_E, [display] feature : SP MIRRORING
+
+# LGE_CHANGE_S, sim based property copy
+service property_copy /system/vendor/bin/property_copy.sh
+    class late_start
+    disabled
+    oneshot
+
+on property:persist.sys.sim.operator=*
+    start property_copy
+# LGE_CHANGE_E, sim based property copy
+
+
+
+# dms-ua@lge.com fota [START]
+service uncrypt-fota /system/bin/uncrypt --fota
+    class main
+    socket uncrypt stream 600 system system
+    disabled
+    oneshot
+
+service uncrypt-lcdoff /system/bin/uncrypt --lcdoff
+    class main
+    socket uncrypt stream 600 system system
+    disabled
+    oneshot
+# dms-ua@lge.com fota [END]
+
+# ADB-over-WIFI Port Open [START]
+on property:sys.boot_completed=1 && property:ro.debuggable=1 && property:persist.lge.rftest=1
+    setprop persist.adb.tcp.port 5555
+    restart adbd
+
+on property:sys.boot_completed=1 && property:ro.debuggable=1 && property:persist.lge.rftest=0
+    setprop persist.adb.tcp.port -1
+    restart adbd
+# ADB-over-WIFI Port Open [END]
+
+# wifi runtime config [ START ]
+service wlan_runtime /system/vendor/bin/wifi_runtime_conf.sh
+    class main
+    user system
+    group system wifi
+    oneshot
+
+# wifi runtime config [END]

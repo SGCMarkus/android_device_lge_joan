@@ -1,0 +1,54 @@
+on post-fs-data
+#make factory test result directory
+   mkdir /sns/fingerprint 0775 system system
+   mkdir /data/fpc 0755 system system
+   restorecon /data/fpc
+   mkdir /data/fpc_images 0755 system system
+   restorecon /data/fpc_images
+
+#change cucialtec device permission
+on boot
+   chown system input /sys/devices/virtual/input/lge_fingerprint/testmode
+   chown system input /sys/devices/virtual/input/lge_fingerprint/spitest
+   chown system input /sys/devices/virtual/input/lge_fingerprint/zonetest
+   chown system input /sys/devices/virtual/input/lge_fingerprint/checkerbdtest
+   chown system input /sys/devices/virtual/input/lge_fingerprint/rubbertest
+   chown system input /sys/devices/virtual/input/lge_fingerprint/intstatus
+   chown system input /sys/devices/virtual/input/lge_fingerprint/qup_id
+   chown system input /sys/devices/virtual/input/lge_fingerprint/waitfinger
+   chown system input /sys/devices/virtual/input/lge_fingerprint/spi_prepare
+
+   chmod 0660 /sys/devices/virtual/input/lge_fingerprint/testmode
+   chmod 0660 /sys/devices/virtual/input/lge_fingerprint/spitest
+   chmod 0660 /sys/devices/virtual/input/lge_fingerprint/zonetest
+   chmod 0660 /sys/devices/virtual/input/lge_fingerprint/checkerbdtest
+   chmod 0660 /sys/devices/virtual/input/lge_fingerprint/rubbertest
+   chmod 0440 /sys/devices/virtual/input/lge_fingerprint/intstatus
+   chmod 0660 /sys/devices/virtual/input/lge_fingerprint/qup_id
+   chmod 0220 /sys/devices/virtual/input/lge_fingerprint/waitfinger
+   chmod 0660 /sys/devices/virtual/input/lge_fingerprint/spi_prepare
+# FPC device permission
+
+   chown system input /sys/devices/virtual/input/lge_fingerprint/bus_lock
+   chown system input /sys/devices/virtual/input/lge_fingerprint/clk_enable
+   chown system input /sys/devices/virtual/input/lge_fingerprint/fabric_vote
+   chown system input /sys/devices/virtual/input/lge_fingerprint/hw_reset
+   chown system input /sys/devices/virtual/input/lge_fingerprint/irq
+   chown system input /sys/devices/virtual/input/lge_fingerprint/pinctl_set
+   chown system input /sys/devices/virtual/input/lge_fingerprint/spi_prepare
+   chown system input /sys/devices/virtual/input/lge_fingerprint/spi_owner
+   chown system input /sys/devices/virtual/input/lge_fingerprint/regulator_enable
+   chown system input /sys/devices/virtual/input/lge_fingerprint/wakeup_enable
+
+#oneshot service that loads fpc tz app in early phase.
+#service fpc_early_loader /system/bin/fpc_early_loader
+#    class late_start
+#    user system
+#    group system
+#    oneshot
+
+#FIDO
+service fidod /system/bin/fidod
+    class late_start
+    user system
+    group system

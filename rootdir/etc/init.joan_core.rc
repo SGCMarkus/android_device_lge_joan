@@ -1,0 +1,257 @@
+# Copyright (c) 2009-2012, Code Aurora Forum. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of Code Aurora nor
+#       the names of its contributors may be used to endorse or promote
+#       products derived from this software without specific prior written
+#       permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+import /vendor/etc/init/hw/init.joan_product.rc
+import /vendor/etc/init/hw/init.lge.sensors.rc
+import /vendor/etc/init/hw/init.lge.svelte.rc
+
+# LGE ATD service rc
+import /vendor/etc/init/hw/init.lge.atd.rc
+
+# fingerprints
+import /vendor/etc/init/hw/init.lge.fingerprints.rc
+
+# LGODL
+import /vendor/etc/init/hw/init.lge.modem_log.rc
+
+# LG CPR
+import /vendor/etc/init/hw/init.lge.devLKM.rc
+
+# Start Wi-Fi Service
+import /vendor/etc/init/hw/init.wifi.rc
+
+# Start Wi-Fi Service for Helium
+import /vendor/etc/init/hw/init.wifi_ext.rc
+
+# audio configuration
+import /vendor/etc/init/hw/init.lge.audio.rc
+
+on init
+    setprop ro.ssbd.session /dev/block/bootdevice/by-name/eksst
+    export SDCARD_TRAY_PATH /sys/devices/soc/c0a4900.sdhci/mmc_host/mmc0/cd_status
+
+    mkdir /srtc 0755 system system
+    mkdir /qni 0755 system system
+
+on fs
+    wait /dev/block/bootdevice/by-name/srtc
+    wait /dev/block/bootdevice/by-name/qni
+    exec u:r:setup_fs:s0 -- /system/bin/setup_fs \
+        /dev/block/bootdevice/by-name/srtc \
+        /dev/block/bootdevice/by-name/qni \
+        no_reboot
+
+    wait /dev/block/bootdevice/by-name/srtc
+    exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/srtc
+    mount ext4 /dev/block/bootdevice/by-name/srtc /srtc nosuid nodev barrier=1 noatime noauto_da_alloc errors=continue
+
+    wait /dev/block/bootdevice/by-name/qni
+    exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/qni
+    mount ext4 /dev/block/bootdevice/by-name/qni /qni nosuid nodev barrier=1 noatime noauto_da_alloc errors=continue
+
+on post-fs
+# Support tuxera exfat filesystem
+	insmod /system/lib/modules/texfat.ko
+
+on post-fs-data
+# change preload directory permission for movetosd about preload app
+    start chmod_dp
+
+# change preload directory permission for movetosd about preload app
+service chmod_dp /system/vendor/bin/change_permission_preload.sh
+    disable
+    oneshot
+
+on early-boot
+#	exec u:r:qti_init_shell:s0 -- /vendor/bin.sh /display_port_permission.sh
+  chmod 644 /sys/class/graphics/fb2/hpd
+  chown system graphics /sys/class/graphics/fb2/hpd
+  chmod 644 /sys/class/graphics/fb2/res_info
+  chown system graphics /sys/class/graphics/fb2/res_info
+  chmod 644 /sys/class/graphics/fb2/vendor_name
+  chown system graphics /sys/class/graphics/fb2/vendor_name
+  chmod 644 /sys/class/graphics/fb2/product_decription
+  chown system graphics /sys/class/graphics/fb2/product_decription
+  chmod 644 /sys/class/graphics/fb2/video_mode
+  chown system graphics /sys/class/graphics/fb2/video_mode
+  chmod 644 /sys/class/graphics/fb2/format_3d
+  chown system graphics /sys/class/graphics/fb2/format_3d
+  chmod 644 /sys/class/graphics/fb2/s3d_mode
+  chown system graphics /sys/class/graphics/fb2/s3d_mode
+  chmod 644 /sys/class/graphics/fb2/dynamic_fps
+  chown system graphics /sys/class/graphics/fb2/dynamic_fps
+  chmod 644 /sys/class/graphics/fb2/msm_fb_dfps_mode
+  chown system graphics /sys/class/graphics/fb2/msm_fb_dfps_mode
+  chmod 644 /sys/class/graphics/fb2/pa
+  chown system graphics /sys/class/graphics/fb2/pa
+  chmod 644 /sys/class/graphics/fb2/hdcp/tp
+  chown system graphics /sys/class/graphics/fb2/hdcp/tp
+
+on boot
+#for Dynamic Resolution Switching
+  chmod 644 /sys/class/graphics/fb0/mode
+  chmod 644 /sys/class/graphics/fb0/modes
+  chmod 644 /sys/class/graphics/fb0/freeze_state
+  chmod 644 /sys/class/graphics/fb0/freeze_state_hal
+  chown system graphics /sys/class/graphics/fb0/mode
+  chown system graphics /sys/class/graphics/fb0/modes
+  chown system graphics /sys/class/graphics/fb0/freeze_state
+  chown system graphics /sys/class/graphics/fb0/freeze_state_hal
+
+#end for Dynamic Resolution Switching
+
+#for Display Control Mode
+  chmod 644 /sys/class/panel/img_tune/boost_status
+  chown system system /sys/class/panel/img_tune/boost_status
+  chmod 644 /sys/class/panel/img_tune/daylight_mode
+  chown system system /sys/class/panel/img_tune/daylight_mode
+  chmod 644 /sys/class/panel/img_tune/screen_mode
+  chown system system /sys/class/panel/img_tune/screen_mode
+  chmod 644 /sys/class/panel/img_tune/video_enhancement
+  chown system system /sys/class/panel/img_tune/video_enhancement
+  chmod 644 system /sys/class/panel/img_tune/color_manager_status
+  chown system system /sys/class/panel/img_tune/color_manager_status
+  chmod 200 /sys/class/panel/img_tune/therm_dim
+  chown system system /sys/class/panel/img_tune/therm_dim
+  chmod 644 /sys/class/panel/img_tune/rgb_tune
+  chown system system /sys/class/panel/img_tune/rgb_tune
+#end for Display Control Mode
+
+#for Display Control Mode
+  chown system system /sys/class/graphics/fb0/msm_fb_persist_mode
+#end Display Control Mode
+#for High Luminance Mode
+  chown system system /sys/devices/virtual/graphics/fb0/hl_mode
+#end for High Luminance Mode
+
+#for Comfort View
+  chmod 644 /sys/class/panel/img_tune/comfort_view
+  chown system system /sys/class/panel/img_tune/comfort_view
+#end for Comfort View
+
+#for Ambient current state
+  chmod 644 /sys/class/graphics/fb0/cur_panel_mode
+  chown system system /sys/class/graphics/fb0/cur_panel_mode
+#end for Ambient current state
+
+#for AOD Area
+  chmod 644 /sys/class/panel/aod/area
+  chown system system /sys/class/panel/aod/area
+#end for AOD Area
+
+#for Ambient Extension Brightness
+  chmod 644 /sys/class/leds/lcd-backlight-ex/brightness
+  chown system system /sys/class/leds/lcd-backlight-ex/brightness
+#end for Ambient Extension Brightness
+
+#for Reader Mode
+  chmod 644 /sys/class/graphics/fb0/reader_mode
+  chown system system /sys/class/graphics/fb0/reader_mode
+#end for Reader Mode
+
+#Sync fb0 nodes with init.qcom.early_boot.sh
+  chmod 644 /sys/class/graphics/fb0/idle_time
+  chown system graphics /sys/class/graphics/fb0/idle_time
+  chmod 644 /sys/class/graphics/fb0/dynamic_fps
+  chown system graphics /sys/class/graphics/fb0/dynamic_fps
+  chmod 644 /sys/class/graphics/fb0/dyn_pu
+  chown system graphics /sys/class/graphics/fb0/dyn_pu
+  chmod 644 /sys/class/graphics/fb0/msm_cmd_autorefresh_en
+  chown system graphics /sys/class/graphics/fb0/msm_cmd_autorefresh_en
+#end Sync fb0 nodes with init.qcom.early_boot.sh
+
+# START touch_driver
+	chown system system /sys/devices/virtual/input/lge_touch/incoming_call
+	chmod 664 /sys/devices/virtual/input/lge_touch/incoming_call
+	chown system system /sys/devices/virtual/input/lge_touch/ime_status
+	chown system oem_4004 /sys/devices/virtual/input/lge_touch/keyguard
+	chmod 664 /sys/devices/virtual/input/lge_touch/keyguard
+	chown system system /sys/devices/virtual/input/lge_touch/debug_tool
+	chmod 664 /sys/devices/virtual/input/lge_touch/debug_tool
+	chown system system /sys/devices/virtual/input/lge_touch/debug_option
+	chmod 664 /sys/devices/virtual/input/lge_touch/debug_option
+	chown system system /sys/devices/virtual/input/lge_touch/onhand
+	chmod 664 /sys/devices/virtual/input/lge_touch/onhand
+	chown system system /sys/devices/virtual/input/lge_touch/vr_status
+	chmod 664 /sys/devices/virtual/input/lge_touch/vr_status
+	chown system system /sys/devices/virtual/input/lge_touch/autotune
+	chmod 664 /sys/devices/virtual/input/lge_touch/autotune
+# END touch_driver
+
+# START touch_knock_on
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_data
+	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_data
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_notify
+	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_notify
+	chown system system /sys/devices/virtual/input/lge_touch/quick_cover_status
+	chmod 664 /sys/devices/virtual/input/lge_touch/quick_cover_status
+	chown system system /sys/devices/virtual/input/lge_touch/q_sensitivity
+	chmod 664 /sys/devices/virtual/input/lge_touch/q_sensitivity
+	chown system system /sys/devices/virtual/input/lge_touch/swipe_enable
+	chmod 664 /sys/devices/virtual/input/lge_touch/swipe_enable
+	chown system system /sys/devices/virtual/input/lge_touch/swipe_tool
+	chmod 664 /sys/devices/virtual/input/lge_touch/swipe_tool
+	chown system system /sys/devices/virtual/input/lge_touch/lpwg_abs
+	chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_abs
+	chown system system /sys/devices/virtual/input/lge_touch/voice_button
+	chmod 664 /sys/devices/virtual/input/lge_touch/voice_button
+# END touch_knock_on
+
+# Touch_BSP, add call_state property, lockscreen property, vr_status property
+on property:ril.lge.touch.callstate=0
+	write /sys/devices/virtual/input/lge_touch/incoming_call 0
+on property:ril.lge.touch.callstate=1
+	write /sys/devices/virtual/input/lge_touch/incoming_call 1
+on property:ril.lge.touch.callstate=2
+	write /sys/devices/virtual/input/lge_touch/incoming_call 2
+on property:service.keyguard.status=0
+	write /sys/devices/virtual/input/lge_touch/keyguard 0
+on property:service.keyguard.status=1
+	write /sys/devices/virtual/input/lge_touch/keyguard 1
+on property:service.keyguard.status=2
+	write /sys/devices/virtual/input/lge_touch/keyguard 1
+on property:vrcore.mode.on=false
+	write /sys/devices/virtual/input/lge_touch/vr_status 0
+on property:vrcore.mode.on=true
+	write /sys/devices/virtual/input/lge_touch/vr_status 1
+
+# Bluetooth Split A2DP property
+setprop persist.vendor.bt.a2dp_offload_cap false
+
+# Begin Immersion Changes
+    service immvibed /system/bin/immvibed -p 99 -u 1000
+    class core
+    user root
+    group root
+    oneshot
+# End Immersion Changes
+
+on early-fs
+    ffu_update
+
+on late-init
+    setprop ro.support.waterproof true

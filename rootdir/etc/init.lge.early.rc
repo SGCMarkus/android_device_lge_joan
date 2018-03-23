@@ -1,0 +1,24 @@
+
+########################################
+# CAPP_SECCLK
+########################################
+service lgsecclk /system/bin/lgsecclkserver
+    class main
+    user system
+    group system oem_4002 sdcard_rw media_rw
+
+# restart when servicemanager is restarted
+on property:init.svc.servicemanager=restarting
+     restart lgsecclk
+
+########################################
+# CAPP_DRM
+########################################
+service lgdrm /system/bin/lgdrmserver
+    class main
+    user oem_4001
+    group oem_4002 net_raw
+
+# restart when servicemanager is restarted
+on property:init.svc.servicemanager=restarting
+     restart lgdrm

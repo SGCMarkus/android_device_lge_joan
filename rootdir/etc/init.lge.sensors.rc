@@ -1,0 +1,15 @@
+# Sensor, onhand daemon
+service onhand /system/bin/onhandd
+    class late_start
+    user system
+    group system
+    disabled
+
+on property:persist.sensors.onhand.en=1
+    start onhand
+
+on property:persist.sensors.onhand.en=0
+    stop onhand
+
+on post-fs-data
+    mkdir /sns/cal/ 0755 system system

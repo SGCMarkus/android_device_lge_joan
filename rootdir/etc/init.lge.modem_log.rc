@@ -1,0 +1,175 @@
+# Copyright (c) 2011, Code Aurora Forum. All rights reserved.
+# Copyright (c) 2011-2012, LG Electronics Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of Code Aurora nor
+#       the names of its contributors may be used to endorse or promote
+#       products derived from this software without specific prior written
+#       permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+####################################
+#                                  #
+#        Register service          #
+#                                  #
+####################################
+service lgssl_odm /system/bin/lg_dm_router --odm
+    class late_start
+    user system
+    group system sdcard_r sdcard_rw diag
+    disabled
+    oneshot
+
+service lgssl_odm_k /system/bin/lg_dm_router --odm --kill --cmdline=44
+    user system
+    group system sdcard_r sdcard_rw
+    disabled
+    oneshot
+
+service lgssl_odm_s /system/bin/lg_dm_router --odm --cmdline=0
+    user system
+    group system sdcard_r sdcard_rw
+    disabled
+    oneshot
+
+service lgssl_odm_t /system/bin/lg_dm_router --odm --cmdline=1
+    user system
+    group system sdcard_r sdcard_rw
+    disabled
+    oneshot
+
+service lgssl_odm_c /system/bin/lg_dm_router --odm --cmdline=2
+    user system
+    group system sdcard_r sdcard_rw
+    disabled
+    oneshot
+
+service lgssl_odm_g /system/bin/lg_dm_router --odm --cmdline=10
+    user system
+    group system sdcard_r sdcard_rw
+    disabled
+    oneshot
+
+service lgssl_odm_de /system/bin/lg_dm_router --odm --cmdline=100
+    user system
+    group system sdcard_r sdcard_rw
+    disabled
+    oneshot
+
+service lgssl_odm_dd /system/bin/lg_dm_router --odm --cmdline=101
+    user system
+    group system sdcard_r sdcard_rw
+    disabled
+    oneshot
+
+#    group system sdcard_r sdcard_rw media_rw net_raw net_admin inet diag readproc
+
+
+service lgssl_sdm /system/bin/lg_dm_router --sdm
+    class late_start
+    user system
+    group system sdcard_r sdcard_rw diag
+    disabled
+    socket Full.DM.port stream 660 system system
+    oneshot
+
+service lgssl_sdm_k /system/bin/lg_dm_router --sdm --kill --cmdline=44
+    user system
+    group system sdcard_r sdcard_rw
+    disabled
+    oneshot
+
+service lgssl_sdm_de /system/bin/lg_dm_router --sdm --cmdline=100
+    user system
+    group system sdcard_r sdcard_rw
+    disabled
+    oneshot
+
+service lgssl_sdm_dd /system/bin/lg_dm_router --sdm --cmdline=101
+    user system
+    group system sdcard_r sdcard_rw
+    disabled
+    oneshot
+
+
+####################################
+#                                  #
+#    Register property service     #
+#                                  #
+####################################
+# First kill command
+on property:persist.service.odm_log.enable=false
+    start lgssl_odm_k
+
+on property:persist.service.dm_app.enable=false
+    start lgssl_sdm_k
+
+
+
+# ODM
+on property:persist.service.odm_log.enable=true
+    start lgssl_odm
+
+# Enabled debug log
+on property:debug.odm_log.enable=true
+    start lgssl_odm_de
+
+on property:debug.odm_log.enable=false
+    start lgssl_odm_dd
+
+# ODM ctrl
+on property:debug.odm_log.tx_mode=stream
+    start lgssl_odm_s
+
+on property:debug.odm_log.tx_mode=threshold
+    start lgssl_odm_t
+
+on property:debug.odm_log.tx_mode=circular
+    start lgssl_odm_c
+
+on property:debug.odm_log.get_data=*
+    start lgssl_odm_g
+
+
+# SDM
+on property:persist.service.dm_app.enable=true
+    start lgssl_sdm
+
+on property:debug.sdm_log.enable=true
+    start lgssl_sdm_de
+
+on property:debug.sdm_log.enable=false
+    start lgssl_sdm_dd
+
+
+on post-fs-data
+
+
+# Modem debug info
+service modem_debug_info /system/vendor/bin/modem_debug_info.sh
+    class late_start
+    user system
+    group system
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+    start modem_debug_info

@@ -1,0 +1,178 @@
+# This file is imported by init.{ro.hardware}.rc
+
+# to override this file (device specific .rc)
+import /vendor/etc/init/hw/init.${ro.hardware}_core.rc
+
+# LGE logger service rc
+import /vendor/etc/init/hw/init.lge.log.rc
+
+# LGE Bluetooth rc
+import /vendor/etc/init/hw/init.lge.bt.rc
+
+# LGE FM Radio rc
+import /vendor/etc/init/hw/init.lge.fm.rc
+
+on init
+    mkdir /mpt 0755 system system
+    mkdir /firmware 0771 system system
+    mkdir /bt_firmware 0771 system system
+    mkdir /dsp 0771 media media
+
+#    wait /dev/block/bootdevice/by-name/mpt
+#    exec u:r:setup_fs:s0 -- /sbin/setup_fs_static \
+#        /dev/block/bootdevice/by-name/mpt \
+#        no_reboot
+
+on fs
+    wait /dev/block/bootdevice/by-name/persist
+    wait /dev/block/bootdevice/by-name/sns
+    wait /dev/block/bootdevice/by-name/drm
+    wait /dev/block/bootdevice/by-name/mpt
+    exec u:r:setup_fs:s0 root root system -- /system/bin/setup_fs \
+        /dev/block/bootdevice/by-name/persist \
+        /dev/block/bootdevice/by-name/sns \
+        /dev/block/bootdevice/by-name/drm \
+        /dev/block/bootdevice/by-name/mpt \
+        no_reboot
+
+    wait /dev/block/bootdevice/by-name/persist
+    exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/persist
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1 noatime noauto_da_alloc errors=continue
+    restorecon_recursive /persist
+    mkdir /persist/data 0700 system system
+
+    wait /dev/block/bootdevice/by-name/modem
+    mount vfat /dev/block/bootdevice/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0
+
+    wait /dev/block/bootdevice/by-name/sns
+    exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/sns
+    mount ext4 /dev/block/bootdevice/by-name/sns /sns nosuid nodev barrier=1 noatime noauto_da_alloc errors=continue
+
+    wait /dev/block/bootdevice/by-name/drm
+    exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/drm
+    mount ext4 /dev/block/bootdevice/by-name/drm /persist-lg nosuid nodev barrier=1 noatime noauto_da_alloc errors=continue
+
+    wait /dev/block/bootdevice/by-name/mpt
+    exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/mpt
+    mount ext4 /dev/block/bootdevice/by-name/mpt /mpt nosuid nodev barrier=1 noatime noauto_da_alloc errors=continue
+
+    # Executing tune2fs to reserve some region in /data.(40MB)
+    exec /system/bin/tune2fs -u system -r 10240 /dev/block/bootdevice/by-name/userdata
+
+on post-fs
+# LGE_CHANGE_START
+    # execute sreadahead daemon to reduce boot-time
+    start sreadahead
+# LGE_CHANGE_END
+
+on post-fs-data
+    chown system system /mpt
+    chmod 0775 /mpt
+    mkdir /data/ramoops 0750 root log
+
+    start mbn_mount
+
+on property:persist.radio.mcfg.version=true
+    start mbn_mnt_ssr
+
+on property:persist.radio.mcfg.version=false
+    start mbn_umount
+
+service mbn_mount /system/vendor/bin/mbn_mount.sh
+    user root
+    oneshot
+
+service mbn_umount /system/vendor/bin/mbn_umount.sh
+    user root
+    oneshot
+
+service mbn_mnt_ssr /system/vendor/bin/mbn_mnt_and_ssr.sh
+    user root
+    oneshot
+
+on property:persist.sys.emmc_size=32G
+    setprop ro.device.memory.system 0
+    setprop ro.device.memory.internal 32
+
+on property:persist.sys.emmc_size=64G
+    setprop ro.device.memory.system 0
+    setprop ro.device.memory.internal 64
+
+on property:persist.sys.emmc_size=128G
+    setprop ro.device.memory.system 0
+    setprop ro.device.memory.internal 128
+
+on property:persist.sys.emmc_size=256G
+    setprop ro.device.memory.system 0
+    setprop ro.device.memory.internal 256
+
+service set_emmc_size /system/vendor/bin/set_emmc_size.sh
+    class main
+    user root
+    group media_rw system sdcard_rw
+    oneshot
+
+# LGE ramoops backup function service
+service ramoops_backup /system/vendor/bin/ramoops_backup.sh
+    class main
+    disabled
+    oneshot
+
+# LGE pstore backup function service
+service pstore_backup /system/vendor/bin/pstore_backup.sh
+    class main
+    disabled
+    oneshot
+
+# enable & disable crash handler, rtb & trace event through property
+service service-crash /system/vendor/bin/init.msm8998.crash.sh
+    class main
+    disabled
+    oneshot
+
+on property:persist.service.crash.enable=1
+    restart service-crash
+
+on property:persist.service.crash.enable=0
+    restart service-crash
+
+service time_in_state /system/vendor/bin/init.time_in_state.sh
+    class main
+    disabled
+    oneshot
+
+on property:init.svc.bootanim=stopped
+    start time_in_state
+    start ramoops_backup
+    start pstore_backup
+
+#LGE_CHANGE_S, Advanced MOCA, huny.lee@lge.com
+service moca_service /system/bin/advanced_moca -s
+    class late_start
+    user root
+    group system sdcard_r sdcard_rw radio
+    disabled
+    oneshot
+    socket Full.MOCA.port stream 660 system system
+
+on property:persist.service.moca.enable=1
+    start moca_service
+
+on property:persist.service.moca.enable=0
+    stop moca_service
+#LGE_CHANGE_E, Advanced MOCA, huny.lee@lge.com
+
+# LGE_CHANGE_START, execute sreadahead daemon to reduce boot-time
+service sreadahead /sbin/treadahead
+    oneshot
+    disabled
+    seclabel u:r:sreadahead:s0
+
+# make a diecision whether sreadahead would be performed or not.
+service sreadahead-check /sbin/sreadahead_check
+    class main
+    user root
+    group root
+    oneshot
+    seclabel u:r:sreadahead-check:s0
+# LGE_CHANGE_END
