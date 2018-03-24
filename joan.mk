@@ -197,13 +197,6 @@ $(foreach f,$(wildcard $(COMMON_PATH)/rootdir/etc/*.rc),\
 PRODUCT_COPY_FILES += \
      $(COMMON_PATH)/rootdir/etc/loggy.sh:root/loggy.sh
 
-# IPACM
-PRODUCT_PACKAGES += \
-    ipacm \
-    IPACM_cfg.xml \
-    libipanat \
-    liboffloadhal
-
 # IPv6 tethering
 PRODUCT_PACKAGES += \
     ebtables \
