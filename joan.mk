@@ -164,6 +164,10 @@ PRODUCT_PACKAGES += \
     sap.conf \
     xtwifi.conf
 
+# HDR
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/hdr_tm_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/hdr_tm_config.xml
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@1.0-impl \
