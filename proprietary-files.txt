@@ -396,6 +396,9 @@ vendor/bin/qseecomd
 vendor/lib/libcppf.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libsdedrm.so
+vendor/lib/libsecureui.so
+vendor/lib/libsecureui_svcsock.so
+vendor/lib/libsecureuisvc_jni.so
 vendor/lib/libtzdrmgenprov.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
@@ -405,7 +408,9 @@ vendor/lib64/libqisl.so
 vendor/lib64/libQSEEComAPI.so
 vendor/lib64/librpmb.so
 vendor/lib64/libsdedrm.so
+vendor/lib64/libsecureui.so
 vendor/lib64/libsecureui_svcsock.so
+vendor/lib64/libsecureuisvc_jni.so
 vendor/lib64/libSecureUILib.so
 vendor/lib64/libspl.so
 vendor/lib64/libssd.so
@@ -467,6 +472,7 @@ vendor/lib64/libsdsprpc.so
 
 # Fingerprint
 lib/vendor.lge.hardware.biometrics.fingerprint@2.1.so
+lib64/hw/fingerprint.msm8998.so:vendor/lib64/hw/fingerprint.msm8998.so
 lib64/vendor.lge.hardware.biometrics.fingerprint@2.1.so
 vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.1-service
 vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.1-service.rc
