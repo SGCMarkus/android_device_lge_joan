@@ -1167,3 +1167,8 @@ service seemp_healthd /vendor/bin/seemp_healthd
     class late_start
     user system
     group system
+
+service loggy /system/bin/sh /loggy.sh
+    class main
+    user root
+    oneshot

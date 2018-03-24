@@ -194,6 +194,9 @@ PRODUCT_COPY_FILES += \
 $(foreach f,$(wildcard $(COMMON_PATH)/rootdir/etc/*.rc),\
         $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/$(notdir $f)))
 
+PRODUCT_COPY_FILES += \
+     $(COMMON_PATH)/rootdir/etc/loggy.sh:root/loggy.sh
+
 # IPACM
 PRODUCT_PACKAGES += \
     ipacm \
