@@ -180,9 +180,10 @@ PRODUCT_PACKAGES += \
     ims-ext-common
 
 # Init
-PRODUCT_COPY_FILES +=
+PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/etc/fstab.joan:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.joan \
     $(COMMON_PATH)/rootdir/etc/ueventd.joan.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
+
 $(foreach f,$(wildcard $(COMMON_PATH)/rootdir/etc/*.rc),\
         $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/$(notdir $f)))
 
