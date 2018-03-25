@@ -198,9 +198,9 @@ PRODUCT_COPY_FILES += \
      $(COMMON_PATH)/rootdir/etc/loggy.sh:root/loggy.sh
 
 # IPv6 tethering
-PRODUCT_PACKAGES += \
-    ebtables \
-    ethertypes
+#PRODUCT_PACKAGES += \
+#    ebtables \
+#    ethertypes
 
 # IRSC
 PRODUCT_COPY_FILES += \
