@@ -61,6 +61,9 @@ vendor/lib/libactuator_bu24333gwl.so
 vendor/lib/libactuator_renesascl.so
 vendor/lib/libarcsoft_beauty_shot.so
 vendor/lib/libarcsoft_object_tracking.so
+vendor/lib/libAutoContrast.so
+vendor/lib/libbwfocuspeaking.so
+vendor/lib/libcinemaeffect.so
 vendor/lib/libfilm_emulation_symphony.so
 vendor/lib/libfilm_emulation.so
 vendor/lib/libflash_pmic.so
