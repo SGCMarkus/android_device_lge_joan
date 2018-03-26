@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device name="Android">
+    <item name="none">0</item>
+    <item name="screen.on">79.5</item>
+    <item name="screen.full">164.7</item>
+    <item name="bluetooth.active">15.6</item>
+    <item name="bluetooth.on">5.2</item>
+    <item name="wifi.on">3.8</item>
+    <item name="wifi.active">350.1</item>
+    <item name="wifi.scan">183.2</item>
+    <item name="dsp.audio">0.1</item>
+    <item name="dsp.video">0.1</item>
+    <item name="camera.flashlight">220.8</item>
+    <item name="camera.avg">461.4</item>
+    <item name="radio.active">145.5</item>
+    <item name="radio.scanning">5.1</item>
+    <item name="gps.on">90.2</item>
+    <array name="radio.on">
+        <value>1.76</value>
+        <value>1.65</value>
+    </array>
+    <array name="cpu.clusters.cores">
+        <value>4</value>
+        <value>4</value>
+    </array>
+    <array name="cpu.speeds.cluster0">
+        <value>300000</value>
+        <value>364800</value>
+        <value>441600</value>
+        <value>518400</value>
+        <value>595200</value>
+        <value>672000</value>
+        <value>748800</value>
+        <value>825600</value>
+        <value>883200</value>
+        <value>960000</value>
+        <value>1036800</value>
+        <value>1094400</value>
+        <value>1171200</value>
+        <value>1248000</value>
+        <value>1324800</value>
+        <value>1401600</value>
+        <value>1478400</value>
+        <value>1555200</value>
+        <value>1670400</value>
+        <value>1747200</value>
+        <value>1824000</value>
+        <value>1900800</value>
+    </array>
+    <array name="cpu.speeds.cluster1">
+        <value>300000</value>
+        <value>345600</value>
+        <value>422400</value>
+        <value>499200</value>
+        <value>576000</value>
+        <value>652800</value>
+        <value>729600</value>
+        <value>806400</value>
+        <value>902400</value>
+        <value>979200</value>
+        <value>1056000</value>
+        <value>1132800</value>
+        <value>1190400</value>
+        <value>1267200</value>
+        <value>1344000</value>
+        <value>1420800</value>
+        <value>1497600</value>
+        <value>1574400</value>
+        <value>1651200</value>
+        <value>1728000</value>
+        <value>1804800</value>
+        <value>1881600</value>
+        <value>1958400</value>
+        <value>2035200</value>
+        <value>2112000</value>
+        <value>2208000</value>
+        <value>2265600</value>
+        <value>2323200</value>
+        <value>2342400</value>
+        <value>2361600</value>
+        <value>2457600</value>
+    </array>
+    <item name="cpu.idle">22.42</item>
+    <item name="cpu.awake">35.51</item>
+    <array name="cpu.active.cluster0">
+        <value>2.20</value>
+        <value>2.50</value>
+        <value>2.90</value>
+        <value>3.30</value>
+        <value>3.80</value>
+        <value>4.20</value>
+        <value>4.80</value>
+        <value>5.40</value>
+        <value>5.90</value>
+        <value>6.60</value>
+        <value>7.40</value>
+        <value>8.00</value>
+        <value>8.90</value>
+        <value>10.00</value>
+        <value>11.20</value>
+        <value>12.50</value>
+        <value>13.90</value>
+        <value>15.60</value>
+        <value>18.50</value>
+        <value>20.90</value>
+        <value>23.70</value>
+        <value>27.30</value>
+    </array>
+    <array name="cpu.active.cluster1">
+        <value>52.00</value>
+        <value>59.00</value>
+        <value>72.00</value>
+        <value>87.00</value>
+        <value>102.00</value>
+        <value>120.00</value>
+        <value>138.00</value>
+        <value>159.00</value>
+        <value>186.00</value>
+        <value>211.00</value>
+        <value>237.00</value>
+        <value>265.00</value>
+        <value>289.00</value>
+        <value>322.00</value>
+        <value>357.00</value>
+        <value>396.00</value>
+        <value>438.00</value>
+        <value>483.00</value>
+        <value>533.00</value>
+        <value>585.00</value>
+        <value>642.00</value>
+        <value>703.00</value>
+        <value>768.00</value>
+        <value>837.00</value>
+        <value>910.00</value>
+        <value>1006.00</value>
+        <value>1101.00</value>
+        <value>1112.00</value>
+        <value>1119.00</value>
+        <value>1125.00</value>
+        <value>1134.00</value>
+    </array>
+    <item name="battery.capacity">3300</item>
+    <array name="wifi.batchedscan">
+        <value>.0002</value>
+        <value>.002</value>
+        <value>.02</value>
+        <value>.2</value>
+        <value>2</value>
+    </array>
+    <item name="ext_saving">0.055</item>
+    <item name="max_saving">0.22</item>
+    <array name="ext_screen_resolution">
+        <value>0</value>
+        <value>0</value>
+        <value>0</value>
+    </array>
+    <array name="max_screen_resolution">
+        <value>0.08</value>
+        <value>0.04</value>
+        <value>0</value>
+    </array>
+    <array name="ext_maximum_brightness">
+        <value>0.15</value>
+        <value>0.129</value>
+        <value>0.093</value>
+        <value>0.043</value>
+        <value>0</value>
+    </array>
+    <array name="max_maximum_brightness">
+        <value>0.15</value>
+        <value>0.129</value>
+        <value>0.093</value>
+        <value>0.043</value>
+        <value>0</value>
+    </array>
+    <array name="block_aod">
+        <value>0.25</value>
+        <value>0.52</value>
+    </array>
+    <item name="max_restrict_frame_rate">0.12</item>
+    <array name="block_haptic">
+        <value>0.01</value>
+        <value>0.01</value>
+    </array>
+    <array name="restrict_cpu_gpu">
+        <value>0</value>
+        <value>0</value>
+    </array>
+    <array name="restrict_apps">
+        <value>0.24</value>
+        <value>0.52</value>
+    </array>
+    <array name="restrict_network_location">
+        <value>0.01</value>
+        <value>1.00</value>
+        <value>0.01</value>
+        <value>0.01</value>
+    </array>
+</device>
