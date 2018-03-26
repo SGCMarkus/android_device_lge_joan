@@ -59,6 +59,16 @@ vendor/lib/libbtnv.so
 vendor/lib64/libbtnv.so
 
 # Bluetooth - Firmware
+etc/firmware/nvm_tlv.bin
+etc/firmware/nvm_tlv_1.3.bin
+etc/firmware/nvm_tlv_2.1.bin
+etc/firmware/nvm_tlv_3.0.bin
+etc/firmware/nvm_tlv_3.2.bin
+etc/firmware/rampatch_tlv.img
+etc/firmware/rampatch_tlv_1.3.tlv
+etc/firmware/rampatch_tlv_2.1.tlv
+etc/firmware/rampatch_tlv_3.0.tlv
+etc/firmware/rampatch_tlv_3.2.tlv
 vendor/firmware/crbtfw20.tlv
 vendor/firmware/crbtfw21.tlv
 vendor/firmware/crnv20.bin
@@ -83,6 +93,7 @@ vendor/lib/libjpegehw.so
 vendor/lib/liblgdnn.so
 vendor/lib/liblghdri.so
 vendor/lib/liblgmda.so
+vendor/lib/liblgcamera_beautypreview.so
 vendor/lib/liblgcine_core.so
 vendor/lib/libmmcamera_bokeh.so
 vendor/lib/libmmcamera_chromaflash_lib.so
