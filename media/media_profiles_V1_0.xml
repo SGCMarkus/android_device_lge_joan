@@ -95,6 +95,7 @@
                    channels="2" />
         </EncoderProfile>
 
+<!-- These HFR profiles aren't supported by AOSP
         <EncoderProfile quality="hfr720p120" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="48000000"
@@ -118,8 +119,9 @@
                    sampleRate="48000"
                    channels="2" />
         </EncoderProfile>
+-->
 
-        <EncoderProfile quality="4kuhd" fileFormat="mp4" duration="30">
+        <EncoderProfile quality="2160p" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="48000000"
                    width="3840"
@@ -386,7 +388,7 @@
                    channels="2" />
         </EncoderProfile>
 
-        <EncoderProfile quality="4kuhd" fileFormat="mp4" duration="30">
+        <EncoderProfile quality="2160p" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="48000000"
                    width="3840"
@@ -398,6 +400,7 @@
                    channels="2" />
         </EncoderProfile>
 
+<!-- These HFR profiles aren't supported by AOSP
         <EncoderProfile quality="hfr720p120" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="48000000"
@@ -409,6 +412,7 @@
                    sampleRate="48000"
                    channels="2" />
         </EncoderProfile>
+-->
 
         <EncoderProfile quality="timelapseqcif" fileFormat="mp4" duration="30">
             <Video codec="h264"
@@ -556,7 +560,7 @@
                    channels="2" />
         </EncoderProfile>
 
-        <EncoderProfile quality="4kuhd" fileFormat="mp4" duration="30">
+        <EncoderProfile quality="2160p" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="48000000"
                    width="3840"
