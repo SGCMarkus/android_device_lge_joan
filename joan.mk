@@ -160,7 +160,6 @@ PRODUCT_PACKAGES += \
     libgnsspps
 
 PRODUCT_PACKAGES += \
-    apdr.conf \
     flp.conf \
     gps.conf \
     izat.conf \
