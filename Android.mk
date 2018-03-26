@@ -128,6 +128,18 @@ $(BDWLAN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(BDWLAN_SYMLINKS)
 
+BTFW_IMAGES := \
+    crbtfw20.tlv crbtfw21.tlv crnv20.bin crnv21.bin
+
+BTFW_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(BTFW_IMAGES)))
+$(BTFW_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Bluetooth Firmware firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/vendor/firmware/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(BTFW_SYMLINKS)
+
 # Create a link for the WCNSS MAC firmware, which ends up as a writable
 # version in /data/misc/wifi
 WLAN_MAC_SYMLINK := $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/wlan_mac.bin
