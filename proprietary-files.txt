@@ -48,12 +48,21 @@ vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
 vendor/lib64/soundfx/libshoebox.so
 
+# Audio - Firmware
+etc/firmware/Tfa9872.cnt:vendor/firmware/Tfa9872.cnt
+
 # Bluetooth
 vendor/bin/btnvtool
 vendor/bin/hci_qcomm_init
 vendor/bin/wcnss_filter
 vendor/lib/libbtnv.so
 vendor/lib64/libbtnv.so
+
+# Bluetooth - Firmware
+vendor/firmware/crbtfw20.tlv
+vendor/firmware/crbtfw21.tlv
+vendor/firmware/crnv20.bin
+vendor/firmware/crnv21.bin
 
 # Camera
 vendor/lib/hw/camera.msm8998.so
@@ -71,8 +80,10 @@ vendor/lib/libhal_dbg.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegdmahw.so
 vendor/lib/libjpegehw.so
+vendor/lib/liblgdnn.so
 vendor/lib/liblghdri.so
 vendor/lib/liblgmda.so
+vendor/lib/liblgcine_core.so
 vendor/lib/libmmcamera_bokeh.so
 vendor/lib/libmmcamera_chromaflash_lib.so
 vendor/lib/libmmcamera_dbg.so
@@ -582,6 +593,8 @@ vendor/lib/hw/gatekeeper.msm8998.so
 vendor/lib64/hw/gatekeeper.msm8998.so
 
 # GPS
+lib/libpcas.so
+lib64/libpcas.so
 vendor/bin/hw/vendor.qti.gnss@1.0-service
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
@@ -842,8 +855,10 @@ etc/permissions/telephonyservice.xml
 framework/qcrilhook.jar
 framework/qti-telephony-common.jar
 framework/QtiTelephonyServicelibrary.jar
+lib64/libuicc.so
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 -vendor/app/SVIService/SVIService.apk
+vendor/bin/hw/rild
 vendor/bin/ATFWD-daemon
 vendor/bin/ipacm-diag
 vendor/bin/netmgrd
@@ -858,6 +873,7 @@ vendor/lib/libmdmdetect.so
 vendor/lib/libpdmapper.so
 vendor/lib/libpdnotifier.so
 -vendor/lib/libqmiservices.so
+vendor/lib/libril.so
 vendor/lib/vendor.qti.hardware.radio.am@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.radio.atcmdfwd@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.radio.lpa@1.0_vendor.so
@@ -873,6 +889,7 @@ vendor/lib64/libnetmgr.so
 vendor/lib64/libpdmapper.so
 vendor/lib64/libpdnotifier.so
 -vendor/lib64/libqmiservices.so
+vendor/lib64/libril.so
 vendor/lib64/libril-qc-ltedirectdisc.so
 vendor/lib64/libril-qc-qmi-1.so
 vendor/lib64/libril-qc-radioconfig.so
@@ -889,6 +906,33 @@ vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.radio.uim@1.0_vendor.so
 vendor/radio/qcril_database/qcril.db
+
+# Radio - VSS
+lib/libvss_common_core.so
+lib/libvss_common_idl.so
+lib/libvss_common_iface.so
+lib/libvss_dmi_qcci.so
+lib/libvss_gnss_qcci.so
+lib/libvss_ims_qcci.so
+lib/libvss_nv_core.so
+lib/libvss_nv_idl.so
+lib/libvss_nv_iface.so
+lib/libvss_resim_core.so
+lib/libvss_resim_idl.so
+lib/libvss_resim_iface.so
+lib64/libvss_bsp_qcci.so
+lib64/libvss_common_core.so
+lib64/libvss_common_idl.so
+lib64/libvss_common_iface.so
+lib64/libvss_dmi_qcci.so
+lib64/libvss_gnss_qcci.so
+lib64/libvss_ims_qcci.so
+lib64/libvss_nv_core.so
+lib64/libvss_nv_idl.so
+lib64/libvss_nv_iface.so
+lib64/libvss_resim_core.so
+lib64/libvss_resim_idl.so
+lib64/libvss_resim_iface.so
 
 # Sensors
 vendor/bin/sensors.qcom
