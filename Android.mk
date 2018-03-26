@@ -116,4 +116,16 @@ $(RFS_MSM_SLPI_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(RFS_MSM_ADSP_SYMLINKS) $(RFS_MSM_MPSS_SYMLINKS) $(RFS_MSM_SLPI_SYMLINKS)
 
+BDWLAN_IMAGES := \
+    bdwlan.bin bdwlan_ch0.bin bdwlan_ch1.bin
+
+BDWLAN_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/,$(notdir $(BDWLAN_IMAGES)))
+$(BDWLAN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "BDWLAN firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/etc/wifi/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(BDWLAN_SYMLINKS)
+
 endif

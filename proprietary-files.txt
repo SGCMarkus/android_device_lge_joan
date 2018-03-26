@@ -971,4 +971,7 @@ vendor/lib/hw/vr.joan.so
 vendor/lib64/hw/vr.joan.so
 
 # Wi-Fi
+etc/wifi/bdwlan.bin
+etc/wifi/bdwlan_ch0.bin
+etc/wifi/bdwlan_ch1.bin
 vendor/bin/cnss-daemon
