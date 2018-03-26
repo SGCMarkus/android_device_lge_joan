@@ -179,6 +179,7 @@ vendor/lib/libmmqjpeg_codec.so
 vendor/lib/libmmqjpegdma.so
 vendor/lib/libmorpho_image_stab31.so
 vendor/lib/libmorpho_superzoom.so
+vendor/lib/libmpbase.so
 vendor/lib/libois_bu24333gwl.so
 vendor/lib/libois_bu63165.so
 vendor/lib/libois_lc898122.so
@@ -483,7 +484,11 @@ vendor/lib/rfsa/adsp/libsysmondomain_skel.so
 vendor/lib/rfsa/adsp/libvpp_frc.so
 vendor/lib/rfsa/adsp/libvpp_svc_skel.so
 vendor/lib/rfsa/adsp/mmecns_module.so.1
+vendor/lib/libsymphony-1.1.2.so
+vendor/lib/libsymphonypower-1.1.2.so
 vendor/lib64/libsdsprpc.so
+vendor/lib64/libsymphony-1.1.2.so
+vendor/lib64/libsymphonypower-1.1.2.so
 
 # Fingerprint
 lib/vendor.lge.hardware.biometrics.fingerprint@2.1.so
