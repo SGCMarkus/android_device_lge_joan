@@ -922,5 +922,9 @@ vendor/bin/time_daemon
 vendor/bin/qvop-daemon
 vendor/lib64/libqvop-service.so
 
+# VR
+vendor/lib/hw/vr.joan.so
+vendor/lib64/hw/vr.joan.so
+
 # Wi-Fi
 vendor/bin/cnss-daemon
