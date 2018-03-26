@@ -855,7 +855,11 @@ etc/permissions/telephonyservice.xml
 framework/qcrilhook.jar
 framework/qti-telephony-common.jar
 framework/QtiTelephonyServicelibrary.jar
+lib/libril_wrapper.so
+lib/vendor.lge.hardware.radio@1.0.so
+lib64/libril_wrapper.so
 lib64/libuicc.so
+lib64/vendor.lge.hardware.radio@1.0.so
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 -vendor/app/SVIService/SVIService.apk
 vendor/bin/hw/rild
