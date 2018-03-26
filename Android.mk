@@ -128,4 +128,13 @@ $(BDWLAN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(BDWLAN_SYMLINKS)
 
+# Create a link for the WCNSS MAC firmware, which ends up as a writable
+# version in /data/misc/wifi
+WLAN_MAC_SYMLINK := $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/wlan_mac.bin
+$(WLAN_MAC_SYMLINK): $(LOCAL_INSTALLED_MODULE)
+	@mkdir -p $(dir $@)
+	$(hide) ln -sf /data/misc/wifi/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(WLAN_MAC_SYMLINK)
+
 endif
