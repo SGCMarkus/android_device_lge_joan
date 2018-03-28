@@ -875,7 +875,6 @@ vendor/bin/hvdcp_opti
 etc/permissions/qcrilhook.xml
 etc/permissions/telephonyservice.xml
 framework/qcrilhook.jar
-framework/qti-telephony-common.jar
 framework/QtiTelephonyServicelibrary.jar
 lib/libril_wrapper.so
 lib/vendor.lge.hardware.radio@1.0.so
