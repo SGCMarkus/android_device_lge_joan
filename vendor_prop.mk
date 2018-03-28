@@ -47,7 +47,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     qcom.bluetooth.soc=cherokee \
     ro.bluetooth.a4wp=false
 
-# Camera \
+# Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.camera.aux.packagelist=all \
     persist.camera.camera2=true \
