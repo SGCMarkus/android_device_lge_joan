@@ -92,6 +92,7 @@ vendor/lib/libhal_dbg.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegdmahw.so
 vendor/lib/libjpegehw.so
+vendor/lib/liblgaf_core.so
 vendor/lib/liblgdnn.so
 vendor/lib/liblghdri.so
 vendor/lib/liblgmda.so
@@ -438,6 +439,14 @@ vendor/firmware/cpp_firmware_v1_5_1.fw
 vendor/firmware/cpp_firmware_v1_5_2.fw
 vendor/firmware/cpp_firmware_v1_6_0.fw
 vendor/firmware/cpp_firmware_v1_8_0.fw
+
+# Camera - OIS Firmware
+media/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev0_S_data1.bin:vendor/firmware/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev0_S_data1.bin
+media/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev0_S_data2.bin:vendor/firmware/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev0_S_data2.bin
+media/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev3_S_data1.bin:vendor/firmware/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev3_S_data1.bin
+media/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev3_S_data2.bin:vendor/firmware/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev3_S_data2.bin
+media/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev5_S_data1.bin:vendor/firmware/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev5_S_data1.bin
+media/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev5_S_data2.bin:vendor/firmware/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev5_S_data2.bin
 
 # Camera - Postprocessing
 vendor/lib/libchromaflash.so
