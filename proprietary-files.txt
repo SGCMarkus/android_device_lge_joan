@@ -730,6 +730,14 @@ vendor/lib64/libhdr_tm.so
 vendor/lib/hw/keystore.msm8998.so
 vendor/lib64/hw/keystore.msm8998.so
 
+# Lights
+lib/vendor.lge.hardware.light@1.0.so
+lib64/vendor.lge.hardware.light@1.0.so
+vendor/bin/hw/vendor.lge.hardware.light@1.0-service
+vendor/etc/init/vendor.lge.hardware.light@1.0-service.rc
+vendor/lib/hw/vendor.lge.hardware.light@1.0-impl.so
+vendor/lib64/hw/vendor.lge.hardware.light@1.0-impl.so
+
 # Listen
 vendor/lib/hw/sound_trigger.primary.msm8998.so
 vendor/lib/libadpcmdec.so
