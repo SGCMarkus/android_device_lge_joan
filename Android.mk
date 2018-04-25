@@ -56,7 +56,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(DXHDCP2_SYMLINKS)
 # WIDEVINE Images
 WIDEVINE_IMAGES := \
     widevine.b00 widevine.b01 widevine.b02 widevine.b03 widevine.b04 \
-    widevine.b05 widevine.b06 widevine.mdt
+    widevine.b05 widevine.b06 widevine.b07 widevine.mdt
 
 WIDEVINE_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(WIDEVINE_IMAGES)))
 $(WIDEVINE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
