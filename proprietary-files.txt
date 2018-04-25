@@ -605,7 +605,7 @@ vendor/lib64/libsymphonypower-1.1.2.so
 
 # Fingerprint
 lib/vendor.lge.hardware.biometrics.fingerprint@2.1.so
-lib64/hw/fingerprint.msm8998.so:vendor/lib64/hw/fingerprint.msm8998.so|3ea075ad2b0d31d5808a1fad43ebd31c4040d0fe
+lib64/hw/fingerprint.msm8998.so:vendor/lib64/hw/fingerprint.msm8998.so
 lib64/vendor.lge.hardware.biometrics.fingerprint@2.1.so
 vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.1-service
 vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.1-service.rc
@@ -1013,6 +1013,17 @@ vendor/lib64/libTimeService.so
 # Vibrator
 vendor/lib/hw/android.hardware.vibrator@1.0-impl.lge.so
 vendor/lib64/hw/android.hardware.vibrator@1.0-impl.lge.so
+lib/libpparam.so
+lib64/libpparam.so
+bin/immvibed:vendor/bin/immvibed
+lib/libImmVibeJ.so:vendor/lib/libImmVibeJ.so
+lib64/libImmVibeJ.so:vendor/lib64/libImmVibeJ.so
+lib/libimmvibeandroidmanager.so:vendor/lib/libimmvibeandroidmanager.so
+lib64/libimmvibeandroidmanager.so:vendor/lib64/libimmvibeandroidmanager.so
+lib/hw/vibrator.default.so:vendor/lib/hw/vibrator.joan.so
+lib64/hw/vibrator.default.so:vendor/lib64/hw/vibrator.joan.so
+lib/libvolumevibratorcallback.so:vendor/lib/libvolumevibratorcallback.so
+lib64/libvolumevibratorcallback.so:vendor/lib64/libvolumevibratorcallback.so
 
 # Voice fingerprint
 vendor/bin/qvop-daemon
