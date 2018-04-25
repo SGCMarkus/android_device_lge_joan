@@ -43,10 +43,10 @@ setprop persist.bt.max.hs.connections 2
 #BT_E : [CONBT-5127] HFP connection fail
 
 # Load bdaddr from ftm_item when BT on
-service bdaddr_loader /system/bin/bdaddr_loader
-    class late_start
-    user root
-    group bluetooth net_bt_admin
-    oneshot
+#service bdaddr_loader /system/bin/bdaddr_loader
+#    class late_start
+#    user root
+#    group bluetooth net_bt_admin
+#    oneshot
 
 

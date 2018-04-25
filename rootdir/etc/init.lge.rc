@@ -214,28 +214,28 @@ on property:ro.build.product=msf3
 #    class main
 
 #CAPP_POWEROFF_ANI
-service shutdownanim /system/bin/shutdownanimation
-    class main
-    user graphics
-    group graphics system
-    disabled
-    oneshot
-    shutdown critical
+#service shutdownanim /system/bin/shutdownanimation
+#    class main
+#    user graphics
+#    group graphics system
+#    disabled
+#    oneshot
+#    shutdown critical
 
 #CAPP_NFS
-service nfsserversetup /system/bin/nfsserversetup
-    class late_start
-    user root
-    oneshot
+#service nfsserversetup /system/bin/nfsserversetup
+#    class late_start
+#    user root
+#    oneshot
 
 #CAPP_MPROFILER
-service lgprofd /system/bin/lgprofd
-    socket lgprofd stream 666
+#service lgprofd /system/bin/lgprofd
+#    socket lgprofd stream 666
 
 #Application Manager ENABLE_UNINSTALL
-service enable_uninstall  /system/vendor/bin/enable_uninstall.sh
-    disabled
-    oneshot
+#service enable_uninstall  /system/vendor/bin/enable_uninstall.sh
+#    disabled
+#    oneshot
 
 #Application Manager ENABLE_UNINSTALL
 on property:vold.post_fs_data_done=1
@@ -243,33 +243,33 @@ on property:vold.post_fs_data_done=1
     start gons_update
 
 #CAPP_NFS
-service nfskill /system/bin/nfskillprocess
-    disabled
-    oneshot
-    user root
+#service nfskill /system/bin/nfskillprocess
+#    disabled
+#    oneshot
+#    user root
 
 on property:vold.decrypt=trigger_shutdown_framework
     start nfskill
 
 # CAPP_INTEGRITY, LGIS [lge-is-dev@lge.com]
-service lghashstorage /system/bin/lghashstorageserver
-    class main
-    user system
-    group system oem_4002 sdcard_rw media_rw
+#service lghashstorage /system/bin/lghashstorageserver
+#    class main
+#    user system
+#    group system oem_4002 sdcard_rw media_rw
 
-service gons_update /system/vendor/bin/init.lge.gons.sh
-    user radio
-    group radio
-    oneshot
+#service gons_update /system/vendor/bin/init.lge.gons.sh
+#    user radio
+#    group radio
+#    oneshot
 
 #LGBackup System service daemon
-service bnrd /sbin/bnrd
-    class main
-    socket bnrd stream 660 root system
-    user root
-    group system radio sdcard_rw
-    disabled
-    seclabel u:r:installd:s0
+#service bnrd /sbin/bnrd
+#    class main
+#    socket bnrd stream 660 root system
+#    user root
+#    group system radio sdcard_rw
+#    disabled
+#    seclabel u:r:installd:s0
 
 on property:sys.lge.bnrd=1
     start bnrd
@@ -278,9 +278,9 @@ on property:sys.lge.bnrd=0
     stop bnrd
 
 #LGP_DATA_DSQN [START]
-service dsqn /system/bin/dsqn
-    disabled
-    user root
+#service dsqn /system/bin/dsqn
+#    disabled
+#    user root
 
     on property:persist.lg.data.dsqn=1
         start dsqn
@@ -290,9 +290,9 @@ service dsqn /system/bin/dsqn
 #LGP_DATA_DSQN [END]
 
 # 2015-06-11 hyoseab.song@lge.com LGP_DATA_TCPIP_MPTCP_SOCKS [START]
-service socks /system/xbin/redsocks -c /system/etc/redsocks.conf
-    disabled
-    user root
+#service socks /system/xbin/redsocks -c /system/etc/redsocks.conf
+#    disabled
+#    user root
 
     on property:lg.data.socks=1
         start socks
@@ -309,11 +309,11 @@ service bugreport /system/bin/dumpstate -d -p -B -z \
     keycodes 114 115 116
 
 # resource parallel loading
-service rmplb /system/vendor/bin/rmplb.sh
-    user root
-    group root
-    disabled
-    oneshot
+#service rmplb /system/vendor/bin/rmplb.sh
+#    user root
+#    group root
+#    disabled
+#    oneshot
 
 on property:sys.boot_completed=1
     start rmplb
@@ -322,23 +322,23 @@ on run-wallpaper
     exec u:r:wallpaper:s0 -- /sbin/wallpaper
 
 # LG RCT(Rooting Check Tool)
-service rctd /sbin/rctd
-    class late_start
-    user root
-    group root
-    seclabel u:r:rctd:s0
+#service rctd /sbin/rctd
+#    class late_start
+#    user root
+#    group root
+#    seclabel u:r:rctd:s0
 
-service ccmd /system/bin/ccmd
-    class core
-    user system
-    group system
-    socket ccmd stream 0660 root system
+#service ccmd /system/bin/ccmd
+#    class core
+#    user system
+#    group system
+#    socket ccmd stream 0660 root system
 
-service lgkmd /system/bin/lgkmd
-    class core
-    user system
-    group system drmrpc
-    socket lgkmd stream 0660 system drmrpc
+#service lgkmd /system/bin/lgkmd
+#    class core
+#    user system
+#    group system drmrpc
+#    socket lgkmd stream 0660 system drmrpc
 
 # LGE_CHANGE_S, [display] feature : SP MIRRORING
 on property:com.lge.splink_screen_off=0
@@ -351,10 +351,10 @@ on property:com.lge.splink_screen_off=1
 # LGE_CHANGE_E, [display] feature : SP MIRRORING
 
 # LGE_CHANGE_S, sim based property copy
-service property_copy /system/vendor/bin/property_copy.sh
-    class late_start
-    disabled
-    oneshot
+#service property_copy /system/vendor/bin/property_copy.sh
+#    class late_start
+#    disabled
+#    oneshot
 
 on property:persist.sys.sim.operator=*
     start property_copy
@@ -387,10 +387,10 @@ on property:sys.boot_completed=1 && property:ro.debuggable=1 && property:persist
 # ADB-over-WIFI Port Open [END]
 
 # wifi runtime config [ START ]
-service wlan_runtime /system/vendor/bin/wifi_runtime_conf.sh
-    class main
-    user system
-    group system wifi
-    oneshot
+#service wlan_runtime /system/vendor/bin/wifi_runtime_conf.sh
+#    class main
+#    user system
+#    group system wifi
+#    oneshot
 
 # wifi runtime config [END]

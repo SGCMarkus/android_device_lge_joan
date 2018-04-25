@@ -4,12 +4,12 @@
 import /vendor/etc/init/hw/init.lge.power.rc
 
 # triton service
-service triton /system/bin/triton
-   class main
-   user root
-   group system
-   socket triton-client stream 660 system system
-   disabled
+#service triton /system/bin/triton
+#   class main
+#   user root
+#   group system
+#   socket triton-client stream 660 system system
+#   disabled
 
 #Temporarily, disable Triton for lucye.
 on property:sys.boot_completed=1
@@ -137,21 +137,21 @@ on property:persist.service.chg_mode=QNOVO
    write /sys/class/power_supply/battery/lge_step_charging_enable 0
    write /sys/class/lge_power/lge_cc/otp_enable 0
 
-service qni /system/bin/qni -d /qni -l /qni -o 2
-   socket qnibsd stream 660 qni system
-   disabled
+#service qni /system/bin/qni -d /qni -l /qni -o 2
+#   socket qnibsd stream 660 qni system
+#   disabled
 
-service gbmd /system/bin/gbmd
-   class main
-   socket gbm-client stream 660 system system
-   user system
-   group system
+#service gbmd /system/bin/gbmd
+#   class main
+#   socket gbm-client stream 660 system system
+#   user system
+#   group system
 
-service prmd /system/bin/prmd
-   class main
-   socket prm-client stream 660 system system
-   user system
-   group system
+#service prmd /system/bin/prmd
+#   class main
+#   socket prm-client stream 660 system system
+#   user system
+#   group system
 
 on boot
 # setup permissions for fb0 related nodes
@@ -183,12 +183,12 @@ on property:jfullseg.mode.on=0
    write /sys/module/lge_power_class_charging_controller/parameters/restricted_charging "TDMB OFF"
 
 # fuel gauge dumper for debug
-service fg-dump /system/vendor/bin/fg_dump.sh 10 /data/logger/fg.log
-   user root
-   group root system
-   class main
-   disabled
-   oneshot
+#service fg-dump /system/vendor/bin/fg_dump.sh 10 /data/logger/fg.log
+#   user root
+#   group root system
+#   class main
+#   disabled
+#   oneshot
 
 on property:persist.service.fg.enable=0
    stop fg-dump

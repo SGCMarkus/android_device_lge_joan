@@ -78,10 +78,10 @@ on chargerlogo_exec
    exec u:r:chargerlogo:s0 -- /sbin/chargerlogo
 
 # smpl_count
-service smpl_count /system/bin/smpl_count
-   class main
-   user root
-   oneshot
+#service smpl_count /system/bin/smpl_count
+#   class main
+#   user root
+#   oneshot
 
 #Power_BSP, thermal senario change about LCD brightness
 on post-fs-data
@@ -148,9 +148,9 @@ service servicemanager /system/bin/servicemanager
     onrestart restart cameraserver
     writepid /dev/cpuset/system-background/tasks
 
-service lghealthd /vendor/bin/lghealthd
-    class core
-    group root system
+#service lghealthd /vendor/bin/lghealthd
+#    class core
+#    group root system
 
 #usb current max mode property
 on property:persist.service.usbcurrentmax=1

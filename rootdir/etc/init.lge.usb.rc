@@ -49,25 +49,25 @@ on boot && property:sys.usb.configfs=0
     write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
     write /sys/class/android_usb/android0/iProduct ${ro.product.model}
 
-service lge-usb-sh /system/bin/sh /init.lge.usb.sh
-    class core
-    user root
-    oneshot
-    seclabel u:r:lge-usb-sh:s0
+#service lge-usb-sh /system/bin/sh /init.lge.usb.sh
+#    class core
+#    user root
+#    oneshot
+#    seclabel u:r:lge-usb-sh:s0
 
-service lge-usb-def-sh /system/bin/sh /init.lge.usb.default.sh
-    class core
-    user root
-    oneshot
-    disabled
-    seclabel u:r:lge-usb-def-sh:s0
+#service lge-usb-def-sh /system/bin/sh /init.lge.usb.default.sh
+#    class core
+#    user root
+#    oneshot
+#    disabled
+#    seclabel u:r:lge-usb-def-sh:s0
 
-service usbdebug-manager /sbin/usbdebug-manager
-    class late_start
-    user root
-    disabled
-    oneshot
-    seclabel u:r:usbdebug-manager:s0
+#service usbdebug-manager /sbin/usbdebug-manager
+#    class late_start
+#    user root
+#    disabled
+#    oneshot
+#    seclabel u:r:usbdebug-manager:s0
 
 on usb_debug
     trigger early-fs
@@ -171,25 +171,25 @@ on property:sys.usb.config=midi,adb && property:sys.usb.configfs=0
     setprop sys.usb.state ${sys.usb.config}
 
 #mausb
-service mausbueventd /system/bin/mausbueventd
-    disabled
-    oneshot
+#service mausbueventd /system/bin/mausbueventd
+#    disabled
+#    oneshot
 
-service mausb_bind /system/bin/mausb bind --busid=1-1
-    disabled
-    oneshot
+#service mausb_bind /system/bin/mausb bind --busid=1-1
+#    disabled
+#    oneshot
 
-service mausb_unbind /system/bin/mausb unbind --busid=1-1
-    disabled
-    oneshot
+#service mausb_unbind /system/bin/mausb unbind --busid=1-1
+#    disabled
+#    oneshot
 
-service mausbd /system/bin/mausbd
-    disabled
-    oneshot
+#service mausbd /system/bin/mausbd
+#    disabled
+#    oneshot
 
-service upnp_server /system/bin/upnp-server
-    disabled
-    oneshot
+#service upnp_server /system/bin/upnp-server
+#    disabled
+#    oneshot
 
 service stop_upnp /system/bin/pkill upnp-server
     disabled

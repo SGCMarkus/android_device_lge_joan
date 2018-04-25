@@ -78,17 +78,17 @@ on property:persist.radio.mcfg.version=true
 on property:persist.radio.mcfg.version=false
     start mbn_umount
 
-service mbn_mount /system/vendor/bin/mbn_mount.sh
-    user root
-    oneshot
+#service mbn_mount /system/vendor/bin/mbn_mount.sh
+#    user root
+#    oneshot
 
-service mbn_umount /system/vendor/bin/mbn_umount.sh
-    user root
-    oneshot
+#service mbn_umount /system/vendor/bin/mbn_umount.sh
+#    user root
+#    oneshot
 
-service mbn_mnt_ssr /system/vendor/bin/mbn_mnt_and_ssr.sh
-    user root
-    oneshot
+#service mbn_mnt_ssr /system/vendor/bin/mbn_mnt_and_ssr.sh
+#    user root
+#    oneshot
 
 on property:persist.sys.emmc_size=32G
     setprop ro.device.memory.system 0
@@ -106,29 +106,29 @@ on property:persist.sys.emmc_size=256G
     setprop ro.device.memory.system 0
     setprop ro.device.memory.internal 256
 
-service set_emmc_size /system/vendor/bin/set_emmc_size.sh
-    class main
-    user root
-    group media_rw system sdcard_rw
-    oneshot
+#service set_emmc_size /system/vendor/bin/set_emmc_size.sh
+#    class main
+#    user root
+#    group media_rw system sdcard_rw
+#    oneshot
 
 # LGE ramoops backup function service
-service ramoops_backup /system/vendor/bin/ramoops_backup.sh
-    class main
-    disabled
-    oneshot
+#service ramoops_backup /system/vendor/bin/ramoops_backup.sh
+#    class main
+#    disabled
+#    oneshot
 
 # LGE pstore backup function service
-service pstore_backup /system/vendor/bin/pstore_backup.sh
-    class main
-    disabled
-    oneshot
+#service pstore_backup /system/vendor/bin/pstore_backup.sh
+#    class main
+#    disabled
+#    oneshot
 
 # enable & disable crash handler, rtb & trace event through property
-service service-crash /system/vendor/bin/init.msm8998.crash.sh
-    class main
-    disabled
-    oneshot
+#service service-crash /system/vendor/bin/init.msm8998.crash.sh
+#    class main
+#    disabled
+#    oneshot
 
 on property:persist.service.crash.enable=1
     restart service-crash
@@ -136,10 +136,10 @@ on property:persist.service.crash.enable=1
 on property:persist.service.crash.enable=0
     restart service-crash
 
-service time_in_state /system/vendor/bin/init.time_in_state.sh
-    class main
-    disabled
-    oneshot
+#service time_in_state /system/vendor/bin/init.time_in_state.sh
+#    class main
+#    disabled
+#    oneshot
 
 on property:init.svc.bootanim=stopped
     start time_in_state
@@ -147,13 +147,13 @@ on property:init.svc.bootanim=stopped
     start pstore_backup
 
 #LGE_CHANGE_S, Advanced MOCA, huny.lee@lge.com
-service moca_service /system/bin/advanced_moca -s
-    class late_start
-    user root
-    group system sdcard_r sdcard_rw radio
-    disabled
-    oneshot
-    socket Full.MOCA.port stream 660 system system
+#service moca_service /system/bin/advanced_moca -s
+#    class late_start
+#    user root
+#    group system sdcard_r sdcard_rw radio
+#    disabled
+#    oneshot
+#    socket Full.MOCA.port stream 660 system system
 
 on property:persist.service.moca.enable=1
     start moca_service
@@ -163,16 +163,16 @@ on property:persist.service.moca.enable=0
 #LGE_CHANGE_E, Advanced MOCA, huny.lee@lge.com
 
 # LGE_CHANGE_START, execute sreadahead daemon to reduce boot-time
-service sreadahead /sbin/treadahead
-    oneshot
-    disabled
-    seclabel u:r:sreadahead:s0
+#service sreadahead /sbin/treadahead
+#    oneshot
+#    disabled
+#    seclabel u:r:sreadahead:s0
 
 # make a diecision whether sreadahead would be performed or not.
-service sreadahead-check /sbin/sreadahead_check
-    class main
-    user root
-    group root
-    oneshot
-    seclabel u:r:sreadahead-check:s0
+#service sreadahead-check /sbin/sreadahead_check
+#    class main
+#    user root
+#    group root
+#    oneshot
+#    seclabel u:r:sreadahead-check:s0
 # LGE_CHANGE_END

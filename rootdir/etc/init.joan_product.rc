@@ -10,20 +10,20 @@ on post-fs-data
     mkdir /data/vendor/nfc 0770 nfc nfc
 
 # LGE IMS ipsec solution [START]
-service ipsecclient /system/bin/ipsecclient
-    class main
-    group system net_admin net_raw
-    disabled
+#service ipsecclient /system/bin/ipsecclient
+#    class main
+#    group system net_admin net_raw
+#    disabled
 
-service ipsecstarter /system/bin/ipsecstarter
-    class main
-    user system
-    group system net_admin net_raw
+#service ipsecstarter /system/bin/ipsecstarter
+#    class main
+#    user system
+#    group system net_admin net_raw
 # LGE IMS ipsec solution [END]
 
 # LGE IMS Features - To interwork with QMI WMS (64-bit exe/lib)
-service imswmsproxy /system/bin/imswmsproxy
-    class main
-    user system
-    group radio system net_admin net_raw
+#service imswmsproxy /system/bin/imswmsproxy
+#    class main
+#    user system
+#    group radio system net_admin net_raw
 # LGE IMS Features with QMI WMS (64-bit exe/lib)[END]

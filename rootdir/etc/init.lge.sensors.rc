@@ -1,9 +1,9 @@
 # Sensor, onhand daemon
-service onhand /system/bin/onhandd
-    class late_start
-    user system
-    group system
-    disabled
+#service onhand /system/bin/onhandd
+#    class late_start
+#    user system
+#    group system
+#    disabled
 
 on property:persist.sensors.onhand.en=1
     start onhand

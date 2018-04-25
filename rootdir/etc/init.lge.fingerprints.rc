@@ -48,7 +48,7 @@ on boot
 #    oneshot
 
 #FIDO
-service fidod /system/bin/fidod
-    class late_start
-    user system
-    group system
+#service fidod /system/bin/fidod
+#    class late_start
+#    user system
+#    group system

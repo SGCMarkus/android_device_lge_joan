@@ -31,83 +31,83 @@
 #        Register service          #
 #                                  #
 ####################################
-service lgssl_odm /system/bin/lg_dm_router --odm
-    class late_start
-    user system
-    group system sdcard_r sdcard_rw diag
-    disabled
-    oneshot
+#service lgssl_odm /system/bin/lg_dm_router --odm
+#    class late_start
+#    user system
+#    group system sdcard_r sdcard_rw diag
+#    disabled
+#    oneshot
 
-service lgssl_odm_k /system/bin/lg_dm_router --odm --kill --cmdline=44
-    user system
-    group system sdcard_r sdcard_rw
-    disabled
-    oneshot
+#service lgssl_odm_k /system/bin/lg_dm_router --odm --kill --cmdline=44
+#    user system
+#    group system sdcard_r sdcard_rw
+#    disabled
+#    oneshot
 
-service lgssl_odm_s /system/bin/lg_dm_router --odm --cmdline=0
-    user system
-    group system sdcard_r sdcard_rw
-    disabled
-    oneshot
+#service lgssl_odm_s /system/bin/lg_dm_router --odm --cmdline=0
+#    user system
+#    group system sdcard_r sdcard_rw
+#    disabled
+#    oneshot
 
-service lgssl_odm_t /system/bin/lg_dm_router --odm --cmdline=1
-    user system
-    group system sdcard_r sdcard_rw
-    disabled
-    oneshot
+#service lgssl_odm_t /system/bin/lg_dm_router --odm --cmdline=1
+#    user system
+#    group system sdcard_r sdcard_rw
+#    disabled
+#    oneshot
 
-service lgssl_odm_c /system/bin/lg_dm_router --odm --cmdline=2
-    user system
-    group system sdcard_r sdcard_rw
-    disabled
-    oneshot
+#service lgssl_odm_c /system/bin/lg_dm_router --odm --cmdline=2
+#    user system
+#    group system sdcard_r sdcard_rw
+#    disabled
+#    oneshot
 
-service lgssl_odm_g /system/bin/lg_dm_router --odm --cmdline=10
-    user system
-    group system sdcard_r sdcard_rw
-    disabled
-    oneshot
+#service lgssl_odm_g /system/bin/lg_dm_router --odm --cmdline=10
+#    user system
+#    group system sdcard_r sdcard_rw
+#    disabled
+#    oneshot
 
-service lgssl_odm_de /system/bin/lg_dm_router --odm --cmdline=100
-    user system
-    group system sdcard_r sdcard_rw
-    disabled
-    oneshot
+#service lgssl_odm_de /system/bin/lg_dm_router --odm --cmdline=100
+#    user system
+#    group system sdcard_r sdcard_rw
+#    disabled
+#    oneshot
 
-service lgssl_odm_dd /system/bin/lg_dm_router --odm --cmdline=101
-    user system
-    group system sdcard_r sdcard_rw
-    disabled
-    oneshot
+#service lgssl_odm_dd /system/bin/lg_dm_router --odm --cmdline=101
+#    user system
+#    group system sdcard_r sdcard_rw
+#    disabled
+#    oneshot
 
 #    group system sdcard_r sdcard_rw media_rw net_raw net_admin inet diag readproc
 
 
-service lgssl_sdm /system/bin/lg_dm_router --sdm
-    class late_start
-    user system
-    group system sdcard_r sdcard_rw diag
-    disabled
-    socket Full.DM.port stream 660 system system
-    oneshot
+#service lgssl_sdm /system/bin/lg_dm_router --sdm
+#    class late_start
+#    user system
+#    group system sdcard_r sdcard_rw diag
+#    disabled
+#    socket Full.DM.port stream 660 system system
+#    oneshot
 
-service lgssl_sdm_k /system/bin/lg_dm_router --sdm --kill --cmdline=44
-    user system
-    group system sdcard_r sdcard_rw
-    disabled
-    oneshot
+#service lgssl_sdm_k /system/bin/lg_dm_router --sdm --kill --cmdline=44
+#    user system
+#    group system sdcard_r sdcard_rw
+#    disabled
+#    oneshot
 
-service lgssl_sdm_de /system/bin/lg_dm_router --sdm --cmdline=100
-    user system
-    group system sdcard_r sdcard_rw
-    disabled
-    oneshot
+#service lgssl_sdm_de /system/bin/lg_dm_router --sdm --cmdline=100
+#    user system
+#    group system sdcard_r sdcard_rw
+#    disabled
+#    oneshot
 
-service lgssl_sdm_dd /system/bin/lg_dm_router --sdm --cmdline=101
-    user system
-    group system sdcard_r sdcard_rw
-    disabled
-    oneshot
+#service lgssl_sdm_dd /system/bin/lg_dm_router --sdm --cmdline=101
+#    user system
+#    group system sdcard_r sdcard_rw
+#    disabled
+#    oneshot
 
 
 ####################################
@@ -164,12 +164,12 @@ on post-fs-data
 
 
 # Modem debug info
-service modem_debug_info /system/vendor/bin/modem_debug_info.sh
-    class late_start
-    user system
-    group system
-    disabled
-    oneshot
+#service modem_debug_info /system/vendor/bin/modem_debug_info.sh
+#    class late_start
+#    user system
+#    group system
+#    disabled
+#    oneshot
 
 on property:sys.boot_completed=1
     start modem_debug_info

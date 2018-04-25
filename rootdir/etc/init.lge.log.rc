@@ -6,11 +6,11 @@ on post-fs-data
     mkdir /persist/encryption_log 0775 system system
 
 # kernel log
-service log-kernel /system/bin/sh /system/bin/logger_kernel.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:log_services:s0
+#service log-kernel /system/bin/sh /system/bin/logger_kernel.sh
+#    class main
+#    disabled
+#    oneshot
+#    seclabel u:r:log_services:s0
 
 # kernel_logger is only running when cc_mode is enabled with user mode, DO NOT USE this value for other purpose.
 on property:persist.service.kernel.enable=99
@@ -47,11 +47,11 @@ on property:vold.encrypt_progress=0
 on property:vold.decrypt=trigger_restart_min_framework
     restart logcat-ccaudit
 
-service logcat-ccaudit /system/bin/sh /system/bin/logger_ccaudit.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:log_services:s0
+#service logcat-ccaudit /system/bin/sh /system/bin/logger_ccaudit.sh
+#    class main
+#    disabled
+#    oneshot
+#    seclabel u:r:log_services:s0
 
 on property:persist.service.ccaudit.enable=1
     restart logcat-ccaudit
@@ -62,10 +62,10 @@ on property:persist.service.ccaudit.enable=0
 
 
 # power log
-service log-power /system/bin/logger_power.sh
-    class main
-    disabled
-    oneshot
+#service log-power /system/bin/logger_power.sh
+#    class main
+#    disabled
+#    oneshot
 
 on property:persist.service.power.enable=6
     restart log-power
@@ -90,11 +90,11 @@ on property:persist.service.power.enable=0
 
 
 # logcat main
-service logcat-main /system/bin/sh /system/bin/logger_main.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:log_services:s0
+#service logcat-main /system/bin/sh /system/bin/logger_main.sh
+#    class main
+#    disabled
+#    oneshot
+#    seclabel u:r:log_services:s0
 
 on property:persist.service.main.enable=6
     restart logcat-main
@@ -118,11 +118,11 @@ on property:persist.service.main.enable=0
     stop logcat-main
 
 # logcat system
-service logcat-system /system/bin/sh /system/bin/logger_system.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:log_services:s0
+#service logcat-system /system/bin/sh /system/bin/logger_system.sh
+#    class main
+#    disabled
+#    oneshot
+#    seclabel u:r:log_services:s0
 
 on property:persist.service.system.enable=6
     restart logcat-system
@@ -146,11 +146,11 @@ on property:persist.service.system.enable=0
     stop logcat-system
 
 # logcat radio
-service logcat-radio /system/bin/sh /system/bin/logger_radio.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:log_services:s0
+#service logcat-radio /system/bin/sh /system/bin/logger_radio.sh
+#    class main
+#    disabled
+#    oneshot
+#    seclabel u:r:log_services:s0
 
 on property:persist.service.radio.enable=6
     restart logcat-radio
@@ -174,11 +174,11 @@ on property:persist.service.radio.enable=0
     stop logcat-radio
 
 # logcat events
-service logcat-events /system/bin/sh /system/bin/logger_events.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:log_services:s0
+#service logcat-events /system/bin/sh /system/bin/logger_events.sh
+#    class main
+#    disabled
+#    oneshot
+#    seclabel u:r:log_services:s0
 
 on property:persist.service.events.enable=6
     restart logcat-events
@@ -257,10 +257,10 @@ on property:persist.service.logsize.enable=0
     restart logcat-memory
 
 # locat setupwizard
-    service logcat-setwiz /system/bin/sh /system/bin/logger_setupwizard.sh
-    class main
-    disabled
-    oneshot
+#    service logcat-setwiz /system/bin/sh /system/bin/logger_setupwizard.sh
+#    class main
+#    disabled
+#    oneshot
 
 on property:persist.service.setwiz.enable=1
     restart logcat-setwiz
@@ -269,11 +269,11 @@ on property:persist.service.setwiz.enable=0
     stop logcat-setwiz
 
 #tcpdump - packet log
-service log-packet /system/bin/sh /system/bin/logger_packet.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:log_services:s0
+#service log-packet /system/bin/sh /system/bin/logger_packet.sh
+#    class main
+#    disabled
+#    oneshot
+#    seclabel u:r:log_services:s0
 
 on property:persist.service.packet.enable=1
     restart log-packet
@@ -307,9 +307,9 @@ on property:vold.encrypt_progress=0
     restart logcat-memory
     restart log-xfrm
 
-service presslog /system/bin/presslog
-    disabled
-    oneshot
+#service presslog /system/bin/presslog
+#    disabled
+#    oneshot
 
 on property:persist.service.presslog.enable=1
     start presslog
@@ -318,10 +318,10 @@ on property:persist.service.presslog.enable=0
     stop presslog
 
 # memory log
-service logcat-memory /system/bin/logger_memory.sh
-    class main
-    disabled
-    oneshot
+#service logcat-memory /system/bin/logger_memory.sh
+#    class main
+#    disabled
+#    oneshot
 
 on property:persist.service.memory.enable=6
     restart logcat-memory
@@ -362,11 +362,11 @@ on property:keymaster.copy_logs_to_cache=1
     copy /data/mtslog/sensor/Fingerprint_qsee/qsee_log.0 /cache/encryption_log/qsee_log
 
 # log xfrm
-service log-xfrm /system/bin/sh /system/bin/logger_xfrm.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:log_services:s0
+#service log-xfrm /system/bin/sh /system/bin/logger_xfrm.sh
+#    class main
+#    disabled
+#    oneshot
+#    seclabel u:r:log_services:s0
 
 
 on property:persist.service.xfrm.enable=1
@@ -377,11 +377,11 @@ on property:persist.service.xfrm.enable=0
 
 
 #tcpdump - ims packet log
-service log-ims /system/bin/sh /system/bin/logger_ims_packet.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:log_services:s0
+#service log-ims /system/bin/sh /system/bin/logger_ims_packet.sh
+#    class main
+#    disabled
+#    oneshot
+#    seclabel u:r:log_services:s0
 
 on property:persist.service.ims.packet.enable=1
     start log-ims
