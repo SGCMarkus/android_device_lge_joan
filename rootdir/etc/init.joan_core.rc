@@ -73,18 +73,18 @@ on fs
     exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/qni
     mount ext4 /dev/block/bootdevice/by-name/qni /qni nosuid nodev barrier=1 noatime noauto_da_alloc errors=continue
 
-on post-fs
+#on post-fs
 # Support tuxera exfat filesystem
-	insmod /system/lib/modules/texfat.ko
+#	insmod /system/lib/modules/texfat.ko
 
 on post-fs-data
 # change preload directory permission for movetosd about preload app
     start chmod_dp
 
 # change preload directory permission for movetosd about preload app
-service chmod_dp /system/vendor/bin/change_permission_preload.sh
-    disable
-    oneshot
+#service chmod_dp /system/vendor/bin/change_permission_preload.sh
+#    disable
+#    oneshot
 
 on early-boot
 #	exec u:r:qti_init_shell:s0 -- /vendor/bin.sh /display_port_permission.sh
@@ -243,7 +243,7 @@ on property:vrcore.mode.on=true
 setprop persist.vendor.bt.a2dp_offload_cap false
 
 # Begin Immersion Changes
-    service immvibed /system/bin/immvibed -p 99 -u 1000
+    service immvibed /vendor/bin/immvibed -p 99 -u 1000
     class core
     user root
     group root
