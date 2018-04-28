@@ -240,8 +240,6 @@ PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     nfc_nci.msm8998 \
     NfcNci \
-    nqnfcee_access.xml \
-    nqnfcse_access.xml \
     Tag
 
 PRODUCT_COPY_FILES += \
