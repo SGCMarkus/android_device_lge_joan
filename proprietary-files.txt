@@ -604,11 +604,10 @@ vendor/lib64/libsymphony-1.1.2.so
 vendor/lib64/libsymphonypower-1.1.2.so
 
 # Fingerprint
-lib/vendor.lge.hardware.biometrics.fingerprint@2.1.so
 lib64/hw/fingerprint.msm8998.so:vendor/lib64/hw/fingerprint.msm8998.so
-lib64/vendor.lge.hardware.biometrics.fingerprint@2.1.so
-vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.1-service
-vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.1-service.rc
+framework/vendor.qti.hardware.fingerprint-V1.0-java.jar:vendor/framework/vendor.qti.hardware.fingerprint-V1.0-java.jar
+vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
+vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 
 # Gatekeeper
 vendor/lib/hw/gatekeeper.msm8998.so
@@ -729,14 +728,6 @@ vendor/lib64/libhdr_tm.so
 # Keystore
 vendor/lib/hw/keystore.msm8998.so
 vendor/lib64/hw/keystore.msm8998.so
-
-# Lights
-lib/vendor.lge.hardware.light@1.0.so
-lib64/vendor.lge.hardware.light@1.0.so
-vendor/bin/hw/vendor.lge.hardware.light@1.0-service
-vendor/etc/init/vendor.lge.hardware.light@1.0-service.rc
-vendor/lib/hw/vendor.lge.hardware.light@1.0-impl.so
-vendor/lib64/hw/vendor.lge.hardware.light@1.0-impl.so
 
 # Listen
 vendor/lib/hw/sound_trigger.primary.msm8998.so
@@ -983,17 +974,6 @@ vendor/lib64/libsensor_reg.so
 vendor/lib64/libsns_low_lat_stream_stub.so
 vendor/lib64/sensor_calibrate.so
 vendor/lib64/sensors.ssc.so
-
-# Sysnode
-framework/vendor.lge.hardware.sysnode-V1.0-java.jar
-lib/vendor.lge.hardware.sysnode@1.0.so
-lib64/vendor.lge.hardware.sysnode@1.0.so
-vendor/bin/hw/vendor.lge.hardware.sysnode@1.0-service
-vendor/etc/init/vendor.lge.hardware.sysnode@1.0-service.rc
-vendor/lib/hw/vendor.lge.hardware.sysnode@1.0-client.so
-vendor/lib/hw/vendor.lge.hardware.sysnode@1.0-impl.so
-vendor/lib64/hw/vendor.lge.hardware.sysnode@1.0-client.so
-vendor/lib64/hw/vendor.lge.hardware.sysnode@1.0-impl.so
 
 # Thermal
 vendor/bin/thermal-engine
