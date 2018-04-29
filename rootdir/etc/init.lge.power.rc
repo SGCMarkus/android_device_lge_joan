@@ -132,21 +132,21 @@ on boot
 # printk log level
    write /proc/sys/kernel/printk "7 6 1 7"
 
-service servicemanager /system/bin/servicemanager
-    class core
-    user system
-    group system readproc
-    critical
-    onrestart restart healthd
-    onrestart restart lghealthd
-    onrestart restart zygote
-    onrestart restart audioserver
-    onrestart restart media
-    onrestart restart surfaceflinger
-    onrestart restart inputflinger
-    onrestart restart drm
-    onrestart restart cameraserver
-    writepid /dev/cpuset/system-background/tasks
+#service servicemanager /system/bin/servicemanager
+#    class core
+#    user system
+#    group system readproc
+#    critical
+#    onrestart restart healthd
+#    onrestart restart lghealthd
+#    onrestart restart zygote
+#    onrestart restart audioserver
+#    onrestart restart media
+#    onrestart restart surfaceflinger
+#    onrestart restart inputflinger
+#    onrestart restart drm
+#    onrestart restart cameraserver
+#    writepid /dev/cpuset/system-background/tasks
 
 #service lghealthd /vendor/bin/lghealthd
 #    class core
