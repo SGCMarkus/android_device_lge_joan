@@ -958,12 +958,12 @@ service atfwd /vendor/bin/ATFWD-daemon
     user system
     group system radio
 
-service hostapd /vendor/bin/hostapd -dd /data/misc/wifi/hostapd.conf
-    class late_start
-    user root
-    group root
-    oneshot
-    disabled
+#service hostapd /vendor/bin/hostapd -dd /data/misc/wifi/hostapd.conf
+#    class late_start
+#    user root
+#    group root
+#    oneshot
+#    disabled
 
 service hostapd_fst /vendor/bin/hostapd -dd -g /data/vendor/wifi/hostapd/global /data/vendor/wifi/hostapd.conf
     class late_start
