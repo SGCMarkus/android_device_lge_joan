@@ -61,20 +61,20 @@ vendor/lib/libbtnv.so
 vendor/lib64/libbtnv.so
 
 # Bluetooth - Firmware
-etc/firmware/nvm_tlv.bin
-etc/firmware/nvm_tlv_1.3.bin
-etc/firmware/nvm_tlv_2.1.bin
-etc/firmware/nvm_tlv_3.0.bin
-etc/firmware/nvm_tlv_3.2.bin
-etc/firmware/rampatch_tlv.img
-etc/firmware/rampatch_tlv_1.3.tlv
-etc/firmware/rampatch_tlv_2.1.tlv
-etc/firmware/rampatch_tlv_3.0.tlv
-etc/firmware/rampatch_tlv_3.2.tlv
-vendor/firmware/crbtfw20.tlv
-vendor/firmware/crbtfw21.tlv
-vendor/firmware/crnv20.bin
-vendor/firmware/crnv21.bin
+etc/firmware/nvm_tlv.bin:vendor/etc/firmware/nvm_tlv.bin
+etc/firmware/nvm_tlv_1.3.bin:vendor/etc/firmware/nvm_tlv_1.3.bin
+etc/firmware/nvm_tlv_2.1.bin:vendor/etc/firmware/nvm_tlv_2.1.bin
+etc/firmware/nvm_tlv_3.0.bin:vendor/etc/firmware/nvm_tlv_3.0.bin
+etc/firmware/nvm_tlv_3.2.bin:vendor/etc/firmware/nvm_tlv_3.2.bin
+etc/firmware/rampatch_tlv.img:vendor/etc/firmware/rampatch_tlv.img
+etc/firmware/rampatch_tlv_1.3.tlv:vendor/etc/firmware/rampatch_tlv_1.3.tlv
+etc/firmware/rampatch_tlv_2.1.tlv:vendor/etc/firmware/rampatch_tlv_2.1.tlv
+etc/firmware/rampatch_tlv_3.0.tlv:vendor/etc/firmware/rampatch_tlv_3.0.tlv
+etc/firmware/rampatch_tlv_3.2.tlv:vendor/etc/firmware/rampatch_tlv_3.2.tlv
+vendor/firmware/crbtfw20.tlv:vendor/firmware/crbtfw20.tlv
+vendor/firmware/crbtfw21.tlv:vendor/firmware/crbtfw21.tlv
+vendor/firmware/crnv20.bin:vendor/firmware/crnv20.bin
+vendor/firmware/crnv21.bin:vendor/firmware/crnv21.bin
 
 # Camera
 vendor/lib/hw/camera.msm8998.so
@@ -462,11 +462,11 @@ vendor/lib64/libseemore.so
 vendor/lib64/libubifocus.so
 
 # CNE
-etc/permissions/cneapiclient.xml
-etc/permissions/com.quicinc.cne.xml
-framework/cneapiclient.jar
-framework/com.quicinc.cne.api-V1.0-java.jar
-framework/com.quicinc.cne.jar
+etc/permissions/cneapiclient.xml:vendor/etc/permissions/cneapiclient.xml
+etc/permissions/com.quicinc.cne.xml:vendor/etc/permissions/com.quicinc.cne.xml
+framework/cneapiclient.jar:vendor/framework/cneapiclient.jar
+framework/com.quicinc.cne.api-V1.0-java.jar:vendor/framework/com.quicinc.cne.api-V1.0-java.jar
+framework/com.quicinc.cne.jar:vendor/framework/com.quicinc.cne.jar
 vendor/etc/cne/wqeclient/ATT/ATT_profile1.xml
 vendor/etc/cne/wqeclient/ATT/ATT_profile2.xml
 vendor/etc/cne/wqeclient/ATT/ATT_profile3.xml
@@ -614,8 +614,8 @@ vendor/lib/hw/gatekeeper.msm8998.so
 vendor/lib64/hw/gatekeeper.msm8998.so
 
 # GPS
-lib/libpcas.so
-lib64/libpcas.so
+lib/libpcas.so:vendor/lib/libpcas.so
+lib64/libpcas.so:vendor/lib64/libpcas.so
 vendor/bin/hw/vendor.qti.gnss@1.0-service
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
@@ -721,9 +721,9 @@ vendor/lib/libhdr_tm.so
 vendor/lib64/libhdr_tm.so
 
 # Hotword Enrollment
--priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk;PRESIGNED
--priv-app/HotwordEnrollmentTGoogleHEXAGON/HotwordEnrollmentTGoogleHEXAGON.apk;PRESIGNED
--priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk;PRESIGNED
+-vendor/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk;PRESIGNED
+-vendor/priv-app/HotwordEnrollmentTGoogleHEXAGON/HotwordEnrollmentTGoogleHEXAGON.apk;PRESIGNED
+-vendor/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk;PRESIGNED
 
 # Keystore
 vendor/lib/hw/keystore.msm8998.so
@@ -870,17 +870,17 @@ vendor/lib64/libsmemlog.so
 vendor/bin/hvdcp_opti
 
 # Radio
--app/QtiTelephonyService/QtiTelephonyService.apk
-etc/permissions/qcrilhook.xml
-etc/permissions/telephonyservice.xml
-framework/qcrilhook.jar
-framework/QtiTelephonyServicelibrary.jar
-lib/libril_wrapper.so
-lib/vendor.lge.hardware.radio@1.0.so
-lib64/libril_wrapper.so
-lib64/libuicc.so
-lib64/vendor.lge.hardware.radio@1.0.so
--priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+-vendor/app/QtiTelephonyService/QtiTelephonyService.apk
+etc/permissions/qcrilhook.xml:vendor/etc/permissions/qcrilhook.xml|cf740b4339659e7a30cabcd1c2fe5066e69b8760
+etc/permissions/telephonyservice.xml:vendor/etc/permissions/telephonyservice.xml|ff2c9f3456ad73f97adb7ef314fe916fa9cbfb81
+framework/qcrilhook.jar:vendor/framework/qcrilhook.jar
+framework/QtiTelephonyServicelibrary.jar:vendor/framework/QtiTelephonyServicelibrary.jar
+lib/libril_wrapper.so:vendor/lib/libril_wrapper.so
+lib/vendor.lge.hardware.radio@1.0.so:vendor/lib/vendor.lge.hardware.radio@1.0.so
+lib64/libril_wrapper.so:vendor/lib64/libril_wrapper.so
+lib64/libuicc.so:vendor/lib64/libuicc.so
+lib64/vendor.lge.hardware.radio@1.0.so:vendor/lib64/vendor.lge.hardware.radio@1.0.so
+-vendor/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 -vendor/app/SVIService/SVIService.apk
 vendor/bin/hw/rild
 vendor/bin/ATFWD-daemon
@@ -934,31 +934,31 @@ vendor/lib64/vendor.qti.hardware.radio.uim@1.0_vendor.so
 vendor/radio/qcril_database/qcril.db
 
 # Radio - VSS
-lib/libvss_common_core.so
-lib/libvss_common_idl.so
-lib/libvss_common_iface.so
-lib/libvss_dmi_qcci.so
-lib/libvss_gnss_qcci.so
-lib/libvss_ims_qcci.so
-lib/libvss_nv_core.so
-lib/libvss_nv_idl.so
-lib/libvss_nv_iface.so
-lib/libvss_resim_core.so
-lib/libvss_resim_idl.so
-lib/libvss_resim_iface.so
-lib64/libvss_bsp_qcci.so
-lib64/libvss_common_core.so
-lib64/libvss_common_idl.so
-lib64/libvss_common_iface.so
-lib64/libvss_dmi_qcci.so
-lib64/libvss_gnss_qcci.so
-lib64/libvss_ims_qcci.so
-lib64/libvss_nv_core.so
-lib64/libvss_nv_idl.so
-lib64/libvss_nv_iface.so
-lib64/libvss_resim_core.so
-lib64/libvss_resim_idl.so
-lib64/libvss_resim_iface.so
+lib/libvss_common_core.so:vendor/lib/libvss_common_core.so
+lib/libvss_common_idl.so:vendor/lib/libvss_common_idl.so
+lib/libvss_common_iface.so:vendor/lib/libvss_common_iface.so
+lib/libvss_dmi_qcci.so:vendor/lib/libvss_dmi_qcci.so
+lib/libvss_gnss_qcci.so:vendor/lib/libvss_gnss_qcci.so
+lib/libvss_ims_qcci.so:vendor/lib/libvss_ims_qcci.so
+lib/libvss_nv_core.so:vendor/lib/libvss_nv_core.so
+lib/libvss_nv_idl.so:vendor/lib/libvss_nv_idl.so
+lib/libvss_nv_iface.so:vendor/lib/libvss_nv_iface.so
+lib/libvss_resim_core.so:vendor/lib/libvss_resim_core.so
+lib/libvss_resim_idl.so:vendor/lib/libvss_resim_idl.so
+lib/libvss_resim_iface.so:vendor/lib/libvss_resim_iface.so
+lib64/libvss_bsp_qcci.so:vendor/lib64/libvss_bsp_qcci.so
+lib64/libvss_common_core.so:vendor/lib64/libvss_common_core.so
+lib64/libvss_common_idl.so:vendor/lib64/libvss_common_idl.so
+lib64/libvss_common_iface.so:vendor/lib64/libvss_common_iface.so
+lib64/libvss_dmi_qcci.so:vendor/lib64/libvss_dmi_qcci.so
+lib64/libvss_gnss_qcci.so:vendor/lib64/libvss_gnss_qcci.so
+lib64/libvss_ims_qcci.so:vendor/lib64/libvss_ims_qcci.so
+lib64/libvss_nv_core.so:vendor/lib64/libvss_nv_core.so
+lib64/libvss_nv_idl.so:vendor/lib64/libvss_nv_idl.so
+lib64/libvss_nv_iface.so:vendor/lib64/libvss_nv_iface.so
+lib64/libvss_resim_core.so:vendor/lib64/libvss_resim_core.so
+lib64/libvss_resim_idl.so:vendor/lib64/libvss_resim_idl.so
+lib64/libvss_resim_iface.so:vendor/lib64/libvss_resim_iface.so
 
 # Sensors
 vendor/bin/sensors.qcom
@@ -993,9 +993,9 @@ vendor/lib64/libTimeService.so
 # Vibrator
 vendor/lib/hw/android.hardware.vibrator@1.0-impl.lge.so
 vendor/lib64/hw/android.hardware.vibrator@1.0-impl.lge.so
-lib/libpparam.so
-lib64/libpparam.so
-bin/immvibed:vendor/bin/immvibed
+lib/libpparam.so:vendor/lib/libpparam.so
+lib64/libpparam.so:vendor/lib64/libpparam.so
+bin/immvibed:vendor/bin/immvibed|814f817f8312e9d2bd1b014dd607a465dc690dae
 lib/libImmVibeJ.so:vendor/lib/libImmVibeJ.so
 lib64/libImmVibeJ.so:vendor/lib64/libImmVibeJ.so
 lib/libimmvibeandroidmanager.so:vendor/lib/libimmvibeandroidmanager.so
@@ -1014,7 +1014,7 @@ vendor/lib/hw/vr.joan.so
 vendor/lib64/hw/vr.joan.so
 
 # Wi-Fi
-etc/wifi/bdwlan.bin
-etc/wifi/bdwlan_ch0.bin
-etc/wifi/bdwlan_ch1.bin
-vendor/bin/cnss-daemon
+etc/wifi/bdwlan.bin:vendor/etc/firmware/wifi/q/bdwlan.bin
+etc/wifi/bdwlan_ch0.bin:vendor/etc/firmware/wifi/q/bdwlan_ch0.bin
+etc/wifi/bdwlan_ch1.bin:vendor/etc/firmware/wifi/q/bdwlan_ch1.bin
+vendor/bin/cnss-daemon|efb40f7bb97df7ca74a14127e13b6e92a7766e0c
