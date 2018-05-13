@@ -74,7 +74,7 @@ $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "IMS lib link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /system/vendor/lib64/$(notdir $@) $@
+	$(hide) ln -sf /vendor/lib64/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
 
@@ -116,33 +116,21 @@ $(RFS_MSM_SLPI_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(RFS_MSM_ADSP_SYMLINKS) $(RFS_MSM_MPSS_SYMLINKS) $(RFS_MSM_SLPI_SYMLINKS)
 
-BDWLAN_IMAGES := \
-    bdwlan.bin bdwlan_ch0.bin bdwlan_ch1.bin
-
-BDWLAN_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/,$(notdir $(BDWLAN_IMAGES)))
-$(BDWLAN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "BDWLAN firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /system/etc/wifi/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(BDWLAN_SYMLINKS)
-
 BTFW_IMAGES := \
     crbtfw20.tlv crbtfw21.tlv crnv20.bin crnv21.bin
 
-BTFW_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(BTFW_IMAGES)))
+BTFW_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/etc/firmware/,$(notdir $(BTFW_IMAGES)))
 $(BTFW_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Bluetooth Firmware firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /system/vendor/firmware/$(notdir $@) $@
+	$(hide) ln -sf /vendor/firmware/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(BTFW_SYMLINKS)
 
 # Create a link for the WCNSS MAC firmware, which ends up as a writable
 # version in /data/misc/wifi
-WLAN_MAC_SYMLINK := $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/wlan_mac.bin
+WLAN_MAC_SYMLINK := $(TARGET_OUT_VENDOR)/etc/firmware/wlan/qca_cld/wlan_mac.bin
 $(WLAN_MAC_SYMLINK): $(LOCAL_INSTALLED_MODULE)
 	@mkdir -p $(dir $@)
 	$(hide) ln -sf /data/misc/wifi/$(notdir $@) $@
