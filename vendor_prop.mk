@@ -41,6 +41,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
+    bluetooth.chip.vendor=qcom \
+    persist.service.avrcp.browsing=1 \
+    persist.service.bdroid.a2dp_con=0 \
+    persist.service.bdroid.scms_t=0 \
+    persist.bt.max.hs.connections=2 \
     bt.max.hfpclient.connections=1 \
     persist.bt.a2dp.aac_disable=true \
     persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
@@ -130,3 +135,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
+
+# Waterproof
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.support.waterproof=true
