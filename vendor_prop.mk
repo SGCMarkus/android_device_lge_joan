@@ -120,9 +120,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qti.sensors.multishake=true \
     ro.qti.sensors.sta_detect=true
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sys.sdcardfs=0
-
 # Time daemon
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.delta_time.enable=true
