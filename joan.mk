@@ -298,7 +298,7 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service.joan \
+    android.hardware.power@1.1-service-qti \
     libxml2
 
 PRODUCT_COPY_FILES += \
