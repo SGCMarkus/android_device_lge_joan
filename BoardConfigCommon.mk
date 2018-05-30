@@ -16,9 +16,6 @@
 
 COMMON_PATH := device/lge/joan-common
 
-# inherit from common lge
--include device/lge/common/BoardConfigCommon.mk
-
 # Platform
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
