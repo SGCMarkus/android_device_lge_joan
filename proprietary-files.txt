@@ -996,6 +996,17 @@ vendor/lib64/libsns_low_lat_stream_stub.so
 vendor/lib64/sensor_calibrate.so
 vendor/lib64/sensors.ssc.so
 
+# Sysnode
+framework/vendor.lge.hardware.sysnode-V1.0-java.jar:vendor/framework/vendor.lge.hardware.sysnode-V1.0-java.jar
+lib/vendor.lge.hardware.sysnode@1.0.so:vendor/lib/vendor.lge.hardware.sysnode@1.0.so
+lib64/vendor.lge.hardware.sysnode@1.0.so:vendor/lib64/vendor.lge.hardware.sysnode@1.0.so
+vendor/bin/hw/vendor.lge.hardware.sysnode@1.0-service
+vendor/etc/init/vendor.lge.hardware.sysnode@1.0-service.rc
+vendor/lib/hw/vendor.lge.hardware.sysnode@1.0-client.so
+vendor/lib/hw/vendor.lge.hardware.sysnode@1.0-impl.so
+vendor/lib64/hw/vendor.lge.hardware.sysnode@1.0-client.so
+vendor/lib64/hw/vendor.lge.hardware.sysnode@1.0-impl.so
+
 # Thermal
 vendor/bin/thermal-engine
 vendor/etc/thermal-engine.conf
