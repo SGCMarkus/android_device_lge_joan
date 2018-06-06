@@ -125,6 +125,10 @@ DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_lge_msm8998
+TARGET_RECOVERY_DEVICE_MODULES := libinit_lge_msm8998
+
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=joan user_debug=31 msm_rtb.filter=0x37
 BOARD_KERNEL_CMDLINE += ehci-hcd.park=3 lpm_levels.sleep_disabled=1
