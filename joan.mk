@@ -216,9 +216,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-impl \
-    android.hardware.light@2.0-service \
-    lights.msm8998
+    android.hardware.light@2.0-service.joan
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -359,9 +357,7 @@ PRODUCT_PACKAGES += \
 
 # Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-impl \
-    android.hardware.thermal@1.0-service \
-    thermal.msm8998
+    android.hardware.thermal@1.1-service.joan
 
 # Touchscreen
 PRODUCT_PACKAGES += \
