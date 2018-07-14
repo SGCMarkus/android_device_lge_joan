@@ -652,7 +652,7 @@ vendor/lib64/vendor.qti.gnss@1.0_vendor.so
 -vendor/lib/libsdm-disp-vndapis.so
 -vendor/lib64/libsdm-disp-vndapis.so
 vendor/bin/hw/vendor.display.color@1.0-service
-vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti|0ed4f41dd0868e12c57ef0ecf493dafa6885ace2
+vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti|dc6ff7d6bdb4bd7ee248eb03e4b1e53bd04f8221
 vendor/etc/init/vendor.display.color@1.0-service.rc
 vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc|69d9cbc54f8ac0a0fb010f92bfa7de5981d643cf
 vendor/lib/egl/eglSubDriverAndroid.so
@@ -679,13 +679,13 @@ vendor/lib/libqseed3.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/librs_adreno.so
 vendor/lib/libRSDriver_adreno.so
-vendor/lib/libsdm-color.so|9404c85d63894562733484ede557c3ac9635c52d
+vendor/lib/libsdm-color.so|2a265d34873f3d02bed7641640e84ea75edb977a
 vendor/lib/libsdm-diag.so
-vendor/lib/libsdmextension.so|5d539b3215c6551a1fedb8c167d2fa086c9ed1ff
+vendor/lib/libsdmextension.so|c8bd2bc2c4f94f409446c0ac1b5f39e63dfeae4b
 vendor/lib/libtinyxml2_1.so
 vendor/lib/vendor.display.color@1.0_vendor.so
 vendor/lib/vendor.display.postproc@1.0_vendor.so
-vendor/lib/vendor.qti.hardware.qdutils_disp@1.0_vendor.so|f81718cf0d998f833b4867a8708a06e1b42d7743
+vendor/lib/vendor.qti.hardware.qdutils_disp@1.0_vendor.so|04bf21220673630ebaa4c8e7a84adbcdcf08f0dc
 vendor/lib64/egl/eglSubDriverAndroid.so
 vendor/lib64/egl/libEGL_adreno.so
 vendor/lib64/egl/libGLESv1_CM_adreno.so
@@ -710,13 +710,13 @@ vendor/lib64/libqseed3.so
 vendor/lib64/librs_adreno_sha1.so
 vendor/lib64/librs_adreno.so
 vendor/lib64/libRSDriver_adreno.so
-vendor/lib64/libsdm-color.so|0db611bb5babef142b35de1769865c1d50772bda
+vendor/lib64/libsdm-color.so|864ba48cda7279a7c2bb07ce9182bd4417dec4ff
 vendor/lib64/libsdm-diag.so
-vendor/lib64/libsdmextension.so|a2ac403747a4ad8716168b4f00721ec4fb19c5aa
+vendor/lib64/libsdmextension.so|be02dd004708b621e1fc639a51b6bcffb2c1c60d
 vendor/lib64/libtinyxml2_1.so
 vendor/lib64/vendor.display.color@1.0_vendor.so
 vendor/lib64/vendor.display.postproc@1.0_vendor.so
-vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0_vendor.so|43fb66efb33dd44e298506d54a0c1a4e3bfdd105
+vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0_vendor.so|d101774878c0374ad805d964c3d00c71b44456d9
 
 # Graphics - Firmware
 vendor/firmware/a530_gpmu.fw2
@@ -1088,6 +1088,8 @@ vendor/lib64/libTimeService.so
 # Vibrator
 vendor/lib/hw/android.hardware.vibrator@1.0-impl.lge.so
 vendor/lib64/hw/android.hardware.vibrator@1.0-impl.lge.so
+#vendor/bin/hw/android.hardware.vibrator@1.0-service
+#vendor/etc/init/android.hardware.vibrator@1.0-service.rc
 lib/libpparam.so:vendor/lib/libpparam.so
 lib64/libpparam.so:vendor/lib64/libpparam.so
 bin/immvibed:vendor/bin/immvibed|814f817f8312e9d2bd1b014dd607a465dc690dae
@@ -1112,4 +1114,4 @@ vendor/lib64/hw/vr.joan.so
 etc/wifi/bdwlan.bin:vendor/etc/firmware/wifi/q/bdwlan.bin
 etc/wifi/bdwlan_ch0.bin:vendor/etc/firmware/wifi/q/bdwlan_ch0.bin
 etc/wifi/bdwlan_ch1.bin:vendor/etc/firmware/wifi/q/bdwlan_ch1.bin
-vendor/bin/cnss-daemon|efb40f7bb97df7ca74a14127e13b6e92a7766e0c
+vendor/bin/cnss-daemon|cae73d7815aefb630509e03abb0cb2a5a94f52a5
