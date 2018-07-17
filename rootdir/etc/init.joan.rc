@@ -45,6 +45,8 @@ on early-init
     chown root system /dev/kmsg
     chmod 0620 /dev/kmsg
 
+    exec u:r:qti_init_shell:s0 -- /vendor/bin/init.joan.hdmi.sh
+
 # TODO: This MUST be disabled not use 'sdcard' in LGE device.
 on init
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
@@ -128,30 +130,6 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_cdsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
-    exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
-
-  chmod 644 /sys/class/graphics/fb2/hpd
-  chown system graphics /sys/class/graphics/fb2/hpd
-  chmod 644 /sys/class/graphics/fb2/res_info
-  chown system graphics /sys/class/graphics/fb2/res_info
-  chmod 644 /sys/class/graphics/fb2/vendor_name
-  chown system graphics /sys/class/graphics/fb2/vendor_name
-  chmod 644 /sys/class/graphics/fb2/product_decription
-  chown system graphics /sys/class/graphics/fb2/product_decription
-  chmod 644 /sys/class/graphics/fb2/video_mode
-  chown system graphics /sys/class/graphics/fb2/video_mode
-  chmod 644 /sys/class/graphics/fb2/format_3d
-  chown system graphics /sys/class/graphics/fb2/format_3d
-  chmod 644 /sys/class/graphics/fb2/s3d_mode
-  chown system graphics /sys/class/graphics/fb2/s3d_mode
-  chmod 644 /sys/class/graphics/fb2/dynamic_fps
-  chown system graphics /sys/class/graphics/fb2/dynamic_fps
-  chmod 644 /sys/class/graphics/fb2/msm_fb_dfps_mode
-  chown system graphics /sys/class/graphics/fb2/msm_fb_dfps_mode
-  chmod 644 /sys/class/graphics/fb2/pa
-  chown system graphics /sys/class/graphics/fb2/pa
-  chmod 644 /sys/class/graphics/fb2/hdcp/tp
-  chown system graphics /sys/class/graphics/fb2/hdcp/tp
 
 on boot
     start rmt_storage
