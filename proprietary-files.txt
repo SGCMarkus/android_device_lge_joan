@@ -744,9 +744,9 @@ vendor/lib/libhdr_tm.so
 vendor/lib64/libhdr_tm.so
 
 # Hotword Enrollment
--vendor/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk;PRESIGNED
--vendor/priv-app/HotwordEnrollmentTGoogleHEXAGON/HotwordEnrollmentTGoogleHEXAGON.apk;PRESIGNED
--vendor/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk;PRESIGNED
+-priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk;PRESIGNED
+-priv-app/HotwordEnrollmentTGoogleHEXAGON/HotwordEnrollmentTGoogleHEXAGON.apk;PRESIGNED
+-priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk;PRESIGNED
 
 # Keystore
 vendor/lib/hw/keystore.msm8998.so
@@ -910,7 +910,6 @@ vendor/bin/ATFWD-daemon
 vendor/bin/ipacm-diag
 vendor/bin/netmgrd
 vendor/bin/pd-mapper
-vendor/bin/port-bridge
 vendor/bin/qti
 vendor/bin/rmt_storage
 vendor/bin/tftp_server
@@ -1123,4 +1122,4 @@ vendor/lib64/hw/vr.joan.so
 etc/wifi/bdwlan.bin:vendor/etc/firmware/wifi/q/bdwlan.bin
 etc/wifi/bdwlan_ch0.bin:vendor/etc/firmware/wifi/q/bdwlan_ch0.bin
 etc/wifi/bdwlan_ch1.bin:vendor/etc/firmware/wifi/q/bdwlan_ch1.bin
-vendor/bin/cnss-daemon|cae73d7815aefb630509e03abb0cb2a5a94f52a5
+vendor/bin/cnss-daemon|2615042625a6fc2bf876617e88c8c1fd9de2e6e0
