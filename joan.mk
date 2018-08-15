@@ -379,6 +379,8 @@ PRODUCT_PACKAGES += \
 # VNDK
 PRODUCT_PACKAGES += vndk-sp
 
+PRODUCT_PACKAGES += vndk-27
+
 # Wifi
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
