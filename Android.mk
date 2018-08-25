@@ -133,7 +133,8 @@ ALL_DEFAULT_INSTALLED_MODULES += $(BTFW_SYMLINKS)
 WLAN_MAC_SYMLINK := $(TARGET_OUT_VENDOR)/etc/firmware/wlan/qca_cld/wlan_mac.bin
 $(WLAN_MAC_SYMLINK): $(LOCAL_INSTALLED_MODULE)
 	@mkdir -p $(dir $@)
-	$(hide) ln -sf /data/misc/wifi/$(notdir $@) $@
+	@rm -rf $@
+	$(hide) ln -sf /data/vendor/wifi/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(WLAN_MAC_SYMLINK)
 
