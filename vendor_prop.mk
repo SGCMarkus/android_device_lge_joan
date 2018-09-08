@@ -125,6 +125,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # USB
 PRODUCT_PROPERTY_OVERRIDES += \
+    sys.usb.ffs.aio_compat=1 \
     persist.sys.usb.config.extra=none
 
 # Voice assistant
