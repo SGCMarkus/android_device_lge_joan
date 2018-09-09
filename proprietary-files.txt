@@ -1091,7 +1091,7 @@ vendor/lib64/hw/android.hardware.vibrator@1.0-impl.lge.so
 #vendor/etc/init/android.hardware.vibrator@1.0-service.rc
 lib/libpparam.so:vendor/lib/libpparam.so
 lib64/libpparam.so:vendor/lib64/libpparam.so
-bin/immvibed:vendor/bin/immvibed|85de52b6c87813af01746e4470cecd49079c9fd3
+bin/immvibed:vendor/bin/immvibed
 vendor/bin/hw/android.hardware.vibrator@1.0-service
 vendor/bin/hw/vendor.lge.hardware.vibrator@1.0-service-immersion
 vendor/etc/init/vendor.lge.hardware.vibrator@1.0-service.rc
