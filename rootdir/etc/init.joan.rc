@@ -97,8 +97,7 @@ on fs
 
 on post-fs
     # NFC: create data/nfc for nv storage
-    mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
+    mkdir /data/vendor/nfc/param 0770 nfc nfc
     mkdir /data/vendor/nfc 0770 nfc nfc
 
    mkdir /sns/fingerprint 0775 system system
