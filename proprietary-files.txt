@@ -814,7 +814,8 @@ vendor/lib64/libvpphvx.so
 vendor/lib64/libvpplibrary.so
 
 # NFC
-vendor/firmware/libpn548ad_fw_64.so:vendor/firmware/libpn548ad_fw.so
+vendor/firmware/libpn548ad_fw_64.so:vendor/lib64/libpn548ad_fw_64.so
+vendor/firmware/libpn548ad_fw.so:vendor/lib/libpn548ad_fw.so
 
 # Perf
 vendor/bin/energy-awareness
