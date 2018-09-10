@@ -1,0 +1,13 @@
+type vendor_init, domain;
+
+allow vendor_init rootfs:dir { add_name write setattr };
+allow vendor_init firmware_file:dir { create };
+allow vendor_init proc:file { write };
+allow vendor_init bt_firmware_file:dir { create };
+allow vendor_init nfc_data_file:dir { setattr };
+allow vendor_init unlabeled:dir { setattr };
+allow vendor_init system_data_file:dir { setattr };
+allow vendor_init ipa_dev:chr_file { open write };
+allow vendor_init media_data_file:dir { setattr };
+allow vendor_init camera_data_file:dir { setattr };
+

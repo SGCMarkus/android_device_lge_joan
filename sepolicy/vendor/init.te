@@ -1,0 +1,2 @@
+allow init hwservicemanager:binder { call };
+allow init sysfs_graphics:file { write };
