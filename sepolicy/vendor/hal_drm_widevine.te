@@ -1,0 +1,2 @@
+allow hal_drm_widevine proc:file { getattr open read };
+allow hal_drm_widevine media_data_file:dir { getattr open read };

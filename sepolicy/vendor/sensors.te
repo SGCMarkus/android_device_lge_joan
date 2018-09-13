@@ -1,0 +1,2 @@
+allow sensors sns_file:file { getattr open read write };
+allow sensors sns_file:dir { getattr open read search };

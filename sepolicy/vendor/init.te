@@ -1,2 +1,25 @@
-allow init hwservicemanager:binder { call };
-allow init sysfs_graphics:file { write };
+allow init hwservicemanager:binder { call transfer };
+
+allow init sysfs_graphics:file { open setattr write };
+
+allow init hal_perf_hwservice:hwservice_manager { find };
+allow init hal_perf_default:binder { call };
+
+allow init nfc:binder { call };
+allow init device:chr_file { ioctl open read write };
+allow init hal_light_hwservice:hwservice_manager { add };
+allow init hidl_base_hwservice:hwservice_manager { add };
+allow init hal_power_hwservice:hwservice_manager { add };
+allow init hal_thermal_hwservice:hwservice_manager { add };
+allow init default_android_hwservice:hwservice_manager { add find };
+allow init hal_nfc_hwservice:hwservice_manager { add };
+allow init hal_vibrator_hwservice:hwservice_manager { add };
+
+allow init vendor_file:file { execute_no_trans };
+allow init system_file:file { execute_no_trans };
+
+allow init init:capability { sys_nice };
+
+allow init sysfs:file { setattr };
+allow init immvibed_exec:file { execute execute_no_trans getattr open read };
+

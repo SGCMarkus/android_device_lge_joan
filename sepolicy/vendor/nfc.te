@@ -1,0 +1,1 @@
+allow nfc init:binder { call transfer };

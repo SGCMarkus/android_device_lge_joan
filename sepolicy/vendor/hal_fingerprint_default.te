@@ -1,0 +1,7 @@
+allow hal_fingerprint_default tee_device:chr_file { ioctl open read write };
+
+allow hal_fingerprint_default firmware_file:file { getattr open read };
+allow hal_fingerprint_default firmware_file:dir { remove_name search };
+allow hal_fingerprint_default sysfs:file { write };
+allow hal_fingerprint_default fingerprintd_data_file:dir { add_name remove_name search write };
+allow hal_fingerprint_default fingerprintd_data_file:file { rename unlink };

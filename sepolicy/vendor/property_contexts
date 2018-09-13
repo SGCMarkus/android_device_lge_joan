@@ -1,0 +1,6 @@
+persist.sys.thermald_miti_off     u:object_r:thermal-engine_prop:s0
+sys.camera.pd_test.result         u:object_r:camera-hal_prop:s0
+persist.data.rear.minfps          u:object_r:camera-hal_prop:s0
+persist.data.front.minfps         u:object_r:camera-hal_prop:s0
+ro.ims.networkinfo                u:object_r:rild_prop:s0
+persist.mmi.misc_dev_path         u:object_r:qti-shell_prop:s0

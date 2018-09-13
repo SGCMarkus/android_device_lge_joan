@@ -1,0 +1,2 @@
+allow hal_nfc_default device:chr_file { ioctl open read write };
+allow hal_nfc_default default_android_hwservice:hwservice_manager { add find };

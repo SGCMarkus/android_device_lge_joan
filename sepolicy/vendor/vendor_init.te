@@ -1,13 +1,22 @@
-type vendor_init, domain;
-
-allow vendor_init rootfs:dir { add_name write setattr };
-allow vendor_init firmware_file:dir { create };
-allow vendor_init proc:file { write };
-allow vendor_init bt_firmware_file:dir { create };
-allow vendor_init nfc_data_file:dir { setattr };
-allow vendor_init unlabeled:dir { setattr };
-allow vendor_init system_data_file:dir { setattr };
+allow vendor_init rootfs:dir create_dir_perms;
+allow vendor_init firmware_file:dir create_dir_perms;
+allow vendor_init bt_firmware_file:dir create_dir_perms;
+allow vendor_init bluetooth_data_file:dir { create setattr };
 allow vendor_init ipa_dev:chr_file { open write };
-allow vendor_init media_data_file:dir { setattr };
-allow vendor_init camera_data_file:dir { setattr };
+allow vendor_init tombstone_data_file:dir { add_name create search setattr write };
 
+allow vendor_init firmware_file:filesystem { associate };
+allow vendor_init system_data_file:dir { add_name create setattr write };
+allow vendor_init audio_data_file:dir { add_name create search setattr write };
+allow vendor_init media_data_file:dir { create setattr };
+allow vendor_init media_rw_data_file:dir { create setattr };
+allow vendor_init nfc_data_file:dir { search setattr };
+allow vendor_init camera_data_file:dir { create setattr };
+allow vendor_init wifi_data_file:dir { search setattr };
+allow vendor_init wpa_socket:dir { setattr };
+allow vendor_init dhcp_data_file:dir { setattr };
+allow vendor_init proc:file { write };
+
+allow vendor_init vendor_init:capability { sys_module };
+allow vendor_init vendor_file:system { module_load };
+allow vendor_init debugfs:file { write };

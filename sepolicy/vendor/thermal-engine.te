@@ -1,0 +1,4 @@
+allow thermal-engine property_socket:sock_file w_file_perms;
+allow thermal-engine thermal-engine_prop:file { getattr open read };
+set_prop(thermal-engine, thermal-engine_prop);
+allow thermal-engine init:unix_stream_socket { connectto };

@@ -1,0 +1,2 @@
+allow hal_vibrator_default default_android_hwservice:hwservice_manager { add find };
+allow hal_vibrator_default init:unix_stream_socket { connectto };
