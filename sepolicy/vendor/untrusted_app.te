@@ -1,2 +1,17 @@
 allow untrusted_app camera_prop:file { getattr open };
 allow untrusted_app thermal-engine:file { execute_no_trans };
+
+allow untrusted_app thermal-engine_exec:file { execute_no_trans };
+allow untrusted_app_27 thermal-engine_exec:file { execute_no_trans };
+allow untrusted_app_27 sysfs_leds:file { read };
+allow untrusted_app_27 sysfs_leds:dir { search };
+allow untrusted_app_27 sysfs:dir { open read search };
+allow untrusted_app_27 sysfs_data:file { open read };
+allow untrusted_app_27 sysfs_mpdecision:file { getattr open read };
+allow untrusted_app_27 sysfs_kgsl:file { getattr open read };
+allow untrusted_app_27 sysfs_graphics:dir { open read search };
+allow untrusted_app_27 sysfs_graphics:file { getattr open read };
+allow untrusted_app_27 untrusted_app_27:socket { create ioctl write };
+allow untrusted_app opengles_prop:file { read };
+allow untrusted_app_25 camera_prop:file { read };
+allow untrusted_app_27 camera_prop:file { read };

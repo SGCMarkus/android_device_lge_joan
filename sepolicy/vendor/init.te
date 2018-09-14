@@ -4,7 +4,7 @@ allow init sysfs_graphics:file { open setattr write };
 
 allow init hal_perf_hwservice:hwservice_manager { find };
 allow init hal_perf_default:binder { call };
-
+allow init shell_exec:file { execute_no_trans };
 allow init nfc:binder { call };
 allow init device:chr_file { ioctl open read write };
 allow init hal_light_hwservice:hwservice_manager { add };
