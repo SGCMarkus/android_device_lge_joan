@@ -1,1 +1,2 @@
 allow system_server init:binder { call };
+allow system_server baseband_prop:file { getattr open read };
