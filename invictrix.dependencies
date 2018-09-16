@@ -8,7 +8,8 @@
     "target_path": "kernel/lge/msm8998"
   },
   {
-    "repository": "device_qcom_sepolicy",
-    "target_path: "device/qcom/sepolicy"
+    "remote": "github",
+    "repository": "me2151/proprietary_vendor_lge",
+    "target_path": "vendor/lge"
   }
 ]
