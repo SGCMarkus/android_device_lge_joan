@@ -1,7 +1,8 @@
 [
   {
-    "repository": "kernel_lge_msm8998",
-    "target_path": "kernel/lge/msm8998"
+    "repository": "InvictrixRom-devices/kernel_lge_msm8998",
+    "target_path": "kernel/lge/msm8998",
+    "branch": "inv-9.0"
   },
   {
     "remote": "github",
