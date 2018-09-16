@@ -10,6 +10,7 @@
   {
     "remote": "github",
     "repository": "me2151/proprietary_vendor_lge",
-    "target_path": "vendor/lge"
+    "target_path": "vendor/lge",
+    "branch": "inv-9.0"
   }
 ]
