@@ -48,9 +48,6 @@ vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
 vendor/lib64/soundfx/libshoebox.so
 
-# Audio - Firmware
-etc/firmware/Tfa9872.cnt:vendor/firmware/Tfa9872.cnt
-
 # Bluetooth
 vendor/bin/btnvtool
 vendor/bin/hci_qcomm_init
@@ -59,22 +56,6 @@ vendor/bin/wcnss_filter
 vendor/lib/libbtnv.so
 -vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
 vendor/lib64/libbtnv.so
-
-# Bluetooth - Firmware
-etc/firmware/nvm_tlv.bin:vendor/etc/firmware/nvm_tlv.bin
-etc/firmware/nvm_tlv_1.3.bin:vendor/etc/firmware/nvm_tlv_1.3.bin
-etc/firmware/nvm_tlv_2.1.bin:vendor/etc/firmware/nvm_tlv_2.1.bin
-etc/firmware/nvm_tlv_3.0.bin:vendor/etc/firmware/nvm_tlv_3.0.bin
-etc/firmware/nvm_tlv_3.2.bin:vendor/etc/firmware/nvm_tlv_3.2.bin
-etc/firmware/rampatch_tlv.img:vendor/etc/firmware/rampatch_tlv.img
-etc/firmware/rampatch_tlv_1.3.tlv:vendor/etc/firmware/rampatch_tlv_1.3.tlv
-etc/firmware/rampatch_tlv_2.1.tlv:vendor/etc/firmware/rampatch_tlv_2.1.tlv
-etc/firmware/rampatch_tlv_3.0.tlv:vendor/etc/firmware/rampatch_tlv_3.0.tlv
-etc/firmware/rampatch_tlv_3.2.tlv:vendor/etc/firmware/rampatch_tlv_3.2.tlv
-vendor/firmware/crbtfw20.tlv:vendor/firmware/crbtfw20.tlv
-vendor/firmware/crbtfw21.tlv:vendor/firmware/crbtfw21.tlv
-vendor/firmware/crnv20.bin:vendor/firmware/crnv20.bin
-vendor/firmware/crnv21.bin:vendor/firmware/crnv21.bin
 
 # Camera
 vendor/lib/hw/camera.msm8998.so
@@ -427,27 +408,6 @@ vendor/lib/libchromatix_s5k3m3_snapshot_raw_hdr.so
 vendor/lib/libchromatix_s5k3m3_zsl_preview_3a.so
 vendor/lib/libchromatix_s5k3m3_zsl_video_3a.so
 
-# Camera - Firmware
-vendor/firmware/cpp_firmware_v1_10_0.fw
-vendor/firmware/cpp_firmware_v1_12_0.fw
-vendor/firmware/cpp_firmware_v1_1_1.fw
-vendor/firmware/cpp_firmware_v1_1_6.fw
-vendor/firmware/cpp_firmware_v1_2_0.fw
-vendor/firmware/cpp_firmware_v1_4_0.fw
-vendor/firmware/cpp_firmware_v1_5_0.fw
-vendor/firmware/cpp_firmware_v1_5_1.fw
-vendor/firmware/cpp_firmware_v1_5_2.fw
-vendor/firmware/cpp_firmware_v1_6_0.fw
-vendor/firmware/cpp_firmware_v1_8_0.fw
-
-# Camera - OIS Firmware
-media/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev0_S_data1.bin:vendor/firmware/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev0_S_data1.bin
-media/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev0_S_data2.bin:vendor/firmware/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev0_S_data2.bin
-media/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev3_S_data1.bin:vendor/firmware/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev3_S_data1.bin
-media/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev3_S_data2.bin:vendor/firmware/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev3_S_data2.bin
-media/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev5_S_data1.bin:vendor/firmware/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev5_S_data1.bin
-media/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev5_S_data2.bin:vendor/firmware/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev5_S_data2.bin
-
 # Camera - Postprocessing
 vendor/lib/libchromaflash.so
 vendor/lib/libdepthmapwrapper.so
@@ -655,12 +615,6 @@ vendor/bin/hw/vendor.display.color@1.0-service
 vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti|dc6ff7d6bdb4bd7ee248eb03e4b1e53bd04f8221
 vendor/etc/init/vendor.display.color@1.0-service.rc
 vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc|69d9cbc54f8ac0a0fb010f92bfa7de5981d643cf
-vendor/lib/egl/eglSubDriverAndroid.so
-vendor/lib/egl/libEGL_adreno.so
-vendor/lib/egl/libGLESv1_CM_adreno.so
-vendor/lib/egl/libGLESv2_adreno.so
-vendor/lib/egl/libq3dtools_adreno.so
-vendor/lib/egl/libQTapGLES.so
 vendor/lib/hw/vulkan.msm8998.so
 vendor/lib/libadreno_utils.so
 vendor/lib/libbccQTI.so
@@ -686,12 +640,6 @@ vendor/lib/libtinyxml2_1.so
 vendor/lib/vendor.display.color@1.0_vendor.so
 vendor/lib/vendor.display.postproc@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.qdutils_disp@1.0_vendor.so|04bf21220673630ebaa4c8e7a84adbcdcf08f0dc
-vendor/lib64/egl/eglSubDriverAndroid.so
-vendor/lib64/egl/libEGL_adreno.so
-vendor/lib64/egl/libGLESv1_CM_adreno.so
-vendor/lib64/egl/libGLESv2_adreno.so
-vendor/lib64/egl/libq3dtools_adreno.so
-vendor/lib64/egl/libQTapGLES.so
 vendor/lib64/hw/vulkan.msm8998.so
 vendor/lib64/libadreno_utils.so
 vendor/lib64/libbccQTI.so
@@ -717,27 +665,6 @@ vendor/lib64/libtinyxml2_1.so
 vendor/lib64/vendor.display.color@1.0_vendor.so
 vendor/lib64/vendor.display.postproc@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0_vendor.so|d101774878c0374ad805d964c3d00c71b44456d9
-
-# Graphics - Firmware
-vendor/firmware/a530_gpmu.fw2
-vendor/firmware/a530_pfp.fw
-vendor/firmware/a530_pm4.fw
-vendor/firmware/a530_zap.b00
-vendor/firmware/a530_zap.b01
-vendor/firmware/a530_zap.b02
-vendor/firmware/a530_zap.elf
-vendor/firmware/a530_zap.mdt
-vendor/firmware/a530v1_pfp.fw
-vendor/firmware/a530v1_pm4.fw
-vendor/firmware/a530v2_seq.fw2
-vendor/firmware/a530v3_gpmu.fw2
-vendor/firmware/a530v3_seq.fw2
-vendor/firmware/a540_gpmu.fw2
-vendor/firmware/a540_zap.b00
-vendor/firmware/a540_zap.b01
-vendor/firmware/a540_zap.b02
-vendor/firmware/a540_zap.elf
-vendor/firmware/a540_zap.mdt
 
 # Graphics - HDR
 vendor/lib/libhdr_tm.so
