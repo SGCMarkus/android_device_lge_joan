@@ -46,7 +46,6 @@
 
 #include "vendor_init.h"
 #include "property_service.h"
-#include "util.h"
 
 using android::base::Trim;
 using android::base::GetProperty;
@@ -93,6 +92,11 @@ void init_target_properties()
         property_set("ro.product.model", "UNKNOWN");
         property_set("ro.vendor.product.model", "UNKNOWN");
         return;
+    }
+
+    if(device.find("930DS") != std::string::npos)
+    {
+        property_set("persist.radio.multisim.config", "dsds");
     }
 
     property_set("ro.product.model", device);
