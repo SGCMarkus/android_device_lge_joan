@@ -71,20 +71,21 @@ void property_override(const std::string& name, const std::string& value)
 void init_target_properties()
 {
     std::string device;
-    std::string model_suffix;
+    std::string cmdline;
     bool unknownDevice = true;
 
-    model_suffix = GetProperty("ro.boot.suffix", "");
+    android::base::ReadFileToString("/proc/cmdline", &cmdline);
 
-    device = "LG-";
-
-    for(std::string::size_type i = 2; i < model_suffix.size(); ++i) {
-        if(!strncmp(&model_suffix[i], ".", 1)) {
-            unknownDevice = false;
-            break;
+    for (const auto& entry : android::base::Split(android::base::Trim(cmdline), " ")) {
+        std::vector<std::string> pieces = android::base::Split(entry, "=");
+        if (pieces.size() == 2) {
+            if(pieces[0].compare("model.name") == 0)
+            {
+            	device = pieces[1];
+		unknownDevice = false;
+		break;
+            }
         }
-        
-        device += model_suffix[i];
     }
 
     if(unknownDevice)
