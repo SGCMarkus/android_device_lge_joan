@@ -1072,7 +1072,7 @@ service qcom-sh /vendor/bin/init.qcom.sh
     user root
     oneshot
 
-service baseband-sh /system/bin/sh /init.baseband.sh
+service baseband-sh /system/bin/sh /vendor/bin/init.baseband.sh
     class late_start
     user root
     oneshot
