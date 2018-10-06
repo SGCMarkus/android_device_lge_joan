@@ -43,7 +43,15 @@ public class QuadDACTileService extends TileService {
         if(!am.isWiredHeadsetOn())
         {
             setTileUnavailable();
+	    return;
         }
+	
+	if(QuadDAC.isEnabled())
+	{
+	    setTileActive();
+	} else {
+	    setTileInactive();
+	}
     }
 
     @Override
