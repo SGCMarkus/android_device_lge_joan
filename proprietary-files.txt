@@ -47,6 +47,8 @@ vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
 vendor/lib64/soundfx/libshoebox.so
+vendor/lib/hw/audio.primary.joan.so
+vendor/lib64/hw/audio.primary.joan.so
 
 # Bluetooth
 vendor/bin/btnvtool
