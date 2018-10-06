@@ -509,6 +509,7 @@ vendor/lib64/libspl.so
 vendor/lib64/libssd.so
 vendor/lib64/libStDrvInt.so
 vendor/lib64/libtzdrmgenprov.so
+vendor/lib/liboemcrypto.so
 
 # DRM - Widevine
 vendor/bin/hw/android.hardware.drm@1.0-service.widevine
