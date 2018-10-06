@@ -110,13 +110,21 @@ public class QuadDACPanelFragment extends PreferenceFragment
 
         if(am.isWiredHeadsetOn()) {
             quaddac_switch.setEnabled(true);
-            if(quaddac_switch.isChecked())
+            if(QuadDAC.isEnabled())
             {
+		quaddac_switch.setChecked(true);
                 enableExtraSettings();
-            }
+            } else {
+		quaddac_switch.setChecked(false);
+		disableExtraSettings();
+	    }
         } else {
             quaddac_switch.setEnabled(false);
             disableExtraSettings();
+	    if(QuadDAC.isEnabled())
+            {
+		quaddac_switch.setChecked(true);
+	    }
         }
     }
 

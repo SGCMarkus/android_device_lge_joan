@@ -67,6 +67,7 @@ public class QuadDACTileService extends TileService {
         Tile quaddactile = getQsTile();
         quaddactile.setState(Tile.STATE_ACTIVE);
         quaddactile.setLabel("Quad DAC is used");
+	quaddactile.updateTile();
     }
 
     private void setTileInactive()
@@ -74,6 +75,7 @@ public class QuadDACTileService extends TileService {
         Tile quaddactile = getQsTile();
         quaddactile.setState(Tile.STATE_INACTIVE);
         quaddactile.setLabel("Quad DAC is not used");
+	quaddactile.updateTile();
     }
 
     private void setTileUnavailable()
@@ -81,6 +83,7 @@ public class QuadDACTileService extends TileService {
         Tile quaddactile = getQsTile();
         quaddactile.setState(Tile.STATE_INACTIVE);
         quaddactile.setLabel("Quad DAC unavailable");
+	quaddactile.updateTile();
     }
 
     private class HeadsetPluggedTileReceiver extends BroadcastReceiver {
@@ -89,7 +92,6 @@ public class QuadDACTileService extends TileService {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(Intent.ACTION_HEADSET_PLUG)) {
                 int state = intent.getIntExtra("state", -1);
-                Tile quaddactile = getQsTile();
                 switch(state)
                 {
                     case 1: // Headset plugged in
