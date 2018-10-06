@@ -55,7 +55,7 @@ public class QuadDAC {
     public static boolean isEnabled()
     {
         String hifi_dac = SystemProperties.get(Constants.PROPERTY_HIFI_DAC_ENABLED);
-        return hifi_dac.equals("on");
+        return hifi_dac.equals("ON");
     }
 
 }
