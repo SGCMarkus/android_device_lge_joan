@@ -93,6 +93,10 @@ PRODUCT_PACKAGES += \
     libxml2 \
     Snap
 
+# DAC
+PRODUCT_PACKAGES += \
+    QuadDACPanel
+
 # Dalvik/HWUI
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.texture_cache_size=72 \
