@@ -24,4 +24,6 @@
     <string name="digital_filter_sharp">Sharp</string>
     <string name="digital_filter_slow">Slow</string>
 
+    <string name="empty_string"></string>
+
 </resources>

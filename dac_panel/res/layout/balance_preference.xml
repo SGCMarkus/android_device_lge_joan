@@ -9,7 +9,7 @@
         style="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title"
+        android:text="@string/empty_string"
         android:visibility="gone"/>
 
     <TextView
