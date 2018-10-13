@@ -9,7 +9,7 @@
 /dev/block/bootdevice/by-name/boot          /boot             emmc    defaults                                                                  defaults
 /dev/block/bootdevice/by-name/system        /system           ext4    ro,barrier=1,discard                                                      wait,recoveryonly
 /dev/block/bootdevice/by-name/cache         /cache            ext4    discard,nosuid,nodev,barrier=1,noatime,noauto_da_alloc,errors=continue    wait,check,formattable
-/dev/block/bootdevice/by-name/userdata      /data             ext4    discard,nosuid,nodev,barrier=1,noatime,noauto_da_alloc,errors=continue    wait,check,formattable,quota
+/dev/block/bootdevice/by-name/userdata      /data             ext4    discard,nosuid,nodev,barrier=1,noatime,noauto_da_alloc,errors=continue    wait,check,formattable,encryptable=/dev/block/bootdevice/by-name/encrypt,quota
 /dev/block/bootdevice/by-name/misc          /misc             emmc    defaults                                                                  defaults
 /dev/block/bootdevice/by-name/ftm           /ftm              emmc    defaults                                                                  defaults
 
