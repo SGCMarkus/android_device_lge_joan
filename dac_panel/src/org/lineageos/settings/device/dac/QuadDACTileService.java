@@ -81,7 +81,7 @@ public class QuadDACTileService extends TileService {
     private void setTileUnavailable()
     {
         Tile quaddactile = getQsTile();
-        quaddactile.setState(Tile.STATE_INACTIVE);
+        quaddactile.setState(Tile.STATE_UNAVAILABLE);
         quaddactile.setLabel("Quad DAC unavailable");
 	quaddactile.updateTile();
     }
