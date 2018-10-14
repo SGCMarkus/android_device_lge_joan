@@ -15,9 +15,9 @@ public class QuadDACTileService extends TileService {
 
     private final static String TAG = "QuadDACTileService";
 
-    private String QDAC_ON = getString(R.string.quad_dac_on);
-    private String QDAC_OFF = getString(R.string.quad_dac_off);
-    private String QDAC_UNAVAIL = getString(R.string.quad_dac_unavail);
+    private String QDAC_ON = getResources().getString(R.string.quad_dac_on);
+    private String QDAC_OFF = getResources().getString(R.string.quad_dac_off);
+    private String QDAC_UNAVAIL = getResources().getString(R.string.quad_dac_unavail);
 
     private HeadsetPluggedTileReceiver headsetPluggedTileReceiver = new HeadsetPluggedTileReceiver();
 
