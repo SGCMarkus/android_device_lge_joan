@@ -15,6 +15,10 @@ public class QuadDACTileService extends TileService {
 
     private final static String TAG = "QuadDACTileService";
 
+    private String QDAC_ON = getString(R.string.quad_dac_on);
+    private String QDAC_OFF = getString(R.string.quad_dac_off);
+    private String QDAC_UNAVAIL = getString(R.string.quad_dac_unavail);
+
     private HeadsetPluggedTileReceiver headsetPluggedTileReceiver = new HeadsetPluggedTileReceiver();
 
     @Override
@@ -66,7 +70,7 @@ public class QuadDACTileService extends TileService {
     {
         Tile quaddactile = getQsTile();
         quaddactile.setState(Tile.STATE_ACTIVE);
-        quaddactile.setLabel("Quad DAC is used");
+        quaddactile.setLabel(QDAC_ON);
 	quaddactile.updateTile();
     }
 
@@ -74,7 +78,7 @@ public class QuadDACTileService extends TileService {
     {
         Tile quaddactile = getQsTile();
         quaddactile.setState(Tile.STATE_INACTIVE);
-        quaddactile.setLabel("Quad DAC is not used");
+        quaddactile.setLabel(QDAC_OFF);
 	quaddactile.updateTile();
     }
 
@@ -82,7 +86,7 @@ public class QuadDACTileService extends TileService {
     {
         Tile quaddactile = getQsTile();
         quaddactile.setState(Tile.STATE_UNAVAILABLE);
-        quaddactile.setLabel("Quad DAC unavailable");
+        quaddactile.setLabel(QDAC_UNAVAIL);
 	quaddactile.updateTile();
     }
 

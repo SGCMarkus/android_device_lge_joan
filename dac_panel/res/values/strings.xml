@@ -2,8 +2,9 @@
     <string name="quad_dac_app_name">Quad DAC Panel</string>
 
     <string name="quad_dac">Hi-Fi Quad DAC</string>
-    <string name="quad_dac_on">Quad DAC is being used</string>
-    <string name="quad_dac_off">Quad DAC is not being used</string>
+    <string name="quad_dac_on">Quad DAC on</string>
+    <string name="quad_dac_off">Quad DAC off</string>
+    <string name="quad_dac_unavail">Quad DAC unavailable</string>
 
     <string name="quad_dac_settings">Quad DAC Settings</string>
 
