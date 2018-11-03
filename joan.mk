@@ -368,7 +368,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-service
+    android.hardware.vibrator@1.2-service.joan
 
 # VR HAL
 PRODUCT_PACKAGES += \
