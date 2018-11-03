@@ -1023,32 +1023,6 @@ vendor/lib/libTimeService.so
 vendor/lib64/libTimeService.so
 -vendor/lib64/libtime_genoff.so
 
-# Vibrator
-vendor/lib/hw/android.hardware.vibrator@1.0-impl.lge.so
-vendor/lib64/hw/android.hardware.vibrator@1.0-impl.lge.so
-#vendor/bin/hw/android.hardware.vibrator@1.0-service
-#vendor/etc/init/android.hardware.vibrator@1.0-service.rc
-lib/libpparam.so:vendor/lib/libpparam.so
-lib64/libpparam.so:vendor/lib64/libpparam.so
-bin/immvibed:vendor/bin/immvibed
-vendor/bin/hw/android.hardware.vibrator@1.0-service
-vendor/bin/hw/vendor.lge.hardware.vibrator@1.0-service-immersion
-vendor/etc/init/vendor.lge.hardware.vibrator@1.0-service.rc
-vendor/lib/hw/android.hardware.vibrator@1.0-impl.so
-vendor/lib64/hw/android.hardware.vibrator@1.0-impl.so
-vendor/lib/hw/vendor.lge.hardware.vibrator@1.0-impl-immersion.so
-vendor/lib64/hw/vendor.lge.hardware.vibrator@1.0-impl-immersion.so
-vendor/lib/vendor.lge.hardware.vibrator@1.0_vendor.so
-vendor/lib64/vendor.lge.hardware.vibrator@1.0_vendor.so
-lib/libImmVibeJ.so:vendor/lib/libImmVibeJ.so
-lib64/libImmVibeJ.so:vendor/lib64/libImmVibeJ.so
-lib/libimmvibeandroidmanager.so:vendor/lib/libimmvibeandroidmanager.so
-lib64/libimmvibeandroidmanager.so:vendor/lib64/libimmvibeandroidmanager.so
-lib/hw/vibrator.default.so:vendor/lib/hw/vibrator.joan.so
-lib64/hw/vibrator.default.so:vendor/lib64/hw/vibrator.joan.so
-lib/libvolumevibratorcallback.so:vendor/lib/libvolumevibratorcallback.so
-lib64/libvolumevibratorcallback.so:vendor/lib64/libvolumevibratorcallback.so
-
 # Voice fingerprint
 vendor/bin/qvop-daemon
 vendor/lib64/libqvop-service.so
