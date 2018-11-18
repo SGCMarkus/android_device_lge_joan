@@ -1937,6 +1937,10 @@
     <path name="handset-mic-sbc">
     </path>
 
+    <path name="unprocessed-dual-mic">
+        <path name="handset-mic" />
+    </path>
+
     <path name="three-mic">
         <ctl name="AIF1_CAP Mixer SLIM TX5" value="1" />
         <ctl name="AIF1_CAP Mixer SLIM TX6" value="1" />
