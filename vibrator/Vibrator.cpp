@@ -49,16 +49,16 @@ static constexpr uint8_t DEFAULT_AMPLITUDE = 127;
 static constexpr int32_t OUTPUT_BUFFER_SIZE = 40;
 
 // Click effect in ms
-static constexpr int32_t WAVEFORM_CLICK_EFFECT_MS = 7;
+static constexpr int32_t WAVEFORM_CLICK_EFFECT_MS = 6;
 
 // Tick effect in ms
-static constexpr int32_t WAVEFORM_TICK_EFFECT_MS = 6;
+static constexpr int32_t WAVEFORM_TICK_EFFECT_MS = 2;
 
 // Double click effect in ms
 static constexpr uint32_t WAVEFORM_DOUBLE_CLICK_EFFECT_MS = 135;
 
 // Heavy click effect in ms
-static constexpr uint32_t WAVEFORM_HEAVY_CLICK_EFFECT_MS = 14;
+static constexpr uint32_t WAVEFORM_HEAVY_CLICK_EFFECT_MS = 8;
 
 using Status = ::android::hardware::vibrator::V1_0::Status;
 using EffectStrength = ::android::hardware::vibrator::V1_0::EffectStrength;
