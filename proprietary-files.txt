@@ -47,8 +47,8 @@ vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
 vendor/lib64/soundfx/libshoebox.so
-vendor/lib/hw/audio.primary.joan.so
-vendor/lib64/hw/audio.primary.joan.so
+vendor/lib/hw/audio.primary.msm8998.so:vendor/lib/hw/audio.primary.joan.so
+vendor/lib64/hw/audio.primary.msm8998.so:vendor/lib64/hw/audio.primary.joan.so
 
 # Bluetooth
 vendor/bin/btnvtool
@@ -58,6 +58,18 @@ vendor/bin/wcnss_filter
 vendor/lib/libbtnv.so
 -vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
 vendor/lib64/libbtnv.so
+
+# Bluetooth - Firmware
+etc/firmware/nvm_tlv.bin:vendor/etc/firmware/nvm_tlv.bin 
+etc/firmware/nvm_tlv_1.3.bin:vendor/etc/firmware/nvm_tlv_1.3.bin 
+etc/firmware/nvm_tlv_2.1.bin:vendor/etc/firmware/nvm_tlv_2.1.bin 
+etc/firmware/nvm_tlv_3.0.bin:vendor/etc/firmware/nvm_tlv_3.0.bin 
+etc/firmware/nvm_tlv_3.2.bin:vendor/etc/firmware/nvm_tlv_3.2.bin 
+etc/firmware/rampatch_tlv.img:vendor/etc/firmware/rampatch_tlv.img 
+etc/firmware/rampatch_tlv_1.3.tlv:vendor/etc/firmware/rampatch_tlv_1.3.tlv 
+etc/firmware/rampatch_tlv_2.1.tlv:vendor/etc/firmware/rampatch_tlv_2.1.tlv 
+etc/firmware/rampatch_tlv_3.0.tlv:vendor/etc/firmware/rampatch_tlv_3.0.tlv 
+etc/firmware/rampatch_tlv_3.2.tlv:vendor/etc/firmware/rampatch_tlv_3.2.tlv 
 
 # Camera
 vendor/lib/hw/camera.msm8998.so
@@ -492,7 +504,7 @@ lib64/libdiag_system.so
 
 # DRM
 vendor/bin/qseecomd
-vendor/lib/lib-sec-disp.so
+vendor/lib/lib-sec-disp.so|3b75e338aa715d12d576837e917911091eb693d2
 vendor/lib/libcppf.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libsdedrm.so
@@ -500,7 +512,7 @@ vendor/lib/libsecureui.so
 vendor/lib/libsecureui_svcsock.so
 vendor/lib/libsecureuisvc_jni.so
 vendor/lib/libtzdrmgenprov.so
-vendor/lib64/lib-sec-disp.so
+vendor/lib64/lib-sec-disp.so|888c62e2bcd5c41c62b6b8c8bc437db8127d7bde
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
 vendor/lib64/libGPreqcancel_svc.so
@@ -592,7 +604,7 @@ lib64/libpcas.so:vendor/lib64/libpcas.so
 vendor/bin/hw/vendor.qti.gnss@1.0-service
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
-vendor/bin/slim_daemon
+vendor/bin/slim_daemon|4f5ae2ef240331c8d91c5e6eb4d9aa5d7795e53d
 vendor/bin/xtra-daemon
 vendor/etc/init/vendor.qti.gnss@1.0-service.rc
 vendor/lib/hw/vendor.qti.gnss@1.0-impl.so
@@ -677,6 +689,20 @@ vendor/lib64/vendor.display.color@1.0_vendor.so
 vendor/lib64/vendor.display.postproc@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0_vendor.so|d101774878c0374ad805d964c3d00c71b44456d9
 
+# Graphics - Driver
+vendor/lib/egl/eglSubDriverAndroid.so
+vendor/lib/egl/libEGL_adreno.so
+vendor/lib/egl/libGLESv1_CM_adreno.so
+vendor/lib/egl/libGLESv2_adreno.so
+vendor/lib/egl/libq3dtools_adreno.so
+vendor/lib/egl/libQTapGLES.so
+vendor/lib64/egl/eglSubDriverAndroid.so
+vendor/lib64/egl/libEGL_adreno.so
+vendor/lib64/egl/libGLESv1_CM_adreno.so
+vendor/lib64/egl/libGLESv2_adreno.so
+vendor/lib64/egl/libq3dtools_adreno.so
+vendor/lib64/egl/libQTapGLES.so
+
 # Graphics - HDR
 vendor/lib/libhdr_tm.so
 vendor/lib64/libhdr_tm.so
@@ -750,10 +776,6 @@ vendor/lib64/libOmxVpp.so
 vendor/lib64/libOmxWmaDec.so
 vendor/lib64/libvpphvx.so
 vendor/lib64/libvpplibrary.so
-
-# NFC
-vendor/firmware/libpn548ad_fw_64.so:vendor/lib64/libpn548ad_fw_64.so
-vendor/firmware/libpn548ad_fw.so:vendor/lib/libpn548ad_fw.so
 
 # Perf
 vendor/bin/energy-awareness
@@ -877,7 +899,7 @@ vendor/lib64/libpdnotifier.so
 -vendor/lib64/libqmiservices.so
 vendor/lib64/libril.so
 vendor/lib64/libril-qc-ltedirectdisc.so
-vendor/lib64/libril-qc-qmi-1.so
+vendor/lib64/libril-qc-qmi-1.so|47777b48bfa7757ab9513ce26264886565510346
 vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
@@ -974,4 +996,4 @@ vendor/lib64/hw/vr.joan.so
 etc/wifi/bdwlan.bin:vendor/etc/firmware/wifi/q/bdwlan.bin
 etc/wifi/bdwlan_ch0.bin:vendor/etc/firmware/wifi/q/bdwlan_ch0.bin
 etc/wifi/bdwlan_ch1.bin:vendor/etc/firmware/wifi/q/bdwlan_ch1.bin
-vendor/bin/cnss-daemon|2615042625a6fc2bf876617e88c8c1fd9de2e6e0
+vendor/bin/cnss-daemon|f9759f7c0b56b4bf14f9e9b9c50f52aa62e0dad0
