@@ -37,7 +37,7 @@ fi
 setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true
 
 # Copyright headers and common guards
-write_headers "h930 us998"
+write_headers "h930 h932"
 
 write_makefiles "$MY_DIR"/proprietary-files.txt true
 
