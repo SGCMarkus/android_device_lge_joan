@@ -1,3 +1,5 @@
 type mpt_file, file_type, data_file_type;
 type sns_file, file_type, data_file_type;
 type immvibed_exec, exec_type, file_type;
+
+type sensors_data_file, file_type, data_file_type;

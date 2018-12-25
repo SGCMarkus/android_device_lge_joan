@@ -12,6 +12,6 @@ allow untrusted_app_27 sysfs_kgsl:file { getattr open read };
 allow untrusted_app_27 sysfs_graphics:dir { open read search };
 allow untrusted_app_27 sysfs_graphics:file { getattr open read };
 allow untrusted_app_27 untrusted_app_27:socket { create ioctl write };
-allow untrusted_app opengles_prop:file { read };
+allow untrusted_app vendor_opengles_prop:file { read };
 allow untrusted_app_25 camera_prop:file { read };
 allow untrusted_app_27 camera_prop:file { read };
