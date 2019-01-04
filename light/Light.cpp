@@ -16,9 +16,9 @@
 
 #define LOG_TAG "LightService"
 
-#include <log/log.h>
-
 #include "Light.h"
+#include <log/log.h>
+#include <android-base/stringprintf.h>
 
 #include <fstream>
 
@@ -37,6 +37,7 @@ namespace implementation {
 #define RGB_LED         LEDS "rgb/"
 
 #define BRIGHTNESS      "brightness"
+#define MAX_BRIGHTNESS  "max_brightness"
 #define DUTY_PCTS       "duty_pcts"
 #define START_IDX       "start_idx"
 #define PAUSE_LO        "pause_lo"
@@ -45,131 +46,50 @@ namespace implementation {
 #define RGB_BLINK       "rgb_blink"
 
 /*
- * 8 duty percent steps.
- */
-#define RAMP_STEPS 8
-/*
- * Each step will stay on for 50ms by default.
- */
-#define RAMP_STEP_DURATION 50
-/*
- * Each value represents a duty percent (0 - 100) for the led pwm.
- */
-static int32_t BRIGHTNESS_RAMP[RAMP_STEPS] = {0, 12, 25, 37, 50, 72, 85, 100};
-
-/*
  * Write value to path and close file.
  */
-static void set(std::string path, std::string value) {
+template <typename T>
+static void set(const std::string& path, const T& value) {
     std::ofstream file(path);
-
-    if (!file.is_open()) {
-        ALOGE("failed to write %s to %s", value.c_str(), path.c_str());
-        return;
-    }
-
     file << value;
 }
 
-static void set(std::string path, int value) {
-    set(path, std::to_string(value));
+template <typename T>
+static T get(const std::string& path, const T& def) {
+    std::ifstream file(path);
+    T result;
+
+    file >> result;
+    return file.fail() ? def : result;
+}
+
+static int rgbToBrightness(const LightState& state) {
+    int color = state.color & 0x00ffffff;
+    return ((77 * ((color >> 16) & 0x00ff))
+            + (150 * ((color >> 8) & 0x00ff))
+            + (29 * (color & 0x00ff))) >> 8;
 }
 
 static void handleBacklight(const LightState& state) {
-    uint32_t brightness = state.color & 0xFF;
+    //uint32_t brightness = state.color & 0xFF;
+    int maxBrightness = get(LCD_LED MAX_BRIGHTNESS, -1);
+    if (maxBrightness < 0) {
+        maxBrightness = 255;
+    }
+    int sentBrightness = rgbToBrightness(state);
+    int brightness = sentBrightness * maxBrightness / 255;
+
+    //LOG(DEBUG) << "Writing backlight brightness " << brightness
+    //           << " (orig " << sentBrightness << ")";
+
+    //ALOGE("Backlight brightness: %s, Original: %s", std::to_string(brightness).c_str(), std::to_string(sentBrightness).c_str());
+    //ALOGE("Backlight brightness: %s", std::to_string(sentBrightness).c_str());
     set(LCD_LED BRIGHTNESS, brightness);
-}
-
-/*
- * Scale each value of the brightness ramp according to the
- * brightness of the color.
- */
-static std::string getScaledRamp(uint32_t brightness) {
-    std::string ramp, pad;
-
-    for (auto const& step : BRIGHTNESS_RAMP) {
-        int32_t scaledStep = (step * brightness) / 0xFF;
-        ramp += pad + std::to_string(scaledStep);
-        pad = ",";
-    }
-
-    return ramp;
-}
-
-static void handleNotification(const LightState& state) {
-    uint32_t redBrightness, greenBrightness, blueBrightness, brightness;
-
-    /*
-     * Extract brightness from AARRGGBB.
-     */
-    redBrightness = (state.color >> 16) & 0xFF;
-    greenBrightness = (state.color >> 8) & 0xFF;
-    blueBrightness = state.color & 0xFF;
-
-    brightness = (state.color >> 24) & 0xFF;
-
-    /*
-     * Scale RGB brightness if the Alpha brightness is not 0xFF.
-     */
-    if (brightness != 0xFF) {
-        redBrightness = (redBrightness * brightness) / 0xFF;
-        greenBrightness = (greenBrightness * brightness) / 0xFF;
-        blueBrightness = (blueBrightness * brightness) / 0xFF;
-    }
-
-    /* Disable blinking. */
-    set(RGB_LED RGB_BLINK, 0);
-
-    if (state.flashMode == Flash::TIMED) {
-        /*
-         * If the flashOnMs duration is not long enough to fit ramping up
-         * and down at the default step duration, step duration is modified
-         * to fit.
-         */
-        int32_t stepDuration = RAMP_STEP_DURATION;
-        int32_t pauseHi = state.flashOnMs - (stepDuration * RAMP_STEPS * 2);
-        int32_t pauseLo = state.flashOffMs;
-
-        if (pauseHi < 0) {
-            stepDuration = state.flashOnMs / (RAMP_STEPS * 2);
-            pauseHi = 0;
-        }
-
-        /* Red */
-        set(RED_LED START_IDX, 0 * RAMP_STEPS);
-        set(RED_LED DUTY_PCTS, getScaledRamp(redBrightness));
-        set(RED_LED PAUSE_LO, pauseLo);
-        set(RED_LED PAUSE_HI, pauseHi);
-        set(RED_LED RAMP_STEP_MS, stepDuration);
-
-        /* Green */
-        set(GREEN_LED START_IDX, 1 * RAMP_STEPS);
-        set(GREEN_LED DUTY_PCTS, getScaledRamp(greenBrightness));
-        set(GREEN_LED PAUSE_LO, pauseLo);
-        set(GREEN_LED PAUSE_HI, pauseHi);
-        set(GREEN_LED RAMP_STEP_MS, stepDuration);
-
-        /* Blue */
-        set(BLUE_LED START_IDX, 2 * RAMP_STEPS);
-        set(BLUE_LED DUTY_PCTS, getScaledRamp(blueBrightness));
-        set(BLUE_LED PAUSE_LO, pauseLo);
-        set(BLUE_LED PAUSE_HI, pauseHi);
-        set(BLUE_LED RAMP_STEP_MS, stepDuration);
-
-        /* Enable blinking. */
-        set(RGB_LED RGB_BLINK, 1);
-    } else {
-        set(RED_LED BRIGHTNESS, redBrightness);
-        set(GREEN_LED BRIGHTNESS, greenBrightness);
-        set(BLUE_LED BRIGHTNESS, blueBrightness);
-    }
+    //set(LCD_LED BRIGHTNESS, sentBrightness);
 }
 
 static std::map<Type, std::function<void(const LightState&)>> lights = {
     {Type::BACKLIGHT, handleBacklight},
-    {Type::BATTERY, handleNotification},
-    {Type::NOTIFICATIONS, handleNotification},
-    {Type::ATTENTION, handleNotification},
 };
 
 Light::Light() {}
