@@ -2,3 +2,7 @@ allow hal_bluetooth_default bluetooth_data_file:file { append create getattr ope
 allow hal_bluetooth_default bluetooth_data_file:dir { add_name search write };
 allow hal_bluetooth_default firmware_file:dir { getattr open read search };
 allow hal_bluetooth_default firmware_file:file { getattr open read };
+
+allow hal_bluetooth_default vendor_bt_data_file:dir { write add_name };
+allow hal_bluetooth_default vendor_bt_data_file:file { getattr read append write open create };
+

@@ -1,3 +1,7 @@
 allow shell kernel:system { syslog_read };
 
 allow qti_init_shell sensors_data_file:dir r_dir_perms;
+
+allow shell sysfs_leds:dir { search };
+allow shell sysfs_graphics:dir { search };
+allow shell sysfs_graphics:file { open read };

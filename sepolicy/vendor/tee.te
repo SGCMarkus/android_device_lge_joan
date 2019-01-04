@@ -1,0 +1,5 @@
+allow tee system_data_file:dir { open read };
+allow tee fingerprintd_data_file:dir { open read search write add_name };
+allow tee fingerprintd_data_file:file { read write open create };
+
+allow tee system_prop:property_service { set };

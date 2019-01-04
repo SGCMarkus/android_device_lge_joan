@@ -10,6 +10,7 @@ allow vendor_init system_data_file:dir { add_name create setattr write };
 allow vendor_init audio_data_file:dir { add_name create search setattr write };
 allow vendor_init media_data_file:dir { create setattr };
 allow vendor_init media_rw_data_file:dir { create setattr };
+allow vendor_init media_rw_data_file:file { getattr relabelfrom };
 allow vendor_init nfc_data_file:dir { search setattr };
 allow vendor_init camera_data_file:dir { create setattr };
 allow vendor_init wifi_data_file:dir { search setattr };
@@ -20,3 +21,5 @@ allow vendor_init proc:file { write };
 allow vendor_init vendor_init:capability { sys_module };
 allow vendor_init vendor_file:system { module_load };
 allow vendor_init debugfs:file { write };
+
+allow vendor_init adsprpcd_file:dir { create };

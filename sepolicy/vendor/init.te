@@ -23,3 +23,12 @@ allow init init:capability { sys_nice };
 allow init sysfs:file { setattr };
 allow init immvibed_exec:file { execute execute_no_trans getattr open read };
 
+allow init tee_device:chr_file { write };
+
+allow init mediadrmserver:binder { transfer };
+allow init init:process { execmem };
+allow init hal_wifi_supplicant_default:process { noatsecure };
+
+allow init proc:file { getattr open read };
+allow init vndbinder_device:chr_file { ioctl open read write };
+

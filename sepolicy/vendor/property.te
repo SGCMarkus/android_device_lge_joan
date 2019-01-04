@@ -3,3 +3,4 @@ type camera-hal_prop, property_type;
 type rild_prop, property_type;
 type qti-shell_prop, property_type;
 type baseband_prop, property_type;
+type hifi_dac_prop, property_type;
