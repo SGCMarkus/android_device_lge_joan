@@ -17,3 +17,5 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.joan     u:object_r:hal_light_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.thermal@1\.1-service\.joan   u:object_r:hal_thermal_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.1-service-nxp      u:object_r:hal_nfc_default_exec:s0
+
+/sys/devices/virtual/input/lge_fingerprint/device_prepare			u:object_r:sysfs_lge_fingerprint_prepare:s0

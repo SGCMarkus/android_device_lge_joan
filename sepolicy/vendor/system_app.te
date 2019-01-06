@@ -17,3 +17,5 @@ allow system_app netd:binder { call };
 allow system_app vold:binder { call };
 
 allow { gallery_app snap_app } vendor_camera_prop:file { read };
+
+allow system_app sysfs_lge_fingerprint_prepare:file { rw_file_perms };

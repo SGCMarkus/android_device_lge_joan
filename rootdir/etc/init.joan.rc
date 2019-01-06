@@ -330,6 +330,7 @@ on boot
    chmod 0660 /sys/devices/virtual/input/lge_fingerprint/qup_id
    chmod 0220 /sys/devices/virtual/input/lge_fingerprint/waitfinger
    chmod 0660 /sys/devices/virtual/input/lge_fingerprint/spi_prepare
+   
 # FPC device permission
 
    chown system input /sys/devices/virtual/input/lge_fingerprint/bus_lock
@@ -342,6 +343,9 @@ on boot
    chown system input /sys/devices/virtual/input/lge_fingerprint/spi_owner
    chown system input /sys/devices/virtual/input/lge_fingerprint/regulator_enable
    chown system input /sys/devices/virtual/input/lge_fingerprint/wakeup_enable
+
+   chown system system /sys/devices/virtual/input/lge_fingerprint/device_prepare
+   chmod 0660 /sys/devices/virtual/input/lge_fingerprint/device_prepare
 
 #for Dynamic Resolution Switching
   chmod 644 /sys/class/graphics/fb0/mode
