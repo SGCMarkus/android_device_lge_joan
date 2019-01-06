@@ -1,2 +1,3 @@
 allow qvop-daemon system_data_file:dir { write add_name };
+allow qvop-daemon system_data_file:file { create };
 

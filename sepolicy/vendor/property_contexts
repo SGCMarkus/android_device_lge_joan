@@ -6,5 +6,8 @@ ro.ims.networkinfo                u:object_r:rild_prop:s0
 persist.mmi.misc_dev_path         u:object_r:qti-shell_prop:s0
 gsm.version.baseband		  u:object_r:baseband_prop:s0
 
-persist.audio.hifi_dac		  u:object_r:hifi_dac_prop:s0
-persist.audio.hifi_dac.		  u:object_r:hifi_dac_prop:s0
+persist.audio.hifi_dac		  		  u:object_r:hifi_dac_prop:s0
+persist.audio.hifi_dac.digitalFilter		  u:object_r:hifi_dac_prop:s0
+persist.audio.hifi_dac.soundPreset		  u:object_r:hifi_dac_prop:s0
+persist.audio.hifi_dac.left_balance		  u:object_r:hifi_dac_prop:s0
+persist.audio.hifi_dac.right_balance		  u:object_r:hifi_dac_prop:s0

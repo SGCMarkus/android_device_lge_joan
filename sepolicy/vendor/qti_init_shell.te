@@ -3,7 +3,7 @@ allow qti_init_shell rootfs:filesystem { associate };
 allow qti_init_shell sysfs_cpu_boost:file { write };
 allow qti_init_shell vendor_file:file { entrypoint };
 
-allow qti_init_shell vendor_radio_data_file:dir { setattr getattr write add_name remove_name rmdir create read open };
+allow qti_init_shell vendor_radio_data_file:dir { setattr getattr write add_name remove_name rmdir create read open search };
 allow qti_init_shell vendor_radio_data_file:file { getattr setattr create read write open unlink };
 allow qti_init_shell qti_init_shell:capability { dac_override };
 
@@ -13,3 +13,5 @@ allow qti_init_shell debug_prop:property_service { set };
 
 allow qti_init_shell system_prop:property_service { set };
 allow qti_init_shell qti-shell_prop:property_service { set };
+
+allow qti_init_shell ctl_start_prop:property_service { set };

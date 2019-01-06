@@ -1,5 +1,5 @@
 allow hal_audio_default hifi_dac_prop:file { read open getattr };
-# allow hal_audio_default hifi_dac_prop:property_service { set };
+allow hal_audio_default hifi_dac_prop:property_service { set };
 
 allow hal_audio_default vendor_data_file:dir { write add_name };
 allow hal_audio_default vendor_data_file:file { read append open getattr create };
@@ -7,3 +7,4 @@ allow hal_audio_default init:unix_stream_socket {connectto };
 
 allow hal_audio_default property_socket:sock_file { write };
 allow hal_audio_default wifi_prop:property_service { set };
+
