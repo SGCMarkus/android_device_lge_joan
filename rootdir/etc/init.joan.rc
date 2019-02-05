@@ -616,6 +616,9 @@ on post-fs-data
     mkdir /data/misc/fm 0770 system system
     chmod 0770 /data/misc/fm
 
+    # Create directory for fm_radio
+    mkdir /data/misc/fm_radio 0770 system system
+
     #Create PERFD deamon related dirs
     mkdir /data/vendor/perfd 0770 root system
     chmod 2770 /data/vendor/perfd

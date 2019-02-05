@@ -32,6 +32,10 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 560dpi
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
+# ANT+
+PRODUCT_PACKAGES += \
+    AntHalService
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
@@ -75,7 +79,7 @@ TARGET_SCREEN_WIDTH := 1440
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0-service \
+    android.hardware.bluetooth@1.0 \
     libbt-vendor
 
 # Camera
@@ -151,6 +155,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service \
     LGEPocketMode
+
+# FM packages
+PRODUCT_PACKAGES += \
+	libqcomfm_jni \
+	android.hardware.broadcastradio@1.0-impl \
+	FM2 \
+	qcom.fmradio \
+	qcom.fmradio.xml
+
+PRODUCT_BOOT_JARS += qcom.fmradio
 
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \

@@ -8,6 +8,16 @@ vendor/lib64/libadsprpc.so
 vendor/lib64/libfastcvadsp_stub.so
 vendor/lib64/libfastcvopt.so
 
+# ANT+
+lib64/com.qualcomm.qti.ant@1.0.so
+-lib64/libantradio.so
+vendor/lib64/com.qualcomm.qti.ant@1.0_vendor.so
+vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
+lib/com.qualcomm.qti.ant@1.0.so
+-lib/libantradio.so
+vendor/lib/com.qualcomm.qti.ant@1.0_vendor.so
+vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
+
 # AptX
 lib64/libaptX_encoder.so:vendor/lib64/libaptX_encoder.so
 lib64/libaptXHD_encoder.so:vendor/lib64/libaptXHD_encoder.so
@@ -51,13 +61,19 @@ vendor/lib/hw/audio.primary.msm8998.so:vendor/lib/hw/audio.primary.joan.so
 vendor/lib64/hw/audio.primary.msm8998.so:vendor/lib64/hw/audio.primary.joan.so
 
 # Bluetooth
+vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/bin/btnvtool
 vendor/bin/hci_qcomm_init
 vendor/bin/wcnss_filter
+vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so
 -vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so
 vendor/lib/libbtnv.so
+vendor/lib/libbt-hidlclient.so
+vendor/lib64/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so
 -vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
 vendor/lib64/libbtnv.so
+vendor/lib64/libbt-hidlclient.so
+vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
 
 # Bluetooth - Firmware
 etc/firmware/nvm_tlv.bin:vendor/etc/firmware/nvm_tlv.bin 
@@ -593,6 +609,25 @@ lib64/hw/fingerprint.msm8998.so:vendor/lib64/hw/fingerprint.msm8998.so
 framework/vendor.qti.hardware.fingerprint-V1.0-java.jar:vendor/framework/vendor.qti.hardware.fingerprint-V1.0-java.jar
 vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
+
+# FM - Radio
+vendor/lib64/vendor.qti.hardware.fm@1.0_vendor.so
+vendor/lib64/mmi_fm.so
+vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
+vendor/lib/vendor.qti.hardware.fm@1.0_vendor.so
+vendor/lib/mmi_fm.so
+vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so
+vendor/bin/fm_qsoc_patches
+lib64/libfm-hci.so
+lib64/libfmq.so
+#lib64/libqcomfm_jni.so
+lib64/fm_helium.so
+-lib64/vendor.qti.hardware.fm@1.0.so
+lib/libfm-hci.so
+lib/libfmq.so
+#lib/libqcomfm_jni.so
+lib/fm_helium.so
+-lib/vendor.qti.hardware.fm@1.0.so
 
 # Gatekeeper
 vendor/lib/hw/gatekeeper.msm8998.so
