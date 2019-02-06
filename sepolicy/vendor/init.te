@@ -34,3 +34,4 @@ allow init vndbinder_device:chr_file { ioctl open read write };
 
 allow init hal_drm_hwservice:hwservice_manager { add };
 
+allow init tee_device:chr_file { ioctl };
