@@ -71,7 +71,7 @@ on init
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
-    start vendor.qcom-power
+    start vendor.joan-power
 
     # Create cgroup mount point for memory
     mkdir /sys/fs/cgroup/memory/bg 0750 root system
@@ -90,7 +90,9 @@ on fs
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
 
+    restorecon_recursive /sns
     restorecon_recursive /persist
+    restorecon_recursive /persist-lg
     mkdir /persist/data 0700 system system
 
     # Executing tune2fs to reserve some region in /data.(40MB)
@@ -1103,7 +1105,7 @@ service sensor-sh /vendor/bin/init.qcom.sensors.sh
     user root
     oneshot
 
-service vendor.qcom-power /vendor/bin/init.qcom.power.sh
+service vendor.joan-power /vendor/bin/init.joan.power.sh
     class main
     user root
     disabled
