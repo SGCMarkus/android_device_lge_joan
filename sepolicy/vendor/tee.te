@@ -3,3 +3,7 @@ allow tee fingerprintd_data_file:dir { open read search write add_name };
 allow tee fingerprintd_data_file:file { read write open create };
 
 allow tee system_prop:property_service { set };
+
+allow tee persist_drm_file:dir search;
+allow tee persist_drm_file:file r_file_perms;
+allow tee persist_drm_file:lnk_file r_file_perms;

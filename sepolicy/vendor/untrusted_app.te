@@ -20,10 +20,5 @@ allow untrusted_app_27 vendor_camera_prop:file { read };
 allow untrusted_app_25 camera_prop:file { read };
 allow untrusted_app_25 vendor_camera_prop:file { read };
 
-#allow untrusted_app_25 adbtcp_prop:file { read };
-#allow untrusted_app_25 baseband_prop:file { read };
-#allow untrusted_app_25 bg_boot_complete_prop:file { read };
-
-#allow untrusted_app_25 bg_daemon_prop:file { read };
-#allow untrusted_app_25 bluetooth_prop:file { read };
-#allow untrusted_app_25 bootloader_boot_reason_prop:file { read };
+allow untrusted_app mnt_vendor_file:dir { getattr };
+allow untrusted_app firmware_file:filesystem { getattr };

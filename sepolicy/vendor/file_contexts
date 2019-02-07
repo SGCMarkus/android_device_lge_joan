@@ -6,6 +6,8 @@
 /vendor/mpt(/.*)?               u:object_r:mpt_file:s0
 
 /persist-lg(/.*)?                               u:object_r:persist_drm_file:s0
+/persist-lg/data/widevine(/.*)?			u:object_r:persist_drm_file:s0
+/persist-lg/firmware/(/.*)?			u:object_r:persist_drm_file:s0
 
 /sns                                                                u:object_r:sensors_data_file:s0
 /sns/cal(/.*)?                                                      u:object_r:sensors_data_file:s0
@@ -18,6 +20,7 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.thermal@1\.1-service\.joan   u:object_r:hal_thermal_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.1-service-nxp      u:object_r:hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.2-service\.joan-libperfmgr u:object_r:hal_power_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.0-service\.widevine   	u:object_r:hal_drm_widevine_exec:s0
 
 /sys/devices/virtual/input/lge_fingerprint/device_prepare			u:object_r:sysfs_lge_fingerprint_prepare:s0
 
