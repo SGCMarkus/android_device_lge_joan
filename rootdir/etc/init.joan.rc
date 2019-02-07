@@ -1204,11 +1204,3 @@ on property:ro.boot.ksm=1
 	write /sys/kernel/mm/ksm/sleep_millisecs 500
 	write /sys/kernel/mm/ksm/run 1
 
-# Begin Immersion Changes
-service immvibed /vendor/bin/immvibed -p 99 -u 1000
-    class core
-    user root
-    group root
-    oneshot
-# End Immersion Changes
-
