@@ -266,3 +266,10 @@ on property:vrcore.mode.on=true
 on property:vrcore.mode.on=false
   write /sys/module/cpu_boost/parameters/input_boost_freq "0:1824000 4:1056000"
   write /sys/module/cpu_boost/parameters/multi_boost_freq "0:1824000 4:1056000"
+
+# qcom-power triggers this property
+on property:sys.post_boot.parsed=1
+    # Setup permission for powerHAL
+    chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_trigger_count
+    chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hist_memory
+    chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_length

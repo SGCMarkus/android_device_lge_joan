@@ -71,6 +71,8 @@ on init
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
+    start vendor.qcom-power
+
     # Create cgroup mount point for memory
     mkdir /sys/fs/cgroup/memory/bg 0750 root system
     write /sys/fs/cgroup/memory/bg/memory.swappiness 140
@@ -673,6 +675,14 @@ on post-fs-data
     # make lge_modem_ramdump_loc for ssr dump.
     mkdir /data/lge_modem_ramdump_loc 0775 system system
 
+    chown system system /dev/stune/top-app/schedtune.boost
+    chown system system /dev/cpu_dma_latency
+    chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/min_freq
+    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
+    chown system system /sys/class/devfreq/soc:qcom,gpubw/min_freq
+    chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/min_freq
+
     setprop vold.post_fs_data_done 1
 
 service per_mgr /vendor/bin/pm-service
@@ -1093,14 +1103,11 @@ service sensor-sh /vendor/bin/init.qcom.sensors.sh
     user root
     oneshot
 
-service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
-    class late_start
+service vendor.qcom-power /vendor/bin/init.qcom.power.sh
+    class main
     user root
     disabled
     oneshot
-
-on property:sys.boot_completed=1
-    start qcom-post-boot
 
 service qvop-daemon /vendor/bin/qvop-daemon
     class late_start

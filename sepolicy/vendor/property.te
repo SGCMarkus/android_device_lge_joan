@@ -4,3 +4,4 @@ type rild_prop, property_type;
 type qti-shell_prop, property_type;
 type baseband_prop, property_type;
 type hifi_dac_prop, property_type;
+type power_prop, property_type;
