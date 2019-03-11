@@ -1813,6 +1813,7 @@
     </path>
 
     <path name="speaker">
+        <ctl name="RX0 Digital Volume" value="84" />
     </path>
 
     <path name="speaker-mono">
