@@ -520,15 +520,14 @@ lib64/libdiag_system.so
 
 # DRM
 vendor/bin/qseecomd
-vendor/lib/lib-sec-disp.so|3b75e338aa715d12d576837e917911091eb693d2
+vendor/lib/lib-sec-disp.so|5e7296e87c3eeda76a4b6f71364f49db1d4ec126
 vendor/lib/libcppf.so
 vendor/lib/libQSEEComAPI.so
-
 vendor/lib/libsecureui.so
 vendor/lib/libsecureui_svcsock.so
 vendor/lib/libsecureuisvc_jni.so
 vendor/lib/libtzdrmgenprov.so
-vendor/lib64/lib-sec-disp.so|888c62e2bcd5c41c62b6b8c8bc437db8127d7bde
+vendor/lib64/lib-sec-disp.so|603277622928c1ab52133d5ee186c2c65b9d416f
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
 vendor/lib64/libGPreqcancel_svc.so
@@ -640,11 +639,11 @@ lib64/libpcas.so:vendor/lib64/libpcas.so
 vendor/bin/hw/vendor.qti.gnss@1.0-service
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
-vendor/bin/slim_daemon|4f5ae2ef240331c8d91c5e6eb4d9aa5d7795e53d
+vendor/bin/slim_daemon|933577ce00245618b7eb81abc3d71356a0753ce1
 vendor/bin/xtra-daemon
 vendor/etc/init/vendor.qti.gnss@1.0-service.rc
 vendor/lib/hw/vendor.qti.gnss@1.0-impl.so
-vendor/lib/vendor.qti.gnss@1.0_vendor.so
+vendor/lib/vendor.qti.gnss@1.0_vendor.so|bb5cbf84cb0a96ad131e5d87def325849b56d902
 vendor/lib64/hw/vendor.qti.gnss@1.0-impl.so
 -vendor/lib64/libloc_api_v02.so
 vendor/lib64/libloc_ds_api.so
@@ -665,7 +664,7 @@ vendor/lib64/libslimclient.so
 vendor/lib64/libulp2.so
 vendor/lib64/libxtadapter.so
 vendor/lib64/libxtwifi_ulp_adaptor.so
-vendor/lib64/vendor.qti.gnss@1.0_vendor.so
+vendor/lib64/vendor.qti.gnss@1.0_vendor.so|20dda117a7ff6313ef45bbffeab5ed70a31f9879
 
 # Graphics - Adreno
 vendor/lib/egl/eglSubDriverAndroid.so|4b14f0a47090c851adfe6e50bcc078f74f91dd33
@@ -884,17 +883,17 @@ vendor/lib64/libsmemlog.so
 vendor/bin/hvdcp_opti
 
 # Radio
--vendor/app/QtiTelephonyService/QtiTelephonyService.apk
+-app/QtiTelephonyService/QtiTelephonyService.apk
 etc/permissions/qcrilhook.xml:vendor/etc/permissions/qcrilhook.xml|cf740b4339659e7a30cabcd1c2fe5066e69b8760
 etc/permissions/telephonyservice.xml:vendor/etc/permissions/telephonyservice.xml|ff2c9f3456ad73f97adb7ef314fe916fa9cbfb81
 framework/qcrilhook.jar:vendor/framework/qcrilhook.jar
 framework/QtiTelephonyServicelibrary.jar:vendor/framework/QtiTelephonyServicelibrary.jar
 lib/libril_wrapper.so:vendor/lib/libril_wrapper.so
-lib/vendor.lge.hardware.radio@1.0.so:vendor/lib/vendor.lge.hardware.radio@1.0.so
+lib/vendor.lge.hardware.radio@1.0.so:vendor/lib/vendor.lge.hardware.radio@1.0.so|6ce3eb5ff3b868dda20bdce86540a333e8eb03a4
 lib64/libril_wrapper.so:vendor/lib64/libril_wrapper.so
 lib64/libuicc.so:vendor/lib64/libuicc.so
-lib64/vendor.lge.hardware.radio@1.0.so:vendor/lib64/vendor.lge.hardware.radio@1.0.so
--vendor/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+lib64/vendor.lge.hardware.radio@1.0.so:vendor/lib64/vendor.lge.hardware.radio@1.0.so|a9638a63f9a15519194852730433e2cbc443f5e1
+-priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 -vendor/app/SVIService/SVIService.apk
 vendor/bin/hw/rild
 vendor/bin/ATFWD-daemon
@@ -929,7 +928,7 @@ vendor/lib64/libpdnotifier.so
 -vendor/lib64/libqmiservices.so
 vendor/lib64/libril.so
 vendor/lib64/libril-qc-ltedirectdisc.so
-vendor/lib64/libril-qc-qmi-1.so|47777b48bfa7757ab9513ce26264886565510346
+vendor/lib64/libril-qc-qmi-1.so|d6da4e80c9d9afb2a3d63d0564533a19e791bc4c
 vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
@@ -1026,4 +1025,4 @@ vendor/lib64/hw/vr.joan.so
 etc/wifi/bdwlan.bin:vendor/etc/firmware/wifi/q/bdwlan.bin
 etc/wifi/bdwlan_ch0.bin:vendor/etc/firmware/wifi/q/bdwlan_ch0.bin
 etc/wifi/bdwlan_ch1.bin:vendor/etc/firmware/wifi/q/bdwlan_ch1.bin
-vendor/bin/cnss-daemon|f9759f7c0b56b4bf14f9e9b9c50f52aa62e0dad0
+vendor/bin/cnss-daemon|4cdc9786ecdcf234ed6ee5c96068a1a75d514f6b
