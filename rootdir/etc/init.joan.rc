@@ -1178,6 +1178,7 @@ on property:sys.qbcharger.enable=false
     stop qbcharger
 
 on charger
+    write /sys/module/lpm_levels/parameters/sleep_disabled N
     setprop persist.sys.usb.config mass_storage
     load_system_props
     start qcom-post-boot
