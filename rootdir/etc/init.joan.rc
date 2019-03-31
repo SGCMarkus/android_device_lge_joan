@@ -1107,6 +1107,12 @@ service sensor-sh /vendor/bin/init.qcom.sensors.sh
     user root
     oneshot
 
+service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+
 service vendor.joan-power /vendor/bin/init.joan.power.sh
     class main
     user root
