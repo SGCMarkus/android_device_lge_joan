@@ -57,8 +57,8 @@ vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
 vendor/lib64/soundfx/libshoebox.so
-vendor/lib/hw/audio.primary.msm8998.so:vendor/lib/hw/audio.primary.joan.so
-vendor/lib64/hw/audio.primary.msm8998.so:vendor/lib64/hw/audio.primary.joan.so
+vendor/lib/hw/audio.primary.msm8998.so:vendor/lib/hw/audio.primary.joan.so|004d8b029aaae7247507ba5ee772146cee99ffba
+vendor/lib64/hw/audio.primary.msm8998.so:vendor/lib64/hw/audio.primary.joan.so|1eacdfe227aad831e8edb200a50394c8405738fb
 
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
@@ -92,6 +92,7 @@ vendor/lib/hw/camera.msm8998.so
 vendor/lib/libactuator_bu24333gwl.so
 vendor/lib/libactuator_renesascl.so
 vendor/lib/libarcsoft_beauty_picselfie.so
+vendor/lib/libarcsoft_picselfie_algorithm.so
 vendor/lib/libarcsoft_object_tracking.so
 vendor/lib/libAutoContrast.so
 vendor/lib/libbwfocuspeaking.so
