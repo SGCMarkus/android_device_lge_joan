@@ -4,3 +4,4 @@ type immvibed_exec, exec_type, file_type;
 
 type sysfs_lge_fingerprint_prepare, sysfs_type, fs_type;
 type sysfs_msm_subsys, sysfs_type, fs_type;
+type sysfs_lge_hifi_dac, sysfs_type, fs_type;

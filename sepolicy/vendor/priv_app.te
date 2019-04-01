@@ -6,3 +6,4 @@ allow priv_app proc_modules:file { getattr open };
 allow priv_app baseband_prop:file { getattr open read };
 
 allow priv_app hifi_dac_prop:file { getattr open read write };
+allow priv_app sysfs_lge_hifi_dac:file { rw_file_perms };

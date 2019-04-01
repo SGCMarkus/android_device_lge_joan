@@ -351,6 +351,12 @@ on boot
    chown system system /sys/devices/virtual/input/lge_fingerprint/device_prepare
    chmod 0660 /sys/devices/virtual/input/lge_fingerprint/device_prepare
 
+# DAC control
+   chmod 0660 /sys/devices/soc/c175000.i2c/i2c-1/1-0048/headset_type
+   chmod 0660 /sys/devices/soc/c175000.i2c/i2c-1/1-0048/avc_volume
+   chown system system /sys/devices/soc/c175000.i2c/i2c-1/1-0048/headset_type
+   chown system system /sys/devices/soc/c175000.i2c/i2c-1/1-0048/avc_volume
+
 #for Dynamic Resolution Switching
   chmod 644 /sys/class/graphics/fb0/mode
   chmod 644 /sys/class/graphics/fb0/modes

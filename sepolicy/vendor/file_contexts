@@ -23,5 +23,8 @@
 
 /sys/devices/virtual/input/lge_fingerprint/device_prepare			u:object_r:sysfs_lge_fingerprint_prepare:s0
 
+/sys/devices/soc/c175000.i2c/i2c-1/1-0048/headset_type				u:object_r:sysfs_lge_hifi_dac:s0
+/sys/devices/soc/c175000.i2c/i2c-1/1-0048/avc_volume				u:object_r:sysfs_lge_hifi_dac:s0
+
 /(vendor|system/vendor)/bin/init\.joan\.hdmi\.sh                              u:object_r:qti_init_shell_exec:s0
 /(vendor|system/vendor)/bin/init\.joan\.power\.sh                             u:object_r:qti_init_shell_exec:s0

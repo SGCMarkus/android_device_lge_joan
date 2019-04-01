@@ -4,6 +4,8 @@ import android.media.AudioSystem;
 import android.os.SystemProperties;
 import android.util.Log;
 
+import org.lineageos.hardware.util.FileUtils;
+
 public class QuadDAC {
 
     private static final String TAG = "QuadDAC";
@@ -12,13 +14,17 @@ public class QuadDAC {
 
     public static void enable()
     {
-        int digital_filter = SystemProperties.getInt(Constants.PROPERTY_DIGITAL_FILTER,0);
+        //int digital_filter = SystemProperties.getInt(Constants.PROPERTY_DIGITAL_FILTER,0);
         //int sound_preset = SystemProperties.getInt(Constants.PROPERTY_SOUND_PRESET,0);
         int left_balance = SystemProperties.getInt(Constants.PROPERTY_LEFT_BALANCE,0);
         int right_balance = SystemProperties.getInt(Constants.PROPERTY_RIGHT_BALANCE,0);
+        int mode = SystemProperties.getInt(Constants.PROPERTY_HIFI_DAC_MODE,0);
+        //int dop = SystemProperties.getInt(Constants.PROPERTY_HIFI_DAC_DOP,0);
         AudioSystem.setParameters(Constants.SET_DAC_ON_COMMAND);
         //setSoundPreset(sound_preset);
-        setDigitalFilter(digital_filter);
+        //setHifiDACdop(dop);
+        //setDigitalFilter(digital_filter);
+        setDACMode(mode);
         setLeftBalance(left_balance);
         setRightBalance(right_balance);
     }
@@ -26,6 +32,52 @@ public class QuadDAC {
     public static void disable()
     {
         AudioSystem.setParameters(Constants.SET_DAC_OFF_COMMAND);
+    }
+
+    public static void setHifiDACdop(int dop)
+    {
+        AudioSystem.setParameters(Constants.SET_HIFI_DAC_DOP_COMMAND + dop);
+        SystemProperties.set(Constants.PROPERTY_HIFI_DAC_DOP, Integer.toString(dop));
+    }
+
+    public static int getHifiDACdop()
+    {
+        return SystemProperties.getInt(Constants.PROPERTY_HIFI_DAC_DOP, 0);
+    }
+
+    public static void setDACMode(int mode)
+    {
+        switch(mode)
+        {
+        case 0:
+            FileUtils.writeLine(Constants.HEADSET_TYPE_SYSFS, "normal");
+            break;
+        case 1:
+            FileUtils.writeLine(Constants.HEADSET_TYPE_SYSFS, "hifi");
+            break;
+        case 2:
+            FileUtils.writeLine(Constants.HEADSET_TYPE_SYSFS, "aux");
+            break;
+        default: 
+            return;
+        }
+        SystemProperties.set(Constants.PROPERTY_HIFI_DAC_MODE, Integer.toString(mode));
+    }
+
+    public static int getDACMode()
+    {
+        return SystemProperties.getInt(Constants.PROPERTY_HIFI_DAC_MODE, 0);
+    }
+
+    public static void setAVCVolume(int avc_volume)
+    {
+        FileUtils.writeLine(Constants.AVC_VOLUME_SYSFS, (avc_volume * -1) + "");
+        SystemProperties.set(Constants.PROPERTY_HIFI_DAC_AVC_VOLUME, Integer.toString(avc_volume));
+    }
+
+    public static int getAVCVolume()
+    {
+        return SystemProperties.getInt(Constants.PROPERTY_HIFI_DAC_AVC_VOLUME, 0);
     }
 
     public static void setDigitalFilter(int filter)

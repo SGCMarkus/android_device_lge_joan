@@ -20,7 +20,8 @@
         <item name="preferenceCategoryStyle">@style/Theme.Main.PreferenceCategoryStyle</item>
         <item name="preferenceFragmentStyle">@style/Theme.Main.PreferenceFragmentStyle</item>
         <item name="preferenceStyle">@style/Theme.Main.PreferenceStyle</item>
-        <item name="preferenceTheme">@style/Theme.Main.PreferenceTheme</item>
+        <!--<item name="preferenceTheme">@style/Theme.Main.PreferenceTheme</item>-->
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
         <item name="switchPreferenceStyle">@style/Theme.Main.SwitchPreferenceStyle</item>
     </style>
 
@@ -49,8 +50,8 @@
         <item name="android:layout">@layout/preference_material_settings</item>
     </style>
 
-    <style name="Theme.Main.PreferenceTheme">
-    </style>
+    <!--<style name="Theme.Main.PreferenceTheme">
+    </style>-->
 
     <style name="Theme.Main.SwitchPreferenceStyle" parent="@style/Theme.Main.PreferenceStyle">
         <item name="widgetLayout">@*android:layout/preference_widget_switch</item>

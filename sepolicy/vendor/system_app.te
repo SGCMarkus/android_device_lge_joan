@@ -17,3 +17,4 @@ allow system_app netd:binder { call };
 allow system_app vold:binder { call };
 
 allow system_app sysfs_lge_fingerprint_prepare:file { rw_file_perms };
+allow system_app sysfs_lge_hifi_dac:file { rw_file_perms };
