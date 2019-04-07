@@ -631,6 +631,9 @@
     <ctl name="Es9218 Bypass" value="0" />
     <!-- Es9018 AVC Volume 25 is initial value -->
     <ctl name="Es9018 AVC Volume" value="25" /> 
+    <!-- Es9218 Filter initial values 
+    <ctl name="HIFI Custom Filter" value="6"/>
+    <ctl name="LGE ESS DIGITAL FILTER SETTING" value="6"/>-->
     <!-- initial spk profile of nxp speaker amp -->
     <ctl name="SPK Profile" value="music" />
     <ctl name="SPK SaaM" value="0" />

@@ -14,19 +14,21 @@ public class QuadDAC {
 
     public static void enable()
     {
-        //int digital_filter = SystemProperties.getInt(Constants.PROPERTY_DIGITAL_FILTER,0);
+        int digital_filter = getDigitalFilter();
         //int sound_preset = SystemProperties.getInt(Constants.PROPERTY_SOUND_PRESET,0);
-        int left_balance = SystemProperties.getInt(Constants.PROPERTY_LEFT_BALANCE,0);
-        int right_balance = SystemProperties.getInt(Constants.PROPERTY_RIGHT_BALANCE,0);
-        int mode = SystemProperties.getInt(Constants.PROPERTY_HIFI_DAC_MODE,0);
-        //int dop = SystemProperties.getInt(Constants.PROPERTY_HIFI_DAC_DOP,0);
+        int left_balance = getLeftBalance();
+        int right_balance = getRightBalance();
+        int mode = getDACMode();
+        int avc_vol = getAVCVolume();
+        //int dop = getHifiDACdop();
         AudioSystem.setParameters(Constants.SET_DAC_ON_COMMAND);
         //setSoundPreset(sound_preset);
         //setHifiDACdop(dop);
-        //setDigitalFilter(digital_filter);
         setDACMode(mode);
         setLeftBalance(left_balance);
         setRightBalance(right_balance);
+        setDigitalFilter(digital_filter);
+        setAVCVolume(avc_vol);
     }
 
     public static void disable()
@@ -80,10 +82,27 @@ public class QuadDAC {
         return SystemProperties.getInt(Constants.PROPERTY_HIFI_DAC_AVC_VOLUME, 0);
     }
 
+    public static void setMasterVolume(int master_volume)
+    {
+        FileUtils.writeLine(Constants.MASTER_VOLUME_SYSFS, (master_volume * -1) + "");
+        SystemProperties.set(Constants.PROPERTY_HIFI_DAC_MASTER_VOLUME, Integer.toString(master_volume));
+    }
+
+    public static int getMasterVolume()
+    {
+        return SystemProperties.getInt(Constants.PROPERTY_HIFI_DAC_MASTER_VOLUME, 0);
+    }
+
     public static void setDigitalFilter(int filter)
     {
-        AudioSystem.setParameters(Constants.SET_DIGITAL_FILTER_COMMAND + filter);
+        //AudioSystem.setParameters(Constants.SET_DIGITAL_FILTER_COMMAND + filter);
+        FileUtils.writeLine(Constants.ESS_FILTER_SYSFS, filter + "");
         SystemProperties.set(Constants.PROPERTY_DIGITAL_FILTER, Integer.toString(filter));
+    }
+
+    public static int getDigitalFilter()
+    {
+        return SystemProperties.getInt(Constants.PROPERTY_DIGITAL_FILTER, 0);
     }
 
     public static void setSoundPreset(int preset)
@@ -98,10 +117,20 @@ public class QuadDAC {
         SystemProperties.set(Constants.PROPERTY_LEFT_BALANCE, Integer.toString(balance));
     }
 
+    public static int getLeftBalance()
+    {
+        return SystemProperties.getInt(Constants.PROPERTY_LEFT_BALANCE, 0);
+    }
+
     public static void setRightBalance(int balance)
     {
         AudioSystem.setParameters(Constants.SET_RIGHT_BALANCE_COMMAND + balance);
         SystemProperties.set(Constants.PROPERTY_RIGHT_BALANCE, Integer.toString(balance));
+    }
+
+    public static int getRightBalance()
+    {
+        return SystemProperties.getInt(Constants.PROPERTY_RIGHT_BALANCE, 0);
     }
 
     public static boolean isEnabled()

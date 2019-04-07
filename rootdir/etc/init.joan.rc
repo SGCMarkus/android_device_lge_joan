@@ -354,8 +354,10 @@ on boot
 # DAC control
    chmod 0660 /sys/devices/soc/c175000.i2c/i2c-1/1-0048/headset_type
    chmod 0660 /sys/devices/soc/c175000.i2c/i2c-1/1-0048/avc_volume
+   chmod 0660 /sys/devices/soc/c175000.i2c/i2c-1/1-0048/ess_filter
    chown system system /sys/devices/soc/c175000.i2c/i2c-1/1-0048/headset_type
    chown system system /sys/devices/soc/c175000.i2c/i2c-1/1-0048/avc_volume
+   chown system system /sys/devices/soc/c175000.i2c/i2c-1/1-0048/ess_filter
 
 #for Dynamic Resolution Switching
   chmod 644 /sys/class/graphics/fb0/mode

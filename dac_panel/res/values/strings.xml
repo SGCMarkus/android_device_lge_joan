@@ -24,6 +24,15 @@
     <string name="digital_filter_short">Short</string>
     <string name="digital_filter_sharp">Sharp</string>
     <string name="digital_filter_slow">Slow</string>
+    <string name="digital_filter_slow2">Slow 2</string>
+    <string name="digital_filter_4">Linear phase fast roll-off</string>
+    <string name="digital_filter_5">Linear phase slow roll-off</string>
+    <string name="digital_filter_6">Minimum phase fast roll-off</string>
+    <string name="digital_filter_7">Minimum phase slow roll-off</string>
+    <string name="digital_filter_8">Apodizing fast roll-off 1</string>
+    <string name="digital_filter_9">Apodizing fast roll-off 2</string>
+    <string name="digital_filter_10">Hybrid fast roll-off</string>
+    <string name="digital_filter_11">Brick wall</string>
 
     <string name="empty_string"></string>
 

@@ -24,15 +24,14 @@
             android:title="@string/sound_preset"
             android:summary="%s"
             android:entries="@array/sound_preset_entry_values"
-            android:entryValues="@array/sound_preset_entry_values"
-            android:enabled="false"/> -->
+            android:entryValues="@array/sound_preset_entry_values" />-->
 
-        <!--<ListPreference
+        <ListPreference
             android:key="digital_filter_dropdown"
             android:title="@string/digital_filter"
             android:summary="%s"
             android:entries="@array/digital_filter_entry_values"
-            android:entryValues="@array/digital_filter_entry_values" />-->
+            android:entryValues="@array/digital_filter_entry_values" />
 
         <ListPreference
             android:key="hifi_mode_dropdown"
@@ -40,6 +39,14 @@
             android:summary="%s"
             android:entries="@array/hifi_mode_entry_values"
             android:entryValues="@array/hifi_mode_entry_values" />
+
+        <!--<SeekBarPreference
+            android:key="master_volume_seekbar"
+            android:title="@string/avc_volume"
+            android:summary=""
+            asp:min="-80"
+            android:max="0"
+            android:defaultValue="0" />-->
 
         <SeekBarPreference
             android:key="avc_volume_seekbar"
