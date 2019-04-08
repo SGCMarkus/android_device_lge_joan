@@ -133,10 +133,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     sys.usb.ffs.aio_compat=1 \
     persist.sys.usb.config.extra=none
 
-# Vibration
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.immvibed.fakeandrvers=8
-
 # Voice assistant
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opa.eligible_device=true
