@@ -35,6 +35,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.fm.a2dp.conc.disabled=true \
     vendor.voice.path.for.pcm.voip=true
 
+# Audio - DAC
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.audio.hifi_adv_support=1
+
 # Battery
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cutoff_voltage_mv=3400
