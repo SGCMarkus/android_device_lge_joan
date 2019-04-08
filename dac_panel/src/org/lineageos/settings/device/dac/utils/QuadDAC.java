@@ -95,8 +95,8 @@ public class QuadDAC {
 
     public static void setDigitalFilter(int filter)
     {
-        //AudioSystem.setParameters(Constants.SET_DIGITAL_FILTER_COMMAND + filter);
-        FileUtils.writeLine(Constants.ESS_FILTER_SYSFS, filter + "");
+        AudioSystem.setParameters(Constants.SET_DIGITAL_FILTER_COMMAND + filter);
+        //FileUtils.writeLine(Constants.ESS_FILTER_SYSFS, filter + "");
         SystemProperties.set(Constants.PROPERTY_DIGITAL_FILTER, Integer.toString(filter));
     }
 
