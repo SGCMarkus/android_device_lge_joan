@@ -15,7 +15,7 @@ public class QuadDAC {
     public static void enable()
     {
         int digital_filter = getDigitalFilter();
-        int sound_preset = SystemProperties.getInt(Constants.PROPERTY_SOUND_PRESET,0);
+        int sound_preset = getSoundPreset();
         int left_balance = getLeftBalance();
         int right_balance = getRightBalance();
         int mode = getDACMode();
