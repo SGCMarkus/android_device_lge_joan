@@ -15,19 +15,19 @@ public class QuadDAC {
     public static void enable()
     {
         int digital_filter = getDigitalFilter();
-        //int sound_preset = SystemProperties.getInt(Constants.PROPERTY_SOUND_PRESET,0);
+        int sound_preset = SystemProperties.getInt(Constants.PROPERTY_SOUND_PRESET,0);
         int left_balance = getLeftBalance();
         int right_balance = getRightBalance();
         int mode = getDACMode();
         int avc_vol = getAVCVolume();
         //int dop = getHifiDACdop();
         AudioSystem.setParameters(Constants.SET_DAC_ON_COMMAND);
-        //setSoundPreset(sound_preset);
         //setHifiDACdop(dop);
         setDACMode(mode);
         setLeftBalance(left_balance);
         setRightBalance(right_balance);
         setDigitalFilter(digital_filter);
+        setSoundPreset(sound_preset);
         setAVCVolume(avc_vol);
     }
 
@@ -109,6 +109,11 @@ public class QuadDAC {
     {
         AudioSystem.setParameters(Constants.SET_SOUND_PRESET_COMMAND + preset);
         SystemProperties.set(Constants.PROPERTY_SOUND_PRESET, Integer.toString(preset));
+    }
+
+    public static int getSoundPreset()
+    {
+        return SystemProperties.getInt(Constants.PROPERTY_SOUND_PRESET, 0);
     }
 
     public static void setLeftBalance(int balance)

@@ -19,12 +19,12 @@
             android:entryValues="@array/hifi_mode_entry_values"
             android:defaultValue="@string/hifi_mode_normal" />-->
 
-        <!--<ListPreference
+        <ListPreference
             android:key="sound_preset_dropdown"
             android:title="@string/sound_preset"
             android:summary="%s"
             android:entries="@array/sound_preset_entry_values"
-            android:entryValues="@array/sound_preset_entry_values" />-->
+            android:entryValues="@array/sound_preset_entry_values" />
 
         <ListPreference
             android:key="digital_filter_dropdown"
