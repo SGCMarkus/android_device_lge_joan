@@ -742,6 +742,20 @@ vendor/lib64/libtinyxml2_1.so
 -priv-app/HotwordEnrollmentTGoogleHEXAGON/HotwordEnrollmentTGoogleHEXAGON.apk;PRESIGNED
 -priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk;PRESIGNED
 
+# IOP
+lib/vendor.qti.hardware.iop@1.0.so
+lib64/vendor.qti.hardware.iop@1.0.so
+vendor/bin/hw/vendor.qti.hardware.iop@1.0-service
+vendor/etc/init/vendor.qti.hardware.iop@1.0-service.rc
+vendor/lib/libqti-iopd.so
+vendor/lib/libqti-iopd-client.so
+vendor/lib/vendor.qti.hardware.iop@1.0_vendor.so
+vendor/lib/hw/vendor.qti.hardware.iop@1.0-impl.so
+vendor/lib64/libqti-iopd.so
+vendor/lib64/libqti-iopd-client.so
+vendor/lib64/vendor.qti.hardware.iop@1.0_vendor.so
+vendor/lib64/hw/vendor.qti.hardware.iop@1.0-impl.so
+
 # Keystore
 vendor/lib/hw/keystore.msm8998.so
 vendor/lib64/hw/keystore.msm8998.so
@@ -808,6 +822,16 @@ vendor/lib64/libvpphvx.so
 vendor/lib64/libvpplibrary.so
 
 # Perf
+lib/libqti_performance.so
+lib/libqti-at.so
+lib/libqti-perfd-client_system.so
+lib/libqti-util_system.so
+lib/vendor.qti.hardware.perf@1.0.so
+lib64/libqti_performance.so
+lib64/libqti-at.so
+lib64/libqti-perfd-client_system.so
+lib64/libqti-util_system.so
+lib64/vendor.qti.hardware.perf@1.0.so
 vendor/bin/energy-awareness
 vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
 vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc
@@ -818,17 +842,25 @@ vendor/etc/perf/perf-profile3.conf
 vendor/etc/perf/perf-profile4.conf
 vendor/etc/perf/perf-profile5.conf
 vendor/etc/perf/perf-profile6.conf
+vendor/etc/perf/perf-profile210.conf
+vendor/etc/perf/perf-profile299.conf
 vendor/lib/libfeedbackhandler.so
 vendor/lib/libperfgluelayer.so
+vendor/lib/libqtigef.so
+vendor/lib/libqti-gt-prop.so
 vendor/lib/libqti-perfd.so
 vendor/lib/libqti-perfd-client.so
 vendor/lib/libqti-util.so
+vendor/lib/libqti-wl.so
 vendor/lib/vendor.qti.hardware.perf@1.0_vendor.so
 vendor/lib64/libfeedbackhandler.so
 vendor/lib64/libperfgluelayer.so
+vendor/lib64/libqtigef.so
+vendor/lib64/libqti-gt-prop.so
 vendor/lib64/libqti-perfd.so
 vendor/lib64/libqti-perfd-client.so
 vendor/lib64/libqti-util.so
+vendor/lib64/libqti-wl.so
 vendor/lib64/vendor.qti.hardware.perf@1.0_vendor.so
 
 # Peripheral manager
