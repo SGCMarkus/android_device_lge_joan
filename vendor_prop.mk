@@ -24,6 +24,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.offload.gapless.enabled=true \
     vendor.audio.offload.multiaac.enable=true \
     vendor.audio.offload.multiple.enabled=false \
+    audio.offload.24bit.enable=1 \
     vendor.audio.offload.passthrough=false \
     vendor.audio.offload.pstimeout.secs=3 \
     vendor.audio.offload.track.enable=true \
@@ -33,11 +34,30 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.use.sw.alac.decoder=true \
     vendor.audio.use.sw.ape.decoder=true \
     vendor.fm.a2dp.conc.disabled=true \
-    vendor.voice.path.for.pcm.voip=true
+    vendor.voice.path.for.pcm.voip=true \
+    ro.config.vc_call_vol_steps=7 \
+    ro.config.media_vol_steps=25 \
+    persist.audio.nsenabled=ON \
+    lge.fm_gain_control_headset=0.9 \
+    lge.fm_gain_control_speaker=0.7 \
+    persist.3rd.speaker.prot.enable=on \
+    audio.offload.gapless.enabled=false \
+    persist.audio.voice.clarity=off \
+    persist.audio.handset_rx_type=DEFAULT \
+    persist.spkr.cal.duration=0 \
+    persist.audio.dual_audio=ON \
+    vendor.audio_hal.period_size=480
 
 # Audio - DAC
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.audio.hifi_adv_support=1
+    persist.audio.hifi_adv_support=1 \
+    audio.hifi_rec.normal_gain=0 \
+    audio.hifi_rec.normal_lcf=75 \
+    audio.hifi_rec.normal_lmt=0 \
+    audio.hifi_rec.concert_gain=-140 \
+    audio.hifi_rec.concert_lcf=0 \
+    audio.hifi_rec.concert_lmt=0 \
+    audio.hifi_rec.offset_gain=39 \
 
 # Battery
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -63,7 +83,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.expose.aux=1 \
     persist.camera.is_type=3 \
     persist.camera.max.previewfps=60 \
-    vidc.enc.dcvs.extra-buff-count=2
+    vidc.enc.dcvs.extra-buff-count=2 \
+    persist.camera.hdr.video=2
+
+# Core control
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.core_ctl_min_cpu=2 \
+    ro.vendor.qti.core_ctl_max_cpu=4
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -72,7 +98,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     sdm.debug.disable_partial_split=1 \
     ro.opengles.version=196610 \
     ro.qualcomm.cabl=2 \
-    ro.sf.lcd_density=480
+    ro.sf.lcd_density=480 \
+    sdm.perf_hint_window=50 \
+    persist.debug.wfd.enable=1 \
+    persist.sys.wfd.virtual=0 \
+    persist.hwc.enable_vds=1
 
 # Factory reset partition
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -82,6 +112,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qcom.hdr.config=/system/vendor/etc/hdr_tm_config.xml
 
+# Media
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.enable-player=true \
+    media.stagefright.enable-http=true \
+    media.stagefright.enable-aac=true \
+    media.stagefright.enable-qcp=true \
+    media.stagefright.enable-scan=true \
+    mmp.enable.3g2=true \
+    media.aac_51_output_enabled=true \
+    mm.enable.smoothstreaming=true \
+    mm.enable.qcom_parser=13631487 \
+    persist.mm.enable.prefetch=true
+
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.nfc.smartcard.config=SIM1,eSE1 \
@@ -89,7 +132,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=libqti-perfd-client.so
+    ro.vendor.extension_library=libqti-perfd-client.so \
+    ro.sys.fw.bg_apps_limit=48 \
+    sched.colocate.enable=1 \
+    sys.games.gt.prof=1
+    
+# QTI
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.gt_library=libqti-gt.so \
+    ro.vendor.at_library=libqti-at.so 
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -115,6 +166,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.use_data_netmgrd=true \
     telephony.lteOnCdmaDevice=1
 
+# RmNet Data
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.rmnet.data.enable=true \
+    persist.data.wda.enable=true \
+    persist.data.df.dl_mode=5 \
+    persist.data.df.ul_mode=5 \
+    persist.data.df.agg.dl_pkt=10 \
+    persist.data.df.agg.dl_size=4096 \
+    persist.data.df.mux_count=8 \
+    persist.data.df.iwlan_mux=9 \
+    persist.data.df.dev_name=rmnet_usb0
+
 # Security Patch Level
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.security_patch=2019-01-01
@@ -126,11 +189,27 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qti.sensors.pmd=true \
     ro.qti.sensors.mot_detect=true \
     ro.qti.sensors.multishake=true \
-    ro.qti.sensors.sta_detect=true
+    ro.qti.sensors.sta_detect=true \
+    persist.sensors.pocket_delay=1000 \
+    persist.sensors.knock_delay=1000 \
+    persist.sensors.wul_multilevel=5 \
+    persist.sensors.wul_thresh0=2 \
+    persist.sensors.wul_thresh1=10 \
+    persist.sensors.wul_thresh2=15 \
+    persist.sensors.wul_thresh3=3100 \
+    persist.sensors.wul_thresh4=10000 \
+    persist.sensors.wul_delay=3000 \
+    persist.sensors.onhand.en=0 \
+    ro.vendor.sensors.maghalcal=false \
+    ro.vendor.sensors.wu=false
 
 # Time daemon
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.delta_time.enable=true
+
+# Timeservice
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.timed.enable=true
 
 # USB
 PRODUCT_PROPERTY_OVERRIDES += \
