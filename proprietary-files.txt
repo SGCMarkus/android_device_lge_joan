@@ -726,15 +726,19 @@ vendor/lib64/libsdmextension.so|c4a416cb8c0f5dc87bee8494d70247cf049224b9
 vendor/lib64/libtinyxml2_1.so
 
 # Graphics - Vendor
-#vendor/bin/hw/vendor.display.color@1.0-service
+lib/vendor.display.postproc@1.0.so
+lib/vendor.display.color@1.0.so
+lib64/vendor.display.postproc@1.0.so
+lib64/vendor.display.color@1.0.so
+vendor/bin/hw/vendor.display.color@1.0-service
 #vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti|dc6ff7d6bdb4bd7ee248eb03e4b1e53bd04f8221
-#vendor/etc/init/vendor.display.color@1.0-service.rc
+vendor/etc/init/vendor.display.color@1.0-service.rc
 #vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc|69d9cbc54f8ac0a0fb010f92bfa7de5981d643cf
-#vendor/lib/vendor.display.color@1.0_vendor.so
-#vendor/lib/vendor.display.postproc@1.0_vendor.so
+vendor/lib/vendor.display.color@1.0_vendor.so
+vendor/lib/vendor.display.postproc@1.0_vendor.so
 #vendor/lib/vendor.qti.hardware.qdutils_disp@1.0_vendor.so|04bf21220673630ebaa4c8e7a84adbcdcf08f0dc
-#vendor/lib64/vendor.display.color@1.0_vendor.so
-#vendor/lib64/vendor.display.postproc@1.0_vendor.so
+vendor/lib64/vendor.display.color@1.0_vendor.so
+vendor/lib64/vendor.display.postproc@1.0_vendor.so
 #vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0_vendor.so|d101774878c0374ad805d964c3d00c71b44456d9
 
 # Hotword Enrollment
