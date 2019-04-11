@@ -12,20 +12,6 @@
         android:title="@string/quad_dac_settings" >
 
         <ListPreference
-            android:key="sound_preset_dropdown"
-            android:title="@string/sound_preset"
-            android:summary="%s"
-            android:entries="@array/sound_preset_entry_values"
-            android:entryValues="@array/sound_preset_entry_values" />
-
-        <ListPreference
-            android:key="digital_filter_dropdown"
-            android:title="@string/digital_filter"
-            android:summary="%s"
-            android:entries="@array/digital_filter_entry_values"
-            android:entryValues="@array/digital_filter_entry_values" />
-
-        <ListPreference
             android:key="hifi_mode_dropdown"
             android:title="@string/hifi_mode"
             android:summary="%s"
@@ -39,6 +25,20 @@
             asp:min="-24"
             android:max="0"
             android:defaultValue="-14" />
+
+        <ListPreference
+            android:key="sound_preset_dropdown"
+            android:title="@string/sound_preset"
+            android:summary="%s"
+            android:entries="@array/sound_preset_entry_values"
+            android:entryValues="@array/sound_preset_entry_values" />
+
+        <ListPreference
+            android:key="digital_filter_dropdown"
+            android:title="@string/digital_filter"
+            android:summary="%s"
+            android:entries="@array/digital_filter_entry_values"
+            android:entryValues="@array/digital_filter_entry_values" />
 
     </PreferenceCategory>
 
