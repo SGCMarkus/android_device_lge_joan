@@ -81,13 +81,6 @@ public class QuadDACPanelFragment extends PreferenceFragment
                 int sound_preset = lp.findIndexOfValue((String) newValue);
                 QuadDAC.setSoundPreset(sound_preset);
                 return true;
-            } else if(preference.getKey().equals(Constants.SOUND_PRESET_KEY))
-            {
-                /*ListPreference lp = (ListPreference) preference;
-
-                int dop = lp.findIndexOfValue((String) newValue);
-                QuadDAC.setHifiDACdop(dop);
-                return true;*/
             }
             return false;
         }
@@ -106,18 +99,6 @@ public class QuadDACPanelFragment extends PreferenceFragment
                 } else {
                     return false;
                 }
-            } else if(preference.getKey().equals(Constants.MASTER_VOLUME_KEY))
-            {
-                /*if (newValue instanceof Integer) {                
-                    Integer master_vol = (Integer) newValue;
-
-                    master_volume.setSummary( ((double)master_vol)/2 + " db");
-
-                    QuadDAC.setMasterVolume(master_vol);
-                    return true;
-                } else {
-                    return false;
-                }*/
             }
         }
 
@@ -152,18 +133,12 @@ public class QuadDACPanelFragment extends PreferenceFragment
         digital_filter_list = (ListPreference) findPreference(Constants.DIGITAL_FILTER_KEY);
         digital_filter_list.setOnPreferenceChangeListener(this);
 
-        //dop_list = (ListPreference) findPreference(Constants.HIFI_DOP_KEY);
-        //dop_list.setOnPreferenceChangeListener(this);
-
         mode_list = (ListPreference) findPreference(Constants.HIFI_MODE_KEY);
         mode_list.setOnPreferenceChangeListener(this);
 
         avc_volume = (SeekBarPreference) findPreference(Constants.AVC_VOLUME_KEY);
         avc_volume.setOnPreferenceChangeListener(this);
         avc_volume.setValue(QuadDAC.getAVCVolume());
-
-        //master_volume = (SeekBarPreference) findPreference(Constants.MASTER_VOLUME_KEY);
-        //master_volume.setOnPreferenceChangeListener(this);
 
         balance_preference = (BalancePreference) findPreference(Constants.BALANCE_KEY);
 
@@ -202,9 +177,7 @@ public class QuadDACPanelFragment extends PreferenceFragment
     {
         sound_preset_list.setEnabled(true);
         digital_filter_list.setEnabled(true);
-        //dop_list.setEnabled(true);
         mode_list.setEnabled(true);
-        //master_volume.setEnabled(true);
         avc_volume.setEnabled(true);
         balance_preference.setEnabled(true);
     }
@@ -213,9 +186,7 @@ public class QuadDACPanelFragment extends PreferenceFragment
     {
         sound_preset_list.setEnabled(false);
         digital_filter_list.setEnabled(false);
-        //dop_list.setEnabled(false);
         mode_list.setEnabled(false);
-        //master_volume.setEnabled(false);
         avc_volume.setEnabled(false);
         balance_preference.setEnabled(false);
     }

@@ -20,9 +20,7 @@ public class QuadDAC {
         int right_balance = getRightBalance();
         int mode = getDACMode();
         int avc_vol = getAVCVolume();
-        //int dop = getHifiDACdop();
         AudioSystem.setParameters(Constants.SET_DAC_ON_COMMAND);
-        //setHifiDACdop(dop);
         setDACMode(mode);
         setLeftBalance(left_balance);
         setRightBalance(right_balance);
