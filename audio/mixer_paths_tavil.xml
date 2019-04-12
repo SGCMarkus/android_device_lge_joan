@@ -3261,6 +3261,8 @@
     <path name="dop-playback QUAT_TDM_RX_0">
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia1" value="0" />
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia5" value="0" />
+        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia4" value="0" />
+        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia7" value="0" />
         <ctl name="QUAT_TDM_RX_0 Audio Mixer MultiMedia2" value="1" />
         <ctl name="QUAT_TDM_RX_0 Data Format" value="Gen Compr" />
     </path>
