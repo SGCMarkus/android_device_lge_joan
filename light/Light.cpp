@@ -31,19 +31,9 @@ namespace implementation {
 #define LEDS            "/sys/class/leds/"
 
 #define LCD_LED         LEDS "lcd-backlight/"
-#define RED_LED         LEDS "red/"
-#define GREEN_LED       LEDS "green/"
-#define BLUE_LED        LEDS "blue/"
-#define RGB_LED         LEDS "rgb/"
 
 #define BRIGHTNESS      "brightness"
 #define MAX_BRIGHTNESS  "max_brightness"
-#define DUTY_PCTS       "duty_pcts"
-#define START_IDX       "start_idx"
-#define PAUSE_LO        "pause_lo"
-#define PAUSE_HI        "pause_hi"
-#define RAMP_STEP_MS    "ramp_step_ms"
-#define RGB_BLINK       "rgb_blink"
 
 /*
  * Write value to path and close file.
@@ -71,21 +61,13 @@ static int rgbToBrightness(const LightState& state) {
 }
 
 static void handleBacklight(const LightState& state) {
-    //uint32_t brightness = state.color & 0xFF;
     int maxBrightness = get(LCD_LED MAX_BRIGHTNESS, -1);
     if (maxBrightness < 0) {
         maxBrightness = 255;
     }
     int sentBrightness = rgbToBrightness(state);
     int brightness = sentBrightness * maxBrightness / 255;
-
-    //LOG(DEBUG) << "Writing backlight brightness " << brightness
-    //           << " (orig " << sentBrightness << ")";
-
-    //ALOGE("Backlight brightness: %s, Original: %s", std::to_string(brightness).c_str(), std::to_string(sentBrightness).c_str());
-    //ALOGE("Backlight brightness: %s", std::to_string(sentBrightness).c_str());
     set(LCD_LED BRIGHTNESS, brightness);
-    //set(LCD_LED BRIGHTNESS, sentBrightness);
 }
 
 static std::map<Type, std::function<void(const LightState&)>> lights = {
