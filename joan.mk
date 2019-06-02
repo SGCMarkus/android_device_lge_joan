@@ -20,7 +20,9 @@ $(call inherit-product-if-exists, vendor/lge/joan-common/joan-common-vendor.mk)
 COMMON_PATH := device/lge/joan-common
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay \
+    $(COMMON_PATH)/overlay-lineage
+
 PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
 
