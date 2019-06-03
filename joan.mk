@@ -378,6 +378,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.1-service.joan
 
+# Touch
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch@1.0-service.joan
+
 # Touchscreen
 PRODUCT_PACKAGES += \
     libtinyxml2

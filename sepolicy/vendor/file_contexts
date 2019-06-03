@@ -1,30 +1,32 @@
-/dev/block/platform/1da4000.ufshc/sda3          u:object_r:mpt_file:s0
-/dev/block/platform/1da4000.ufshc/sda4          u:object_r:persist_drm_file:s0
-/dev/block/platform/1da4000.ufshc/sda5          u:object_r:sns_file:s0
+/dev/block/platform/1da4000.ufshc/sda3						u:object_r:mpt_file:s0
+/dev/block/platform/1da4000.ufshc/sda4						u:object_r:persist_drm_file:s0
+/dev/block/platform/1da4000.ufshc/sda5						u:object_r:sns_file:s0
 
-/mpt(/.*)?                      u:object_r:mpt_file:s0
-/vendor/mpt(/.*)?               u:object_r:mpt_file:s0
+/mpt(/.*)?									u:object_r:mpt_file:s0
+/vendor/mpt(/.*)?								u:object_r:mpt_file:s0
 
-/persist-lg(/.*)?                               u:object_r:persist_drm_file:s0
-/persist-lg/data/widevine(/.*)?			u:object_r:persist_drm_file:s0
-/persist-lg/firmware/(/.*)?			u:object_r:persist_drm_file:s0
+/persist-lg(/.*)?								u:object_r:persist_drm_file:s0
+/persist-lg/data/widevine(/.*)?							u:object_r:persist_drm_file:s0
+/persist-lg/firmware/(/.*)?							u:object_r:persist_drm_file:s0
 
-/sns                                                                u:object_r:sensors_data_file:s0
-/sns/cal(/.*)?                                                      u:object_r:sensors_data_file:s0
-/persist-lg/sensors(/.*)?                                           u:object_r:sensors_persist_file:s0
-/vendor/sns(/.*)?                                                   u:object_r:sensors_data_file:s0
+/sns										u:object_r:sensors_data_file:s0
+/sns/cal(/.*)?									u:object_r:sensors_data_file:s0
+/persist-lg/sensors(/.*)?							u:object_r:sensors_persist_file:s0
+/vendor/sns(/.*)?								u:object_r:sensors_data_file:s0
 
-/(vendor|system/vendor)/bin/immvibed	          u:object_r:immvibed_exec:s0
+/(vendor|system/vendor)/bin/immvibed						u:object_r:immvibed_exec:s0
 
-/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.joan     u:object_r:hal_light_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.thermal@1\.1-service\.joan   u:object_r:hal_thermal_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.1-service-nxp      u:object_r:hal_nfc_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.0-service\.widevine   	u:object_r:hal_drm_widevine_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.joan	u:object_r:hal_light_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.thermal@1\.1-service\.joan	u:object_r:hal_thermal_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.1-service-nxp      	u:object_r:hal_nfc_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.0-service\.widevine	u:object_r:hal_drm_widevine_exec:s0
+
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.joan	u:object_r:hal_lineage_touch_default_exec:s0
 
 /sys/devices/virtual/input/lge_fingerprint/device_prepare			u:object_r:sysfs_lge_fingerprint_prepare:s0
 
 /sys/devices/soc/c175000.i2c/i2c-1/1-0048/headset_type				u:object_r:sysfs_lge_hifi_dac:s0
 /sys/devices/soc/c175000.i2c/i2c-1/1-0048/avc_volume				u:object_r:sysfs_lge_hifi_dac:s0
 
-/(vendor|system/vendor)/bin/init\.joan\.hdmi\.sh                              u:object_r:qti_init_shell_exec:s0
-/(vendor|system/vendor)/bin/init\.joan\.power\.sh                             u:object_r:qti_init_shell_exec:s0
+/(vendor|system/vendor)/bin/init\.joan\.hdmi\.sh                            	u:object_r:qti_init_shell_exec:s0
+/(vendor|system/vendor)/bin/init\.joan\.power\.sh				u:object_r:qti_init_shell_exec:s0

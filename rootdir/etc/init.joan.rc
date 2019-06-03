@@ -458,8 +458,6 @@ on boot
 	chmod 664 /sys/devices/virtual/input/lge_touch/quick_cover_status
 	chown system system /sys/devices/virtual/input/lge_touch/q_sensitivity
 	chmod 664 /sys/devices/virtual/input/lge_touch/q_sensitivity
-	chown system system /sys/devices/virtual/input/lge_touch/swipe_enable
-	chmod 664 /sys/devices/virtual/input/lge_touch/swipe_enable
 	chown system system /sys/devices/virtual/input/lge_touch/swipe_tool
 	chmod 664 /sys/devices/virtual/input/lge_touch/swipe_tool
 	chown system system /sys/devices/virtual/input/lge_touch/lpwg_abs
