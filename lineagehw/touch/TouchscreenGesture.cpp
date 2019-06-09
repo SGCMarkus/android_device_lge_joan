@@ -32,8 +32,8 @@ typedef struct {
 const std::unordered_map<int32_t, GestureInfo> kGestureInfoMap = {
     {0, {249, "Swipe Up"}},
     {1, {250, "Swipe Down"}},
-    {2, {251, "Swipe Left"}},
-    {3, {252, "Swipe Right"}},
+    {2, {251, "Swipe Right"}},
+    {3, {252, "Swipe Left"}},
 };
 }  // anonymous namespace
 
