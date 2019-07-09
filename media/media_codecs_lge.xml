@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CodecList>
+	<Encoders>
+		<MediaCodec name="OMX.lge.flac.encoder" type="audio/x-lg-flac"/>
+	</Encoders>
+	<Decoders>
+		<MediaCodec name="OMX.lge.alac.decoder" type="audio/x-lg-alac"/>
+		<MediaCodec name="OMX.lge.flac.decoder" type="audio/x-lg-flac"/>
+		<MediaCodec name="OMX.lge.adpcm.decoder" type="audio/adpcm"/>
+		<MediaCodec name="OMX.lge.g726.decoder" type="audio/g726"/>
+		<MediaCodec name="OMX.lge.ac3.decoder" type="audio/lg-ac3"/>
+		<MediaCodec name="OMX.lge.wmsVoice.decoder" type="audio/lg-wma-voice"/>
+		<MediaCodec name="OMX.lge.wms.decoder" type="audio/x-lg-ms-wma"/>
+		<MediaCodec name="OMX.lge.mjpg.decoder" type="video/mjpg">
+			<Limit name="size" min="2x2" max="1280x720"/>
+		</MediaCodec>
+		<MediaCodec name="OMX.lge.theora.decoder" type="video/theora">
+			<Limit name="size" min="2x2" max="1280x720"/>
+		</MediaCodec>
+	</Decoders>
+</CodecList>
