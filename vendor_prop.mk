@@ -180,7 +180,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Security Patch Level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.build.security_patch=2019-01-01
+    ro.vendor.build.security_patch=2019-07-01
 
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \
