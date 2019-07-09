@@ -57,7 +57,9 @@ vendor/lib64/hw/audio.primary.msm8998.so|5aaa9553dc5188903668ce8630c772cad3093e8
 
 # Bluetooth
 lib/com.qualcomm.qti.bluetooth_audio@1.0.so
+lib/libbluetooth_qti.so
 lib64/com.qualcomm.qti.bluetooth_audio@1.0.so
+lib64/libbluetooth_qti.so
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/bin/btnvtool
 vendor/bin/hci_qcomm_init

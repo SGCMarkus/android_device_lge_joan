@@ -26,15 +26,15 @@ public class Constants {
     public static final String SET_LEFT_BALANCE_COMMAND = "hifi_dac_l_volume=";
     public static final String SET_RIGHT_BALANCE_COMMAND = "hifi_dac_r_volume=";
 
-    public static final String PROPERTY_HIFI_DAC_ENABLED = "persist.audio.hifi_dac";
-    public static final String PROPERTY_DIGITAL_FILTER = "persist.audio.hifi_dac.digitalFilter";
-    public static final String PROPERTY_SOUND_PRESET = "persist.audio.hifi_dac.soundPreset";
-    public static final String PROPERTY_LEFT_BALANCE = "persist.audio.hifi_dac.left_balance";
-    public static final String PROPERTY_RIGHT_BALANCE = "persist.audio.hifi_dac.right_balance";
-    public static final String PROPERTY_HIFI_DAC_DOP = "persist.audio.hifi_dac.dop";
-    public static final String PROPERTY_HIFI_DAC_MODE = "persist.audio.hifi_dac.mode";
-    public static final String PROPERTY_HIFI_DAC_AVC_VOLUME = "persist.audio.hifi_dac.avc_volume";
-    public static final String PROPERTY_HIFI_DAC_MASTER_VOLUME = "persist.audio.hifi_dac.master_volume";
+    public static final String PROPERTY_HIFI_DAC_ENABLED = "persist.vendor.lge.audio.hifi_dac";
+    public static final String PROPERTY_DIGITAL_FILTER = "persist.vendor.lge.audio.hifi_dac.digitalFilter";
+    public static final String PROPERTY_SOUND_PRESET = "persist.vendor.lge.audio.hifi_dac.soundPreset";
+    public static final String PROPERTY_LEFT_BALANCE = "persist.vendor.lge.audio.hifi_dac.left_balance";
+    public static final String PROPERTY_RIGHT_BALANCE = "persist.vendor.lge.audio.hifi_dac.right_balance";
+    public static final String PROPERTY_HIFI_DAC_DOP = "persist.vendor.lge.audio.hifi_dac.dop";
+    public static final String PROPERTY_HIFI_DAC_MODE = "persist.vendor.lge.audio.hifi_dac.mode";
+    public static final String PROPERTY_HIFI_DAC_AVC_VOLUME = "persist.vendor.lge.audio.hifi_dac.avc_volume";
+    public static final String PROPERTY_HIFI_DAC_MASTER_VOLUME = "persist.vendor.lge.audio.hifi_dac.master_volume";
 
     public static final String HEADSET_TYPE_SYSFS = "/sys/devices/soc/c175000.i2c/i2c-1/1-0048/headset_type";
     public static final String AVC_VOLUME_SYSFS = "/sys/devices/soc/c175000.i2c/i2c-1/1-0048/avc_volume";
