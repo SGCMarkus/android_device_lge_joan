@@ -5,3 +5,5 @@ allow sensors sns_file:dir { getattr open read search };
 
 allow sensors sensors_data_file:dir create_dir_perms;
 allow sensors sensors_data_file:file create_file_perms;
+
+allow sensors sensors:capability { net_raw };
