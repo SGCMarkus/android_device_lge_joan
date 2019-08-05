@@ -2,16 +2,16 @@
 /dev/block/platform/1da4000.ufshc/sda4						u:object_r:persist_drm_file:s0
 /dev/block/platform/1da4000.ufshc/sda5						u:object_r:sns_file:s0
 
-/mpt(/.*)?									u:object_r:mpt_file:s0
+/mnt/vendor/mpt(/.*)?								u:object_r:mpt_file:s0
 /vendor/mpt(/.*)?								u:object_r:mpt_file:s0
 
-/persist-lg(/.*)?								u:object_r:persist_drm_file:s0
-/persist-lg/data/widevine(/.*)?							u:object_r:persist_drm_file:s0
-/persist-lg/firmware/(/.*)?							u:object_r:persist_drm_file:s0
+/mnt/vendor/persist-lg(/.*)?							u:object_r:persist_drm_file:s0
+/mnt/vendor/persist-lg/data/widevine(/.*)?					u:object_r:persist_drm_file:s0
+/mnt/vendor/persist-lg/firmware/(/.*)?						u:object_r:persist_drm_file:s0
 
-/sns										u:object_r:sensors_data_file:s0
-/sns/cal(/.*)?									u:object_r:sensors_data_file:s0
-/persist-lg/sensors(/.*)?							u:object_r:sensors_persist_file:s0
+/mnt/vendor/sns									u:object_r:sensors_data_file:s0
+/mnt/vendor/sns/cal(/.*)?							u:object_r:sensors_data_file:s0
+/mnt/vendor/persist-lg/sensors(/.*)?						u:object_r:sensors_persist_file:s0
 /vendor/sns(/.*)?								u:object_r:sensors_data_file:s0
 
 /(vendor|system/vendor)/bin/immvibed						u:object_r:immvibed_exec:s0
