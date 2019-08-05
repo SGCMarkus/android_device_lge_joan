@@ -73,29 +73,30 @@ void init_target_properties()
     std::string device;
     std::string cmdline;
     bool unknownDevice = true;
+    bool dualSim = false;
 
     android::base::ReadFileToString("/proc/cmdline", &cmdline);
 
     for (const auto& entry : android::base::Split(android::base::Trim(cmdline), " ")) {
         std::vector<std::string> pieces = android::base::Split(entry, "=");
         if (pieces.size() == 2) {
-            if(pieces[0].compare("model.name") == 0)
+            if(pieces[0].compare("androidboot.vendor.lge.model.name") == 0)
             {
             	device = pieces[1];
 		unknownDevice = false;
-		break;
+            } else if(pieces[0].compare("lge.dsds") == 0 && pieces[1].compare("dsds") == 0)
+            {
+		dualSim = true;
             }
         }
     }
 
     if(unknownDevice)
     {
-        property_set("ro.product.model", "UNKNOWN");
-        property_set("ro.vendor.product.model", "UNKNOWN");
-        return;
+        device = "UNKNOWN";
     }
 
-    if(device.find("930D") != std::string::npos)
+    if(dualSim)
     {
         property_set("persist.radio.multisim.config", "dsds");
     }
