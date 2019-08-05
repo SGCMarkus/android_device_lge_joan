@@ -79,7 +79,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.bluetooth.soc=cherokee \
     vendor.qcom.bluetooth.soc=cherokee \
     ro.bluetooth.a4wp=false \
-    ro.bluetooth.library_name=libbluetooth_qti.so \
     persist.vendor.btstack.enable.splita2dp=false \
     persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac
 
@@ -106,9 +105,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.display.cabl=2 \
     ro.sf.lcd_density=480 \
     sdm.perf_hint_window=50 \
-    persist.debug.wfd.enable=1 \
+    vendor.display.perf_hint_window=50 \
+    persist.debug.wfd.enable=0 \
     persist.sys.wfd.virtual=0 \
-    persist.hwc.enable_vds=1
+    persist.hwc.enable_vds=1 \
+    vendor.display.enable_default_color_mode=1 \
+    vendor.display.disable_prim_rot=1 \
+    vendor.gralloc.enable_fb_ubwc=1
 
 # Factory reset partition
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -154,8 +157,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.cne.feature=1 \
-    persist.dpm.feature=0 \
+    persist.vendor.cne.feature=1 \
+    persist.vendor.dpm.feature=0 \
     persist.data.df.dev_name=rmnet_usb0 \
     persist.data.df.iwlan_mux=9 \
     persist.data.iwlan.enable=true \
@@ -170,11 +173,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.rat_on=combine \
     persist.vendor.radio.sib16_support=1 \
     persist.rmnet.data.enable=true \
+    rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so \
     vendor.rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so \
     ril.subscription.types=NV,RUIM \
     ro.telephony.default_network=10 \
     ro.vendor.use_data_netmgrd=true \
-    telephony.lteOnCdmaDevice=1
+    telephony.lteOnCdmaDevice=1 \
+    DEVICE_PROVISIONED=1
 
 # RmNet Data
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -194,6 +199,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.debug.sensors.hal=i \
     persist.vendor.sensors.dev_ori=false \
     persist.vendor.lge.sensors.lgpickup=true \
     persist.vendor.lge.sensors.knock_delay=1000 \
@@ -205,8 +211,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.lge.sensors.wul_thresh2=15 \
     persist.vendor.lge.sensors.wul_thresh3=3100 \
     persist.vendor.lge.sensors.wul_thresh4=10000 \
-    persist.sensors.wul_delay=3000 \
-    persist.sensors.onhand.en=0 \
     ro.vendor.sensors.maghalcal=false \
     ro.vendor.sensors.wu=false \
     ro.vendor.sensors.sta_detect=true \
@@ -221,9 +225,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true
 
 # USB
-PRODUCT_PROPERTY_OVERRIDES += \
-    sys.usb.ffs.aio_compat=1 \
-    persist.sys.usb.config.extra=none
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    sys.usb.ffs.aio_compat=1 \
+#    persist.sys.usb.config.extra=none
 
 # Voice assistant
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -235,4 +239,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Waterproof
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.support.waterproof=true
+    ro.product.lge.support.waterproof=true
