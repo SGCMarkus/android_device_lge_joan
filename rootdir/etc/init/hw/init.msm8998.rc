@@ -1,0 +1,264 @@
+# This file is imported by init.{ro.hardware}.rc
+
+# LGE logger service rc
+import /init.lge.log.rc
+
+on init
+    mkdir /OP
+    mkdir /mnt/vendor/persist-lg 0771 system system
+    mkdir /mnt/vendor/sns 0755 system system
+    mkdir /mnt/vendor/mpt 0775 system system
+
+on fs
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
+    mount_all /vendor/etc/fstab.${ro.hardware}
+
+on post-fs
+    chown root system /mnt/vendor/persist
+    chmod 0771 /mnt/vendor/persist
+    mkdir /mnt/vendor/persist/data 0700 system system
+    mkdir /mnt/vendor/persist/bms 0700 root system
+    restorecon_recursive /mnt/vendor/persist
+
+    chown system system /mnt/vendor/persist-lg
+    chmod 0771 /mnt/vendor/persist-lg
+    restorecon_recursive /mnt/vendor/persist-lg
+
+    chown system system /mnt/vendor/sns
+    chmod 0755 /mnt/vendor/sns
+    restorecon_recursive /mnt/vendor/sns
+
+    chown system system /mnt/vendor/mpt
+    chmod 0775 /mnt/vendor/mpt
+    restorecon_recursive /mnt/vendor/mpt
+
+    chown system radio /mnt/vendor/eri
+    chmod 0771 /mnt/vendor/eri
+    restorecon_recursive /mnt/vendor/eri
+
+    chown root system /mnt/vendor/power
+    chmod 0771 /mnt/vendor/power
+    restorecon_recursive /mnt/vendor/power
+
+    chown system system /mnt/product/quality
+    chmod 0755 /mnt/product/quality
+    restorecon_recursive /mnt/product/quality
+
+    chown system system /mnt/product/srtc
+    chmod 0755 /mnt/product/srtc
+    restorecon_recursive /mnt/product/srtc
+
+    start sreadahead
+
+# enable & disable crash handler, rtb & trace event through property
+on property:persist.vendor.lge.service.crash.enable=*
+    restart service-crash
+
+service service-crash /system/vendor/bin/init.msm8998.crash.sh
+    disabled
+    oneshot
+
+
+on property:persist.vendor.lge.service.crash.enable=1
+    start console
+    # rtb filter
+    write /sys/module/msm_rtb/parameters/filter 0x237
+
+    # ftrace
+    write /sys/kernel/debug/tracing/tracing_on 1
+
+    # timer
+    write /sys/kernel/debug/tracing/events/timer/enable 1
+    write /sys/kernel/debug/tracing/events/timer/filter 1
+    write /sys/kernel/debug/tracing/events/timer/timer_cancel/enable 1
+    write /sys/kernel/debug/tracing/events/timer/timer_expire_entry/enable 1
+    write /sys/kernel/debug/tracing/events/timer/timer_expire_exit/enable 1
+    write /sys/kernel/debug/tracing/events/timer/timer_init/enable 1
+    write /sys/kernel/debug/tracing/events/timer/timer_start/enable 1
+    write /sys/kernel/debug/tracing/events/timer/tick_stop/enable 1
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_cancel/enable 1
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_expire_entry/enable 1
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_expire_exit/enable 1
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_init/enable 1
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_start/enable 1
+
+    #enble FTRACE for softirq events
+    write /sys/kernel/debug/tracing/events/irq/enable 1
+    write /sys/kernel/debug/tracing/events/irq/filter 1
+    write /sys/kernel/debug/tracing/events/irq/softirq_entry/enable 1
+    write /sys/kernel/debug/tracing/events/irq/softirq_exit/enable 1
+    write /sys/kernel/debug/tracing/events/irq/softirq_raise/enable 1
+    write /sys/kernel/debug/tracing/events/irq/irq_handler_entry/enable 1
+
+    #enble FTRACE for Workqueue events
+    write /sys/kernel/debug/tracing/events/workqueue/enable 1
+    write /sys/kernel/debug/tracing/events/workqueue/filter 1
+    write /sys/kernel/debug/tracing/events/workqueue/workqueue_activate_work/enable 1
+    write /sys/kernel/debug/tracing/events/workqueue/workqueue_execute_end/enable 1
+    write /sys/kernel/debug/tracing/events/workqueue/workqueue_execute_start/enable 1
+    write /sys/kernel/debug/tracing/events/workqueue/workqueue_queue_work/enable 1
+
+    # schedular
+    write /sys/kernel/debug/tracing/events/sched/enable 1
+    write /sys/kernel/debug/tracing/events/sched/filter 1
+    write /sys/kernel/debug/tracing/events/sched/sched_cpu_hotplug/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_cpu_load/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_enq_deq_task/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_kthread_stop_ret/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_kthread_stop/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_load_balance/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_migrate_task/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_pi_setprio/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_process_exec/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_process_exit/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_process_fork/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_process_free/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_process_wait/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_stat_blocked/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_stat_iowait/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_stat_runtime/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_stat_sleep/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_stat_wait/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_switch/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_task_load/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_update_history/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_update_task_ravg/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_wait_task/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_wakeup/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_wakeup_new/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_get_busy/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_get_nr_running_avg/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_reset_all_window_stats/enable 1
+
+    # sound
+    write /sys/kernel/debug/tracing/events/asoc/snd_soc_reg_read/enable 1
+    write /sys/kernel/debug/tracing/events/asoc/snd_soc_reg_write/enable 1
+    # mdp
+    write /sys/kernel/debug/tracing/events/mdss/mdp_video_underrun_done/enable 1
+    # video
+    write /sys/kernel/debug/tracing/events/msm_vidc/enable 1
+    # clock
+    write /sys/kernel/debug/tracing/events/power/clock_set_rate/enable 1
+    # regulator
+    write /sys/kernel/debug/tracing/events/regulator/enable 1
+    # power
+    write /sys/kernel/debug/tracing/events/msm_low_power/enable 1
+    #thermal
+    write /sys/kernel/debug/tracing/events/thermal/thermal_pre_core_offline/enable 1
+    write /sys/kernel/debug/tracing/events/thermal/thermal_post_core_offline/enable 1
+    write /sys/kernel/debug/tracing/events/thermal/thermal_pre_core_online/enable 1
+    write /sys/kernel/debug/tracing/events/thermal/thermal_post_core_online/enable 1
+    write /sys/kernel/debug/tracing/events/thermal/thermal_pre_frequency_mit/enable 1
+    write /sys/kernel/debug/tracing/events/thermal/thermal_post_frequency_mit/enable 1
+
+    # size
+    write /sys/kernel/debug/tracing/buffer_size_kb 8192
+
+on property:persist.vendor.lge.service.crash.enable=0
+    # rtb filter
+    write /sys/module/msm_rtb/parameters/filter 0
+
+    # ftrace
+    write /sys/kernel/debug/tracing/tracing_on 0
+
+    # timer
+    write /sys/kernel/debug/tracing/events/timer/enable 0
+    write /sys/kernel/debug/tracing/events/timer/filter 0
+    write /sys/kernel/debug/tracing/events/timer/timer_cancel/enable 0
+    write /sys/kernel/debug/tracing/events/timer/timer_expire_entry/enable 0
+    write /sys/kernel/debug/tracing/events/timer/timer_expire_exit/enable 0
+    write /sys/kernel/debug/tracing/events/timer/timer_init/enable 0
+    write /sys/kernel/debug/tracing/events/timer/timer_start/enable 0
+    write /sys/kernel/debug/tracing/events/timer/tick_stop/enable 0
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_cancel/enable 0
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_expire_entry/enable 0
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_expire_exit/enable 0
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_init/enable 0
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_start/enable 0
+    #enble FTRACE for softirq events
+    write /sys/kernel/debug/tracing/events/irq/enable 0
+    write /sys/kernel/debug/tracing/events/irq/filter 0
+    write /sys/kernel/debug/tracing/events/irq/softirq_entry/enable 0
+    write /sys/kernel/debug/tracing/events/irq/softirq_exit/enable 0
+    write /sys/kernel/debug/tracing/events/irq/softirq_raise/enable 0
+    #enble FTRACE for Workqueue events
+    write /sys/kernel/debug/tracing/events/workqueue/enable 0
+    write /sys/kernel/debug/tracing/events/workqueue/filter 0
+    write /sys/kernel/debug/tracing/events/workqueue/workqueue_activate_work/enable 0
+    write /sys/kernel/debug/tracing/events/workqueue/workqueue_execute_end/enable 0
+    write /sys/kernel/debug/tracing/events/workqueue/workqueue_execute_start/enable 0
+    write /sys/kernel/debug/tracing/events/workqueue/workqueue_queue_work/enable 0
+    # schedular
+    write /sys/kernel/debug/tracing/events/sched/enable 0
+    write /sys/kernel/debug/tracing/events/sched/filter 0
+    write /sys/kernel/debug/tracing/events/sched/sched_cpu_hotplug/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_cpu_load/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_enq_deq_task/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_kthread_stop_ret/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_kthread_stop/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_load_balance/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_migrate_task/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_pi_setprio/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_process_exec/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_process_exit/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_process_fork/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_process_free/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_process_wait/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_stat_blocked/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_stat_iowait/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_stat_runtime/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_stat_sleep/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_stat_wait/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_switch/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_task_load/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_update_history/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_update_task_ravg/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_wait_task/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_wakeup/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_wakeup_new/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_get_busy/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_get_nr_running_avg/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_reset_all_window_stats/enable 0
+    # sound
+    write /sys/kernel/debug/tracing/events/asoc/snd_soc_reg_read/enable 0
+    write /sys/kernel/debug/tracing/events/asoc/snd_soc_reg_write/enable 0
+    # mdp
+    write /sys/kernel/debug/tracing/events/mdss/mdp_video_underrun_done/enable 0
+    # video
+    write /sys/kernel/debug/tracing/events/msm_vidc/enable 0
+    # clock
+    write /sys/kernel/debug/tracing/events/power/clock_set_rate/enable 0
+    # regulator
+    write /sys/kernel/debug/tracing/events/regulator/enable 0
+    # power
+    write /sys/kernel/debug/tracing/events/msm_low_power/enable 0
+    #thermal
+    write /sys/kernel/debug/tracing/events/thermal/thermal_pre_core_offline/enable 0
+    write /sys/kernel/debug/tracing/events/thermal/thermal_post_core_offline/enable 0
+    write /sys/kernel/debug/tracing/events/thermal/thermal_pre_core_online/enable 0
+    write /sys/kernel/debug/tracing/events/thermal/thermal_post_core_online/enable 0
+    write /sys/kernel/debug/tracing/events/thermal/thermal_pre_frequency_mit/enable 0
+    write /sys/kernel/debug/tracing/events/thermal/thermal_post_frequency_mit/enable 0
+
+    # size
+    write /sys/kernel/debug/tracing/buffer_size_kb 0
+
+    # free buffer
+    write /sys/kernel/debug/tracing/free_buffer
+
+on post-fs-data
+
+service sreadahead /vendor/bin/treadahead
+    oneshot
+    disabled
+    seclabel u:r:sreadahead:s0
+
+# make a diecision whether sreadahead would be performed or not.
+service sreadahead-check /vendor/bin/sreadahead_check
+    class main
+    user root
+    group root system
+    oneshot
+    seclabel u:r:sreadahead-check:s0

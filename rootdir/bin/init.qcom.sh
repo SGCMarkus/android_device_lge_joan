@@ -28,6 +28,7 @@
 #
 
 target=`getprop ro.board.platform`
+low_ram=`getprop ro.config.low_ram`
 if [ -f /sys/devices/soc0/soc_id ]; then
     platformid=`cat /sys/devices/soc0/soc_id`
 else
@@ -81,10 +82,12 @@ start_vm_bms()
 
 start_msm_irqbalance_8939()
 {
-	if [ -f /system/vendor/bin/msm_irqbalance ]; then
+	if [ -f /vendor/bin/msm_irqbalance ]; then
 		case "$platformid" in
-		    "239" | "293" | "294" | "295" | "304" | "313")
+		    "239" | "293" | "294" | "295" | "304" | "313" |"353")
 			start vendor.msm_irqbalance;;
+		    "349" | "350" )
+			start vendor.msm_irqbal_lb;;
 		esac
 	fi
 }
@@ -95,18 +98,10 @@ start_msm_irqbalance()
 		case "$platformid" in
 		    "317" | "324" | "325" | "326" | "345" | "346")
 			start vendor.msm_irqbalance;;
-		    "318" | "327")
+		    "318" | "327" | "385")
 			start vendor.msm_irqbl_sdm630;;
 		esac
 	fi
-}
-
-start_copying_prebuilt_qcril_db()
-{
-    if [ -f /vendor/radio/qcril_database/qcril.db -a ! -f /data/vendor/radio/qcril.db ]; then
-        cp /vendor/radio/qcril_database/qcril.db /data/vendor/radio/qcril.db
-        chown -h radio.radio /data/vendor/radio/qcril.db
-    fi
 }
 
 baseband=`getprop ro.baseband`
@@ -258,7 +253,7 @@ case "$target" in
                   ;;
         esac
         ;;
-    "msm8994" | "msm8992" | "msm8998" | "apq8098_latv" | "sdm845")
+    "msm8994" | "msm8992" | "msm8998" | "apq8098_latv" | "sdm845" | "sdm710" | "qcs605" | "msmnile" | "talos")
         start_msm_irqbalance
         ;;
     "msm8996")
@@ -298,8 +293,42 @@ case "$target" in
         else
              hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
         fi
+	if [ "$low_ram" != "true" ]; then
+             case "$soc_id" in
+                  "294" | "295" | "303" | "307" | "308" | "309" | "313" | "320" | "353" | "354" | "363" | "364")
+                       case "$hw_platform" in
+                            "Surf")
+                                    setprop qemu.hw.mainkeys 0
+                                    ;;
+                            "MTP")
+                                    setprop qemu.hw.mainkeys 0
+                                    ;;
+                            "RCM")
+                                    setprop qemu.hw.mainkeys 0
+                                    ;;
+                            "QRD")
+                                    setprop qemu.hw.mainkeys 0
+                                    ;;
+                       esac
+                       ;;
+             esac
+        fi
+        ;;
+    "msm8953")
+	start_msm_irqbalance_8939
+        if [ -f /sys/devices/soc0/soc_id ]; then
+            soc_id=`cat /sys/devices/soc0/soc_id`
+        else
+            soc_id=`cat /sys/devices/system/soc/soc0/id`
+        fi
+
+        if [ -f /sys/devices/soc0/hw_platform ]; then
+             hw_platform=`cat /sys/devices/soc0/hw_platform`
+        else
+             hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
+        fi
         case "$soc_id" in
-             "294" | "295" | "303" | "307" | "308" | "309" | "313" | "320")
+             "293" | "304" | "338" | "351" | "349" | "350" )
                   case "$hw_platform" in
                        "Surf")
                                     setprop qemu.hw.mainkeys 0
@@ -317,8 +346,7 @@ case "$target" in
                   ;;
        esac
         ;;
-    "msm8953")
-	start_msm_irqbalance_8939
+    "sdm710")
         if [ -f /sys/devices/soc0/soc_id ]; then
             soc_id=`cat /sys/devices/soc0/soc_id`
         else
@@ -331,7 +359,7 @@ case "$target" in
              hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
         fi
         case "$soc_id" in
-             "293" | "304" | "338" )
+             "336" | "337" | "347" | "360" )
                   case "$hw_platform" in
                        "Surf")
                                     setprop qemu.hw.mainkeys 0
@@ -352,61 +380,83 @@ case "$target" in
 esac
 
 #
-# Copy qcril.db if needed for RIL
-#
-start_copying_prebuilt_qcril_db
-echo 1 > /data/vendor/radio/db_check_done
-
-#
 # Make modem config folder and copy firmware config to that folder for RIL
 #
-if [ -f /data/vendor/radio/ver_info.txt ]; then
-    prev_version_info=`cat /data/vendor/radio/ver_info.txt`
+if [ -f /data/vendor/modem_config/ver_info.txt ]; then
+    prev_version_info=`cat /data/vendor/modem_config/ver_info.txt`
 else
     prev_version_info=""
 fi
 
-cur_version_info=`cat /firmware/verinfo/ver_info.txt`
+cur_version_info=`cat /vendor/firmware_mnt/verinfo/ver_info.txt`
+# LGE_ModemBSP, [MCFG_Buffet]
+product_name=`getprop ro.product.vendor.name`
 build_product=`getprop ro.build.product`
-product_name=`getprop ro.product.name`
-lge_hydra=`getprop ro.lge.hydra`
+sku_carrier=`getprop ro.boot.vendor.lge.sku_carrier`
+target_country=`getprop ro.vendor.lge.build.target_country`
 
-if [ "$build_product" = "joan" ]; then
-    rm -rf /data/vendor/radio/modem_config
-    mkdir /data/vendor/radio/modem_config
-    chmod 775 /data/vendor/radio/modem_config
-    cp -r /firmware/image/modem_pr/mcfg/configs/* /data/vendor/radio/modem_config
-    chown -hR system.system /data/vendor/radio/modem_config
-    chmod -R 775 /data/vendor/radio/modem_config
-    cp /firmware/verinfo/ver_info.txt /data/vendor/radio/ver_info.txt
-    chown system.system /data/vendor/radio/ver_info.txt
-    if [ "$product_name" = "joan_nao_us" ] && [ "$lge_hydra" == "Renewal128" ]; then
-        cp /data/vendor/radio/modem_config/mcfg_sw/dig_lge/open_spr.dig /data/vendor/radio/modem_config/mcfg_sw/mbn_sw.dig
-        cp /data/vendor/radio/modem_config/mcfg_sw/dig_lge/open_spr.txt /data/vendor/radio/modem_config/mcfg_sw/mbn_sw.txt
-    elif [ "$product_name" = "joan_nao_us" ]; then
-        cp /data/vendor/radio/modem_config/mcfg_sw/dig_lge/open_no.dig /data/vendor/radio/modem_config/mcfg_sw/mbn_sw.dig
-        cp /data/vendor/radio/modem_config/mcfg_sw/dig_lge/open_no.txt /data/vendor/radio/modem_config/mcfg_sw/mbn_sw.txt
+if [ "$product_name" = "joan_lao_com" ] || [ "$product_name" = "phoenix_lao_com" ]; then
+    # add W for group recursively before delete
+    chmod g+w -R /data/vendor/modem_config/*
+    rm -rf /data/vendor/modem_config/*
+    # preserve the read only mode for all subdir and files
+    cp --preserve=m -dr /vendor/firmware_mnt/image/modem_pr/mcfg/configs/* /data/vendor/modem_config
+    cp --preserve=m -d /vendor/firmware_mnt/verinfo/ver_info.txt /data/vendor/modem_config/
+    cp --preserve=m -d /vendor/firmware_mnt/image/modem_pr/mbn_ota.txt /data/vendor/modem_config/
+    # the group must be root, otherwise this script could not add "W" for group recursively
+    chown -hR system.system /data/vendor/modem_config
+    chmod g+w -R /data/vendor/modem_config/*
+
+
+    if [ "$product_name" = "phoenix_lao_com" ]; then
+        if [ "$sku_carrier" = "NA_ALL" ]; then
+	        if [ "$target_country" == "US" ]; then
+                    cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/phoe_nao.dig /data/vendor/modem_config/mcfg_sw/mbn_sw.dig
+                    cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/phoe_nao.txt /data/vendor/modem_config/mcfg_sw/mbn_sw.txt
+	        elif [ "$target_country" == "CA" ]; then
+                    cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/phoe_can.dig /data/vendor/modem_config/mcfg_sw/mbn_sw.dig
+                    cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/phoe_can.txt /data/vendor/modem_config/mcfg_sw/mbn_sw.txt
+	        fi
+        elif [ "$sku_carrier" == "GLOBAL" ]; then
+            cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/phoe_glo.dig /data/vendor/modem_config/mcfg_sw/mbn_sw.dig
+            cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/phoe_glo.txt /data/vendor/modem_config/mcfg_sw/mbn_sw.txt
+        fi
     fi
-elif [ ! -f /firmware/verinfo/ver_info.txt -o "$prev_version_info" != "$cur_version_info" ]; then
-    rm -rf /data/vendor/radio/modem_config
-    mkdir /data/vendor/radio/modem_config
-    chmod 770 /data/vendor/radio/modem_config
-    cp -r /firmware/image/modem_pr/mcfg/configs/* /data/vendor/radio/modem_config
-    chown -hR radio.radio /data/vendor/radio/modem_config
-    cp /firmware/verinfo/ver_info.txt /data/vendor/radio/ver_info.txt
-    chown radio.radio /data/vendor/radio/ver_info.txt
-fi
-cp /firmware/image/modem_pr/mbn_ota.txt /data/vendor/radio/modem_config
-chown system.system /data/vendor/radio/modem_config/mbn_ota.txt
-echo 1 > /data/vendor/radio/copy_complete
+elif [ "$build_product" = "joan" ]; then
+    chmod g+w -R /data/vendor/modem_config/*
+    rm -rf /data/vendor/modem_config/*
+    # preserve the read only mode for all subdir and files
+    cp --preserve=m -dr /vendor/firmware_mnt/image/modem_pr/mcfg/configs/* /data/vendor/modem_config
+    cp --preserve=m -d /vendor/firmware_mnt/verinfo/ver_info.txt /data/vendor/modem_config/
+    cp --preserve=m -d /vendor/firmware_mnt/image/modem_pr/mbn_ota.txt /data/vendor/modem_config/
+    # the group must be root, otherwise this script could not add "W" for group recursively
+    chown -hR system.system /data/vendor/modem_config
+    chmod g+w -R /data/vendor/modem_config/*
 
-#Power_BSP
-battery_present=`cat /sys/class/power_supply/battery/present`
-factory_boot=`cat /sys/class/lge_power/lge_cable_detect/is_factory_cable_boot`
-if [ $battery_present -eq 0 ] && [ $factory_boot -eq 1 ]; then
-    echo "powersave" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    echo "powersave" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+    if [ "$product_name" = "joan_nao_us" ] && [ "$lge_hydra" == "Renewal128" ]; then
+        cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/open_spr.dig /data/vendor/modem_config/mcfg_sw/mbn_sw.dig
+        cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/open_spr.txt /data/vendor/modem_config/mcfg_sw/mbn_sw.txt
+    elif [ "$product_name" = "joan_nao_us" ]; then
+        cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/open_no.dig /data/vendor/modem_config/mcfg_sw/mbn_sw.dig
+        cp --preserve=m -d /data/vendor/modem_config/mcfg_sw/dig_lge/open_no.txt /data/vendor/modem_config/mcfg_sw/mbn_sw.txt
+    fi
+else
+    if [ ! -f /vendor/firmware_mnt/verinfo/ver_info.txt -o "$prev_version_info" != "$cur_version_info" ]; then
+        # add W for group recursively before delete
+        chmod g+w -R /data/vendor/modem_config/*
+        rm -rf /data/vendor/modem_config/*
+        # preserve the read only mode for all subdir and files
+        cp --preserve=m -dr /vendor/firmware_mnt/image/modem_pr/mcfg/configs/* /data/vendor/modem_config
+        cp --preserve=m -d /vendor/firmware_mnt/verinfo/ver_info.txt /data/vendor/modem_config/
+        cp --preserve=m -d /vendor/firmware_mnt/image/modem_pr/mbn_ota.txt /data/vendor/modem_config/
+        # the group must be root, otherwise this script could not add "W" for group recursively
+        chown -hR radio.root /data/vendor/modem_config/*
+    fi
 fi
+chmod g-w -R /data/vendor/modem_config/*
+chmod g-w /data/vendor/modem_config
+#setprop ro.vendor.ril.mbn_copy_completed 1
+echo 1 > /data/vendor/radio/copy_complete
 
 #check build variant for printk logging
 #current default minimum boot-time-default

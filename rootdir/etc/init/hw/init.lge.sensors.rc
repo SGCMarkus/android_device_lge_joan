@@ -1,0 +1,12 @@
+on init
+    mkdir /mnt/vendor/sns 0755 system system
+
+on post-fs
+    chown system system /mnt/vendor/sns
+    chmod 0755 /mnt/vendor/sns
+    restorecon_recursive /mnt/vendor/sns
+
+on post-fs-data
+    mkdir /mnt/vendor/sns/cal/ 0755 system system
+    chown system system /mnt/vendor/sns/cal/sns.reg
+    chown system system /mnt/vendor/sns/cal/cal_data.txt

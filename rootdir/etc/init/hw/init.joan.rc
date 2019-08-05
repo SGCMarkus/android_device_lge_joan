@@ -1,0 +1,172 @@
+ file will be installed as vendor/etc/init/hw/init.{ro.hardware}.rc
+
+# Chipset vendor
+import /vendor/etc/init/hw/init.qcom.rc
+
+# to override init.qcom.rc and init.target.rc
+import /vendor/etc/init/hw/init.lge.usb.rc
+import /vendor/etc/init/hw/init.lge.power.rc
+import /vendor/etc/init/hw/init.lge.sensors.rc
+import /vendor/etc/init/hw/init.lge.fingerprints.rc
+import /vendor/etc/init/hw/init.lge.audio.rc
+
+# import chipset common rc file
+import /vendor/etc/init/hw/init.msm8998.rc
+
+# import $(TARGET_PRODUCT) vendor rc file
+import /vendor/etc/init/hw/init.${ro.hardware}_vendor.rc
+
+# Begin Immersion Changes
+service immvibed /vendor/bin/immvibed -p 99 -u 1000
+    class core
+    user root
+    group root
+    ioprio rt 4
+# End Immersion Changes
+on post-fs
+# Support tuxera exfat filesystem
+    insmod /vendor/lib/modules/texfat.ko
+
+on early-fs
+    ffu_update
+
+on post-fs-data
+    # NFC: create data/nfc for nv storage
+    mkdir /data/vendor/nfc 0770 nfc nfc
+
+
+on early-boot
+#	exec u:r:qti_init_shell:s0 -- /vendor/bin.sh /display_port_permission.sh
+  chmod 644 /sys/class/graphics/fb2/hpd
+  chown system graphics /sys/class/graphics/fb2/hpd
+  chmod 644 /sys/class/graphics/fb2/res_info
+  chown system graphics /sys/class/graphics/fb2/res_info
+  chmod 644 /sys/class/graphics/fb2/vendor_name
+  chown system graphics /sys/class/graphics/fb2/vendor_name
+  chmod 644 /sys/class/graphics/fb2/product_decription
+  chown system graphics /sys/class/graphics/fb2/product_decription
+  chmod 644 /sys/class/graphics/fb2/video_mode
+  chown system graphics /sys/class/graphics/fb2/video_mode
+  chmod 644 /sys/class/graphics/fb2/format_3d
+  chown system graphics /sys/class/graphics/fb2/format_3d
+  chmod 644 /sys/class/graphics/fb2/s3d_mode
+  chown system graphics /sys/class/graphics/fb2/s3d_mode
+  chmod 644 /sys/class/graphics/fb2/dynamic_fps
+  chown system graphics /sys/class/graphics/fb2/dynamic_fps
+  chmod 644 /sys/class/graphics/fb2/msm_fb_dfps_mode
+  chown system graphics /sys/class/graphics/fb2/msm_fb_dfps_mode
+  chmod 644 /sys/class/graphics/fb2/pa
+  chown system graphics /sys/class/graphics/fb2/pa
+  chmod 644 /sys/class/graphics/fb2/hdcp/tp
+  chown system graphics /sys/class/graphics/fb2/hdcp/tp
+
+on boot
+# DAC control
+   chmod 0660 /sys/devices/soc/c175000.i2c/i2c-1/1-0048/headset_type
+   chmod 0660 /sys/devices/soc/c175000.i2c/i2c-1/1-0048/avc_volume
+   chmod 0660 /sys/devices/soc/c175000.i2c/i2c-1/1-0048/ess_filter
+   chown system system /sys/devices/soc/c175000.i2c/i2c-1/1-0048/headset_type
+   chown system system /sys/devices/soc/c175000.i2c/i2c-1/1-0048/avc_volume
+   chown system system /sys/devices/soc/c175000.i2c/i2c-1/1-0048/ess_filter
+
+#for Dynamic Resolution Switching
+  chmod 644 /sys/class/graphics/fb0/mode
+  chmod 644 /sys/class/graphics/fb0/modes
+  chmod 644 /sys/class/graphics/fb0/freeze_state
+  chmod 644 /sys/class/graphics/fb0/freeze_state_hal
+  chown system graphics /sys/class/graphics/fb0/mode
+  chown system graphics /sys/class/graphics/fb0/modes
+  chown system graphics /sys/class/graphics/fb0/freeze_state
+  chown system graphics /sys/class/graphics/fb0/freeze_state_hal
+
+#end for Dynamic Resolution Switching
+
+#for Display Control Mode
+  chmod 644 /sys/class/panel/img_tune/boost_status
+  chown system system /sys/class/panel/img_tune/boost_status
+  chmod 644 /sys/class/panel/img_tune/daylight_mode
+  chown system system /sys/class/panel/img_tune/daylight_mode
+  chmod 644 /sys/class/panel/img_tune/screen_mode
+  chown system system /sys/class/panel/img_tune/screen_mode
+  chmod 644 /sys/class/panel/img_tune/video_enhancement
+  chown system system /sys/class/panel/img_tune/video_enhancement
+  chmod 644 system /sys/class/panel/img_tune/color_manager_status
+  chown system system /sys/class/panel/img_tune/color_manager_status
+  chmod 200 /sys/class/panel/img_tune/therm_dim
+  chown system system /sys/class/panel/img_tune/therm_dim
+  chmod 644 /sys/class/panel/img_tune/rgb_tune
+  chown system system /sys/class/panel/img_tune/rgb_tune
+  chmod 644 /sys/class/panel/img_tune/screen_tune
+  chown system system /sys/class/panel/img_tune/screen_tune
+#end for Display Control Mode
+
+#for Display Control Mode
+  chown system system /sys/class/graphics/fb0/msm_fb_persist_mode
+#end Display Control Mode
+#for High Luminance Mode
+  chown system system /sys/devices/virtual/graphics/fb0/hl_mode
+#end for High Luminance Mode
+
+#for Comfort View
+  chmod 644 /sys/class/panel/img_tune/comfort_view
+  chown system system /sys/class/panel/img_tune/comfort_view
+#end for Comfort View
+
+#for Ambient current state
+  chmod 644 /sys/class/graphics/fb0/cur_panel_mode
+  chown system system /sys/class/graphics/fb0/cur_panel_mode
+#end for Ambient current state
+
+#for AOD Area
+  chmod 644 /sys/class/panel/aod/area
+  chown system system /sys/class/panel/aod/area
+#end for AOD Area
+
+#for Brightness
+  chmod 644 /sys/class/leds/lcd-backlight/brightness
+  chown system system /sys/class/leds/lcd-backlight/brightness
+#end for Brightness
+
+#for Ambient Extension Brightness
+  chmod 644 /sys/class/leds/lcd-backlight-ex/brightness
+  chown system system /sys/class/leds/lcd-backlight-ex/brightness
+#end for Ambient Extension Brightness
+
+#for Reader Mode
+  chmod 644 /sys/class/graphics/fb0/reader_mode
+  chown system system /sys/class/graphics/fb0/reader_mode
+#end for Reader Mode
+
+#Sync fb0 nodes with init.qcom.early_boot.sh
+  chmod 644 /sys/class/graphics/fb0/idle_time
+  chown system graphics /sys/class/graphics/fb0/idle_time
+  chmod 644 /sys/class/graphics/fb0/dynamic_fps
+  chown system graphics /sys/class/graphics/fb0/dynamic_fps
+  chmod 644 /sys/class/graphics/fb0/dyn_pu
+  chown system graphics /sys/class/graphics/fb0/dyn_pu
+  chmod 644 /sys/class/graphics/fb0/msm_cmd_autorefresh_en
+  chown system graphics /sys/class/graphics/fb0/msm_cmd_autorefresh_en
+#end Sync fb0 nodes with init.qcom.early_boot.sh
+
+# MME diver
+  chown system system  /sys/class/lge_mme/mme_ctrl/mme_command
+  chmod 664  /sys/class/lge_mme/mme_ctrl/mme_command
+  chown system system  /sys/class/lge_mme/mme_ctrl/hw_test_value
+  chmod 664  /sys/class/lge_mme/mme_ctrl/hw_test_value
+# END MME driver
+
+#######################################################
+# Touch / Boosting settings for vrmode set by vr hal
+#######################################################
+on property:vendor.lge.vrmode=false
+    write /sys/devices/virtual/input/lge_touch/vr_status 0
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0:1824000 4:1056000"
+    write /sys/module/cpu_boost/parameters/multi_boost_freq "0:1824000 4:1056000"
+
+on property:vendor.lge.vrmode=true
+    write /sys/module/cpu_boost/parameters/input_boost_freq 0
+    write /sys/module/cpu_boost/parameters/multi_boost_freq 0
+    write /sys/devices/virtual/input/lge_touch/vr_status 1
+
+on property:vendor.lge.hdmi.block=*
+    write /sys/devices/virtual/graphics/fb2/dp_external_block ${vendor.lge.hdmi.block}

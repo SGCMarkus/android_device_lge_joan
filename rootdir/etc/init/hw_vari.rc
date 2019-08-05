@@ -1,0 +1,6 @@
+on fs && property:ro.boot.vendor.lge.superset=1
+    exec - root -- /vendor/bin/hw_vari.sh
+    setprop ro.product.vendor.model ${ro.vendor.lge.product.model}
+    setprop ro.vendor.build.fingerprint ${ro.vendor.lge.build.fingerprint}
+    setprop ro.product.vendor.name ${ro.vendor.lge.product.name}
+    setprop ro.product.build.fingerprint ${ro.vendor.lge.build.fingerprint}
