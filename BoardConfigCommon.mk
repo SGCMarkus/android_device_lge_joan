@@ -100,6 +100,9 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_USE_BTNV := true
 
+# Build
+BUILD_BROKEN_DUP_RULES := true
+
 # Camera
 USE_CAMERA_STUB := true
 
