@@ -54,8 +54,8 @@ vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcvirt.so
-vendor/lib/hw/audio.primary.msm8998.so|5d975cf2aba1686a8bf6fc9f721f637ede31c51b
-vendor/lib64/hw/audio.primary.msm8998.so|5aaa9553dc5188903668ce8630c772cad3093e87
+vendor/lib/hw/audio.primary.msm8998.so|ae02074d9160d51c8d2defb1c6ab93eabb8fc3b0
+vendor/lib64/hw/audio.primary.msm8998.so|7e0fb42cdd8f73a002f1cabeb80503b2609bafb7
 
 # Bluetooth
 lib/com.qualcomm.qti.bluetooth_audio@1.0.so
