@@ -349,6 +349,7 @@ PRODUCT_PACKAGES += \
 # Radio
 PRODUCT_PACKAGES += \
     librmnetctl \
+    libandroid_net \
     android.hardware.radio@1.2 \
     android.hardware.radio.config@1.0
 
