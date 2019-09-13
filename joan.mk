@@ -171,7 +171,7 @@ PRODUCT_PACKAGES += \
 	qcom.fmradio \
 	qcom.fmradio.xml
 
-PRODUCT_BOOT_JARS += qcom.fmradio
+#PRODUCT_BOOT_JARS += qcom.fmradio
 
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
@@ -384,8 +384,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     telephony-ext
 
-PRODUCT_BOOT_JARS += \
-    telephony-ext
+#PRODUCT_BOOT_JARS += \
+#    telephony-ext
 
 # Tethering
 PRODUCT_PROPERTY_OVERRIDES += \
