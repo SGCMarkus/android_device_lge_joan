@@ -559,6 +559,10 @@ service qcom-c_main-sh /vendor/bin/init.class_main.sh
     class main
     user root
     oneshot
+    disabled
+
+on property:sys.boot_completed=1
+    start qcom-c_main-sh
 
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
@@ -1242,3 +1246,4 @@ on property:vendor.opengles.version=*
 #Set gpu available frequencies property
 on property:vendor.gpu.available_frequencies=*
     setprop ro.vendor.gpu.available_frequencies ${vendor.gpu.available_frequencies}
+
