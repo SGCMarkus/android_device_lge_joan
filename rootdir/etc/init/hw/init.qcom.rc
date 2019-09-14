@@ -559,10 +559,10 @@ service qcom-c_main-sh /vendor/bin/init.class_main.sh
     class main
     user root
     oneshot
-    disabled
+#    disabled
 
-on property:sys.boot_completed=1
-    start qcom-c_main-sh
+#on property:sys.boot_completed=1
+#    start qcom-c_main-sh
 
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
@@ -639,7 +639,7 @@ service vendor.bt_logger /system/bin/bt_logger
 service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
     class late_start
     user root
-    group bluetooth net_bt_admin misc net_bt_stack diag net_bt
+    group bluetooth net_bt_admin misc diag net_bt
     disabled
     oneshot
 
@@ -1186,7 +1186,7 @@ service time_daemon /system/vendor/bin/time_daemon
 service vendor.qdmastatsd /system/vendor/bin/qdmastatsd
     class late_start
     user system
-    group readproc system net_bw_stats radio vendor_rfs_shared
+    group readproc system net_bw_stats radio
 
 service vendor.vppservice /vendor/bin/vppservice
     class main

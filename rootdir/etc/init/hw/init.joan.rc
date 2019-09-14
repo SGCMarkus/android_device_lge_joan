@@ -1,4 +1,4 @@
- file will be installed as vendor/etc/init/hw/init.{ro.hardware}.rc
+# file will be installed as vendor/etc/init/hw/init.{ro.hardware}.rc
 
 # Chipset vendor
 import /vendor/etc/init/hw/init.qcom.rc
@@ -26,9 +26,6 @@ service immvibed /vendor/bin/immvibed -p 99 -u 1000
 on post-fs
 # Support tuxera exfat filesystem
     insmod /vendor/lib/modules/texfat.ko
-
-on early-fs
-    ffu_update
 
 on post-fs-data
     # NFC: create data/nfc for nv storage
@@ -90,7 +87,7 @@ on boot
   chown system system /sys/class/panel/img_tune/screen_mode
   chmod 644 /sys/class/panel/img_tune/video_enhancement
   chown system system /sys/class/panel/img_tune/video_enhancement
-  chmod 644 system /sys/class/panel/img_tune/color_manager_status
+  chmod 644 /sys/class/panel/img_tune/color_manager_status
   chown system system /sys/class/panel/img_tune/color_manager_status
   chmod 200 /sys/class/panel/img_tune/therm_dim
   chown system system /sys/class/panel/img_tune/therm_dim
