@@ -103,6 +103,7 @@ void init_target_properties()
 
     property_set("ro.product.model", device);
     property_set("ro.vendor.product.model", device);
+    property_set("ro.product.system.model", device);
 }
 
 void vendor_load_properties() {
