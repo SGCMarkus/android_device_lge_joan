@@ -335,10 +335,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/privapp-permissions-joan.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-joan.xml
 
 # Power
-PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti \
-    libxml2
-
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 

@@ -19,6 +19,8 @@ lib64/libaptX_encoder.so
 lib64/libaptXHD_encoder.so
 
 # Audio
+lib/libaudioroute.so
+lib64/libaudioroute.so
 vendor/etc/acdbdata/General_cal.acdb
 vendor/etc/acdbdata/Global_cal.acdb
 vendor/etc/acdbdata/Bluetooth_cal.acdb
@@ -54,8 +56,8 @@ vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcvirt.so
-vendor/lib/hw/audio.primary.msm8998.so|ae02074d9160d51c8d2defb1c6ab93eabb8fc3b0
-vendor/lib64/hw/audio.primary.msm8998.so|7e0fb42cdd8f73a002f1cabeb80503b2609bafb7
+vendor/lib/hw/audio.primary.msm8998.so|99b04397ca319582be8ff2e566e083ddb535f997
+vendor/lib64/hw/audio.primary.msm8998.so|b556e4075704c0926f576005d012c458d84fd1ba
 
 # Bluetooth
 lib/com.qualcomm.qti.bluetooth_audio@1.0.so
@@ -1018,6 +1020,7 @@ vendor/lib/libqti-perfd.so
 vendor/lib/libqti-perfd-client.so
 vendor/lib/libqti-util.so
 vendor/lib/libqti-wl.so
+
 vendor/lib64/libperfgluelayer.so
 vendor/lib64/libqtigef.so
 vendor/lib64/libqti-perfd.so
@@ -1036,6 +1039,13 @@ vendor/lib64/libspcom.so
 vendor/bin/mm-pp-dpps
 vendor/etc/qdcm_calib_data_SW43402_cmd_mode_dsc_dsi_panel.xml
 vendor/lib64/libdisp-aba.so
+
+# Power
+vendor/bin/hw/android.hardware.power@1.2-service
+vendor/etc/init/android.hardware.power@1.2-service.rc
+vendor/lib/hw/power.default.so:vendor/lib/hw/power.msm8998.so
+vendor/lib64/hw/power.default.so:vendor/lib64/hw/power.msm8998.so
+
 
 # PowerOffAlarm
 framework/vendor.qti.hardware.alarm-V1.0-java.jar
@@ -1165,6 +1175,7 @@ vendor/lib/libqcrilFramework.so
 -vendor/lib/libqmiservices.so
 vendor/lib/libqrtr.so
 vendor/lib/libqsocket.so
+vendor/lib/libril.so
 vendor/lib/libril-qc-hal-qmi.so
 vendor/lib/libril-qc-ltedirectdisc.so
 vendor/lib/libril-qc-qmi-1.so
@@ -1185,6 +1196,7 @@ vendor/lib64/libnetmgr_common.so
 vendor/lib64/libnetmgr_nr_fusion.so
 vendor/lib64/libnetmgr_rmnet_ext.so
 vendor/lib64/libnlnetmgr.so
+vendor/lib64/liboffloadhal.so
 vendor/lib64/libpatchcodeid_vendor.so
 vendor/lib64/libpdmapper.so
 vendor/lib64/libpdnotifier.so
@@ -1198,6 +1210,7 @@ vendor/lib64/libril-qc-qmi-1.so
 vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
+vendor/lib64/libril.so
 vendor/lib64/librmnetctl.so
 vendor/lib64/libsettings.so
 vendor/lib64/libsystem_health_mon.so
@@ -1314,6 +1327,7 @@ lib/libaacwrapper.so
 lib/com.qualcomm.qti.wifidisplayhal@1.0.so
 lib/libFileMux.so
 lib/libOmxMux.so
+lib/libmediaextractor.so
 lib/libmmosal.so
 lib/libmmparser_lite.so
 lib/libmmrtpdecoder.so
@@ -1339,6 +1353,7 @@ lib/libwfd_remoteif.so
 lib64/com.qualcomm.qti.wifidisplayhal@1.0.so
 lib64/libFileMux.so
 lib64/libOmxMux.so
+lib64/libmediaextractor.so
 lib64/libmmosal.so
 lib64/libmmparser_lite.so
 lib64/libmmrtpdecoder.so
@@ -1363,8 +1378,9 @@ vendor/lib64/libmmosal_proprietary.so
 vendor/lib64/libwfdhdcpcp.so
 
 # Wi-Fi
+vendor/bin/cnss-daemon
+vendor/bin/cnss_diag
 vendor/etc/wifi/bdwlan.bin
 vendor/etc/wifi/bdwlan_ch0.bin
 vendor/etc/wifi/bdwlan_ch1.bin
-vendor/bin/cnss-daemon
-vendor/bin/cnss_diag
+vendor/lib64/libcld80211.so
