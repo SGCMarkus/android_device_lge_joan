@@ -274,8 +274,8 @@ on post-fs-data
     #Create folder of camera
     mkdir /data/vendor/camera 0770 camera camera
 
-    mkdir /data/media 0770 media_rw media_rw
-    chown media_rw media_rw /data/media
+#    mkdir /data/media 0770 media_rw media_rw
+#    chown media_rw media_rw /data/media
 
     #Create directory for tftp
     mkdir /data/vendor/tombstones 0771 system system
@@ -622,19 +622,19 @@ service vendor.bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
     disabled
     oneshot
 
-service vendor.btsnoop /system/bin/btsnoop
-   user bluetooth
-   group bluetooth net_bt_admin sdcard_rw sdcard_r media_rw
-   class late_start
-   disabled
-   oneshot
+#service vendor.btsnoop /system/bin/btsnoop
+#   user bluetooth
+#   group bluetooth net_bt_admin sdcard_rw sdcard_r media_rw
+#   class late_start
+#   disabled
+#   oneshot
 
-service vendor.bt_logger /system/bin/bt_logger
-   user bluetooth
-   group bluetooth net_bt_admin sdcard_rw sdcard_r media_rw
-   class late_start
-   disabled
-   oneshot
+#service vendor.bt_logger /system/bin/bt_logger
+#   user bluetooth
+#   group bluetooth net_bt_admin sdcard_rw sdcard_r media_rw
+#   class late_start
+#   disabled
+#   oneshot
 
 service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
     class late_start
@@ -725,6 +725,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
 #   group wifi inet keystore
     interface android.hardware.wifi.supplicant@1.0::ISupplicant default
     interface android.hardware.wifi.supplicant@1.1::ISupplicant default
+    interface android.hardware.wifi.supplicant@1.2::ISupplicant default
     class main
     socket vendor_wpa_wlan0 dgram 660 wifi wifi
     disabled
@@ -859,8 +860,7 @@ on property:persist.vendor.data.perf_ko_load=0
 service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     class late_start
     user system
-    group system inet net_admin wifi
-    capabilities NET_ADMIN
+    group system inet wifi
 
 # LGE_WIFI_CHANGE, sys.powerctl -> sys.shutdown.requested
 on property:sys.shutdown.requested=*
@@ -986,6 +986,7 @@ service vendor.atfwd /vendor/bin/ATFWD-daemon
 
 service hostapd_fst /vendor/bin/hw/hostapd -dd -g /data/vendor/wifi/hostapd/global
     interface android.hardware.wifi.hostapd@1.0::IHostapd default
+    interface android.hardware.wifi.hostapd@1.1::IHostapd default
     class main
     capabilities NET_ADMIN NET_RAW
     user wifi
@@ -1022,14 +1023,14 @@ service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
     user radio
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log net_raw
+    group radio cache inet misc audio log readproc wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service vendor.ril-daemon3 /vendor/bin/hw/rild -c 3
     class main
     user radio
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log net_raw
+    group radio cache inet misc audio log readproc wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service profiler_daemon /system/bin/profiler_daemon
@@ -1038,10 +1039,11 @@ service profiler_daemon /system/bin/profiler_daemon
     group root
     disabled
 
-service charger /charger
+service charger /system/bin/charger
     class charger
-    group system graphics
-    seclabel u:r:healthd:s0
+    user system
+    group system graphics input
+    seclabel u:r:charger:s0
 
 service vendor.ssr_diag /system/vendor/bin/ssr_diag
     class late_start
@@ -1075,19 +1077,19 @@ on property:sys.qbcharger.enable=true
 on property:sys.qbcharger.enable=false
     stop qbcharger
 
-service diag_mdlog_start /system/vendor/bin/diag_mdlog
-    class late_start
-    user shell
-    group system oem_2901 sdcard_rw sdcard_r media_rw
-    disabled
-    oneshot
+#service diag_mdlog_start /system/vendor/bin/diag_mdlog
+#    class late_start
+#    user shell
+#    group system oem_2901 sdcard_rw sdcard_r media_rw
+#    disabled
+#    oneshot
 
-service diag_mdlog_stop /system/vendor/bin/diag_mdlog -k
-    class late_start
-    user shell
-    group system oem_2901 sdcard_rw sdcard_r media_rw
-    disabled
-    oneshot
+#service diag_mdlog_stop /system/vendor/bin/diag_mdlog -k
+#    class late_start
+#    user shell
+#    group system oem_2901 sdcard_rw sdcard_r media_rw
+#    disabled
+#    oneshot
 
 #service qlogd /system/xbin/qlogd
 #    socket qlogd stream 0662 system system
