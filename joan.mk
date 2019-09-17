@@ -144,6 +144,7 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libqdMetaData.system \
     libtinyxml \
+    libqservice \
     memtrack.msm8998
 
 # Doze
