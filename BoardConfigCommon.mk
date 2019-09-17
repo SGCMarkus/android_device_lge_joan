@@ -102,7 +102,6 @@ QCOM_BT_USE_BTNV := true
 
 # Build
 BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_PHONY_TARGETS := true
 
 # Camera
 USE_CAMERA_STUB := true
@@ -182,8 +181,8 @@ TARGET_RIL_VARIANT := caf
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += device/lge/joan-common/sepolicy/vendor
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/lge/joan-common/sepolicy/private
+#BOARD_SEPOLICY_DIRS += device/lge/joan-common/sepolicy/vendor
+#BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/lge/joan-common/sepolicy/private
 SELINUX_IGNORE_NEVERALLOWS := true
 
 # Timeservice
