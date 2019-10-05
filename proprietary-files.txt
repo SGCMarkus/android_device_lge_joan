@@ -19,7 +19,9 @@ lib64/libaptX_encoder.so
 lib64/libaptXHD_encoder.so
 
 # Audio
+-lib/libaudioparsers.so
 lib/libaudioroute.so
+-lib64/libaudioparsers.so
 lib64/libaudioroute.so
 vendor/etc/acdbdata/General_cal.acdb
 vendor/etc/acdbdata/Global_cal.acdb
