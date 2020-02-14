@@ -1,0 +1,15 @@
+on init
+    # LiveDisplay sysfs
+    chown system system /sys/devices/virtual/panel/img_tune/screen_mode
+    chmod 0660 /sys/devices/virtual/panel/img_tune/screen_mode
+    chown system system /sys/devices/virtual/panel/img_tune/screen_tune
+    chmod 0660 /sys/devices/virtual/panel/img_tune/screen_tune
+    chown system system /sys/devices/virtual/panel/img_tune/rgb_tune
+    chmod 0660 /sys/devices/virtual/panel/img_tune/rgb_tune
+    chown system system /sys/devices/virtual/panel/img_tune/hdr_mode
+    chmod 0660 /sys/devices/virtual/panel/img_tune/hdr_mode
+
+service vendor.livedisplay-hal-2-0-joan /vendor/bin/hw/vendor.lineage.livedisplay@2.0-service.joan
+    class hal
+    user system
+    group system
