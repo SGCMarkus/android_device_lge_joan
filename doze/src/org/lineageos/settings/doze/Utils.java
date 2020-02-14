@@ -59,7 +59,7 @@ public final class Utils {
     }
 
     protected static void checkDozeService(Context context) {
-        if (isDozeEnabled(context) && (isAlwaysOnEnabled(context) || areGesturesEnabled(context))) {
+        if (isDozeEnabled(context) && !isAlwaysOnEnabled(context) && areGesturesEnabled(context)) {
             startService(context);
         } else {
             stopService(context);

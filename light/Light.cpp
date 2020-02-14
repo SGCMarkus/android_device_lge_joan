@@ -28,9 +28,9 @@ namespace light {
 namespace V2_0 {
 namespace implementation {
 
-#define LEDS            "/sys/class/leds/"
+#define BL            "/sys/class/leds/lcd-backlight/"
 
-#define LCD_LED         LEDS "lcd-backlight/"
+#define BL_EX         "/sys/class/leds/lcd-backlight-ex/"
 
 #define BRIGHTNESS      "brightness"
 #define MAX_BRIGHTNESS  "max_brightness"
@@ -61,13 +61,19 @@ static int rgbToBrightness(const LightState& state) {
 }
 
 static void handleBacklight(const LightState& state) {
-    int maxBrightness = get(LCD_LED MAX_BRIGHTNESS, -1);
+    int maxBrightness = get(BL MAX_BRIGHTNESS, -1);
+    int maxBrightnessEx = get(BL_EX MAX_BRIGHTNESS, -1);
     if (maxBrightness < 0) {
         maxBrightness = 255;
     }
+    if (maxBrightnessEx < 0) {
+        maxBrightnessEx = 255;
+    }
     int sentBrightness = rgbToBrightness(state);
     int brightness = sentBrightness * maxBrightness / 255;
-    set(LCD_LED BRIGHTNESS, brightness);
+    int brightnessEx = sentBrightness * maxBrightnessEx / 255;
+    set(BL BRIGHTNESS, brightness);
+    set(BL_EX BRIGHTNESS, brightnessEx);
 }
 
 static std::map<Type, std::function<void(const LightState&)>> lights = {

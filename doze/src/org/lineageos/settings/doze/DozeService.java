@@ -76,9 +76,6 @@ public class DozeService extends Service {
 
     private void onDisplayOff() {
         if (DEBUG) Log.d(TAG, "Display off");
-        if(Utils.isAlwaysOnEnabled(this)) {
-            Utils.launchDozePulse(this);
-        }
         if (Utils.isPickUpEnabled(this)) {
             mPickupSensor.enable();
         }
