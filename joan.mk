@@ -109,7 +109,8 @@ PRODUCT_PACKAGES += \
 
 # DAC
 PRODUCT_PACKAGES += \
-    QuadDACPanel
+    QuadDACPanel \
+    lge.hardware.audio.dac.control@1.0-service
 
 # Dalvik/HWUI
 PRODUCT_PROPERTY_OVERRIDES += \
