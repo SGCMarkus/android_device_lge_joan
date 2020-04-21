@@ -1,0 +1,46 @@
+#
+# vendor props for joan
+#
+
+# Audio
+audio.deep_buffer.media=true
+audio.offload.24bit.enable=1
+audio.offload.min.duration.secs=30
+audio.offload.video=true
+ro.af.client_heap_size_kbyte=7168
+
+# Bluetooth
+vendor.bluetooth.soc=cherokee
+
+# Media
+media.aac_51_output_enabled=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-http=true
+media.stagefright.enable-player=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-scan=true
+mm.enable.smoothstreaming=true
+mmp.enable.3g2=true
+persist.mm.enable.prefetch=true
+
+# Radio
+DEVICE_PROVISIONED=1
+persist.data.netmgrd.qos.enable=true
+persist.timed.enable=true
+ril.subscription.types=NV,RUIM
+rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so
+
+# SurfaceFlinger
+debug.sf.early_app_phase_offset_ns=1500000
+debug.sf.early_gl_app_phase_offset_ns=15000000 
+debug.sf.early_gl_phase_offset_ns=3000000
+debug.sf.early_phase_offset_ns=1500000
+ro.surface_flinger.has_HDR_display=true
+ro.surface_flinger.has_wide_color_display=true
+ro.surface_flinger.protected_contents=true
+ro.surface_flinger.use_color_management=true
+ro.surface_flinger.wcg_composition_dataspace=143261696
+
+# Voice assistant
+ro.opa.eligible_device=true
+
