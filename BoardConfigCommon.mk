@@ -112,6 +112,9 @@ USE_CAMERA_STUB := true
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
+# Custom Apns for Sprint
+CUSTOM_APNS_FILE := $(COMMON_PATH)/sprint_apns.xml
+
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
