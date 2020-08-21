@@ -157,19 +157,19 @@ etc/firmware/rampatch_tlv_3.2.tlv:vendor/etc/firmware/rampatch_tlv_3.2.tlv
 vendor/firmware/crbtfw21.tlv
 vendor/firmware/crnv21.bin
 
-# Camera
+# Camera - pinned files are hexedited to be vndk compatible
 vendor/bin/mm-qcamera-app
-vendor/lib/hw/camera.msm8998.so
+vendor/lib/hw/camera.msm8998.so|8821087ce5c7c19ec5824358b8c8c82adce0d944
 vendor/lib/libactuator_bu24333gwl.so
 vendor/lib/libactuator_renesascl.so
-vendor/lib/libarcsoft_beauty_picselfie.so
+vendor/lib/libarcsoft_beauty_picselfie.so|86a1a8dd78a82dafc7e89822c74c66b978502542
 vendor/lib/libarcsoft_picselfie_algorithm.so
 vendor/lib/libarcsoft_object_tracking.so
 vendor/lib/libAutoContrast.so
 vendor/lib/libbwfocuspeaking.so
 vendor/lib/libcinemaeffect.so
 vendor/lib/libfilm_emulation_symphony.so
-vendor/lib/libfilm_emulation.so
+vendor/lib/libfilm_emulation.so|ceb84d719e807b74dd510146223d457f9371408c
 vendor/lib/libflash_pmic.so
 vendor/lib/libhal_dbg.so
 vendor/lib/libjpegdhw.so
@@ -182,7 +182,7 @@ vendor/lib/liblgmda.so
 vendor/lib/liblgcamera_beautypreview.so
 vendor/lib/liblgcine_core.so
 vendor/lib/libmm-qcamera.so
-vendor/lib/libmmcamera_bokeh.so
+vendor/lib/libmmcamera_bokeh.so|862b13e368861ad6b7c996befe2b731cbe5882cb
 vendor/lib/libmmcamera_dbg.so
 vendor/lib/libmmcamera_depth_map.so
 vendor/lib/libmmcamera_dummyalgo.so
@@ -283,7 +283,7 @@ vendor/lib/libmmqjpeg_codec.so
 vendor/lib/libmmqjpegdma.so
 vendor/lib/libmorpho_image_stab31.so
 vendor/lib/libmorpho_superzoom.so
-vendor/lib/libmpbase.so
+vendor/lib/libmpbase.so|fe013f2260768aad784b6ce591f70267c4a1104c
 vendor/lib/libois_bu24333gwl.so
 vendor/lib/libois_bu63165.so
 vendor/lib/libois_lc898122.so
