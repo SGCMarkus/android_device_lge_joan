@@ -11,6 +11,10 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay \
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += $(LOCAL_PATH)/overlay-lineage/lineage-sdk
 
+# Properties
+TARGET_SYSTEM_PROP += $(LOCAL_PATH)/system.prop
+TARGET_VENDOR_PROP += $(LOCAL_PATH)/vendor.prop
+
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 560dpi
@@ -28,16 +32,23 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@2.0-impl \
     android.hardware.audio.effect@5.0-impl \
     android.hardware.soundtrigger@2.1-impl \
+    android.hardware.bluetooth.audio@2.0-impl \
     audio.a2dp.default \
+    audio.bluetooth.default \
     audio.primary.msm8998 \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
+    libaudioroute \
+    libhdmiedid \
+    libhfp \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libvolumelistener \
-    tinymix
+    tinymix \
+    libtinycompress \
+    libtinycompress.vendor
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
@@ -65,8 +76,8 @@ TARGET_SCREEN_WIDTH := 1440
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0 \
-    libbt-vendor
+    liba2dpoffload \
+    vendor.qti.hardware.bluetooth_audio@2.0.vendor
 
 # Camera
 PRODUCT_COPY_FILES += \
@@ -84,11 +95,25 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0 \
     libxml2 \
     Snap
+#    libsensor-vendor \
+#    libandroid-vendor \
+#    libgui-vendor \
+#    libui-vendor \
+#    libstdc++.vendor
+
+# CNE
+PRODUCT_PACKAGES += \
+    cneapiclient
+
+# Context Hub
+PRODUCT_PACKAGES += \
+    android.hardware.contexthub@1.0-impl.generic \
+    android.hardware.contexthub@1.0-service
 
 # DAC
 PRODUCT_PACKAGES += \
     QuadDACPanel \
-    lge.hardware.audio.dac.control@1.0-service
+    vendor.lge.hardware.audio.dac.control@1.0-service
 
 # Dalvik/HWUI
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -159,29 +184,13 @@ PRODUCT_PACKAGES += \
 	qcom.fmradio \
 	qcom.fmradio.xml
 
-#PRODUCT_BOOT_JARS += qcom.fmradio
-
-# Gatekeeper HAL
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service
+PRODUCT_BOOT_JARS += qcom.fmradio
 
 # Gesture handler
 PRODUCT_PACKAGES += \
     GestureHandler
 
 # GPS
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl-qti \
-    android.hardware.gnss@1.0-service-qti \
-    libgnss \
-    libgnsspps \
-    libgps.utils \
-    liblocation_api \
-    libloc_core \
-    libloc_pla \
-    libvehiclenetwork-native
-
 PRODUCT_PACKAGES += \
     flp.conf \
     gps.conf \
@@ -226,10 +235,10 @@ $(foreach f,$(wildcard $(LOCAL_PATH)/rootdir/bin/*.sh),\
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
-# Keymaster HAL
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
+# Keymaster
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v28/arm64/arch-arm64-armv8-a/shared/vndk-core/libkeymaster_portable.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libleymaster_portable.so \
+    prebuilts/vndk/v28/arm64/arch-arm-armv8-a/shared/vndk-core/libkeymaster_portable.so:$(TARGET_COPY_OUT_VENDOR)/lib/libleymaster_portable.so
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -325,6 +334,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-joan.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-joan.xml
 
 # Power
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.2-service-qti
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
@@ -335,14 +347,18 @@ PRODUCT_COPY_FILES += \
 
 # QMI
 PRODUCT_PACKAGES += \
-    libjson
+    libjson \
+    libqti_vndfwk_detect \
+    libqti_vndfwk_detect.vendor \
+    libclang_rt.ubsan_standalone-aarch64-android
 
 # Radio
 PRODUCT_PACKAGES += \
     librmnetctl \
     libandroid_net \
-    android.hardware.radio@1.2 \
-    android.hardware.radio.config@1.0
+    libprotobuf-cpp-full \
+    android.hardware.radio@1.4 \
+    android.hardware.radio.config@1.2 \
 
 # RCS
 PRODUCT_PACKAGES += \
@@ -376,10 +392,14 @@ PRODUCT_COPY_FILES += \
 
 # Telephony
 PRODUCT_PACKAGES += \
+    qti-telephony-hidl-wrapper \
+    qti_telephony_hidl_wrapper.xml \
+    qti-telephony-utils \
+    qti_telephony_utils.xml \
     telephony-ext
 
-#PRODUCT_BOOT_JARS += \
-#    telephony-ext
+PRODUCT_BOOT_JARS += \
+    telephony-ext
 
 # Tethering
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -416,7 +436,8 @@ PRODUCT_PACKAGES += \
 # VR HAL
 PRODUCT_PACKAGES += \
     android.hardware.vr@1.0-impl \
-    android.hardware.vr@1.0-service
+    android.hardware.vr@1.0-service \
+    vr.msm8998
 
 # Wifi
 PRODUCT_COPY_FILES += \
