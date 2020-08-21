@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Copyright (c) 2014, The Linux Foundation. All rights reserved.         -->
+<!-- Copyright (c) 2014, 2016, The Linux Foundation. All rights reserved.   -->
 <!--                                                                        -->
 <!-- Redistribution and use in source and binary forms, with or without     -->
 <!-- modification, are permitted provided that the following conditions are -->
@@ -66,6 +66,8 @@
         <usecase name="USECASE_AUDIO_RECORD_LOW_LATENCY" type="in" id="17" />
         <usecase name="USECASE_AUDIO_PLAYBACK_ULL" type="out" id="17" />
         <usecase name="USECASE_AUDIO_PLAYBACK_EXT_DISP_SILENCE" type="out" id="27" />
+        <usecase name="USECASE_AUDIO_PLAYBACK_MMAP" type="out" id="33" />
+        <usecase name="USECASE_AUDIO_RECORD_MMAP" type="in" id="33" />
         <usecase name="USECASE_AUDIO_3RDP_SPKR_PROT_TX" type="in" id="94"/>
         <usecase name="USECASE_AUDIO_PLAYBACK_DUAL_AUDIO" type="in" id="95"/>
         <usecase name="USECASE_AUDIO_PLAYBACK_DUAL_AUDIO" type="out" id="95"/>
@@ -94,9 +96,18 @@
         <device name="SND_DEVICE_OUT_HEADPHONES" backend="headphones" interface="SLIMBUS_6_RX" />
         <device name="SND_DEVICE_OUT_LINE" backend="headphones" interface="SLIMBUS_6_RX" />
         <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" backend="headphones" interface="SLIMBUS_6_RX" />
+        <device name="SND_DEVICE_OUT_VOICE_HEADSET" backend="headset" interface="SLIMBUS_6_RX" />
+        <device name="SND_DEVICE_LGE_OUT_VOICE_HEADPHONES_ADVANCED" backend="headphones" interface="SLIMBUS_6_RX" />
+        <device name="SND_DEVICE_LGE_OUT_VOICE_HEADPHONES_AUX" backend="headphones" interface="SLIMBUS_6_RX" />
+        <device name="SND_DEVICE_LGE_OUT_VOICE_HEADSET" backend="headset" interface="SLIMBUS_6_RX" />
+        <device name="SND_DEVICE_LGE_OUT_VOICE_HEADSET_ADVANCED" backend="headset" interface="SLIMBUS_6_RX" />
+        <device name="SND_DEVICE_LGE_OUT_VOICE_HEADSET_AUX" backend="headset" interface="SLIMBUS_6_RX" />
         <device name="SND_DEVICE_LGE_OUT_VOIP_HEADPHONES" backend="headphones" interface="SLIMBUS_6_RX" />
         <device name="SND_DEVICE_LGE_OUT_VOIP_HEADPHONES_ADVANCED" backend="headphones" interface="SLIMBUS_6_RX" />
         <device name="SND_DEVICE_LGE_OUT_VOIP_HEADPHONES_AUX" backend="headphones" interface="SLIMBUS_6_RX" />
+        <device name="SND_DEVICE_LGE_OUT_VOIP_HEADSET" backend="headset" interface="SLIMBUS_6_RX" />
+        <device name="SND_DEVICE_LGE_OUT_VOIP_HEADSET_ADVANCED" backend="headset" interface="SLIMBUS_6_RX" />
+        <device name="SND_DEVICE_LGE_OUT_VOIP_HEADSET_AUX" backend="headset" interface="SLIMBUS_6_RX" />
         <device name="SND_DEVICE_LGE_OUT_LOOPBACK_HEADPHONES" backend="headphones" interface="SLIMBUS_6_RX" />
         <device name="SND_DEVICE_OUT_VOICE_LINE" backend="headphones" interface="SLIMBUS_6_RX" />
         <device name="SND_DEVICE_OUT_VOICE_TTY_FULL_HEADPHONES" backend="headphones" interface="SLIMBUS_6_RX" />
@@ -117,6 +128,9 @@
         <device name="SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DACDOP_ADVANCED" backend="QUAT_TDM_RX_0" interface="QUAT_TDM_RX_0"/>
         <device name="SND_DEVICE_LGE_OUT_HEADPHONES_HIFI_DACDOP_AUX" backend="QUAT_TDM_RX_0" interface="QUAT_TDM_RX_0"/>
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER_AND_VOICE_HEADPHONES" backend="voice-speaker-and-voice-headphones" interface="TERT_MI2S_RX-and-SLIMBUS_6_RX"/>
+        <device name="SND_DEVICE_IN_VOICE_RECOG_USB_HEADSET_MULTI_CHANNEL_MIC" backend="usb-headset-mic" interface="USB_AUDIO_TX"/>
+        <device name="SND_DEVICE_IN_USB_HEADSET_MULTI_CHANNEL_MIC_AEC" backend="usb-headset-mic" interface="USB_AUDIO_TX"/>
+        <device name="SND_DEVICE_IN_UNPROCESSED_USB_HEADSET_MULTI_CHANNEL_MIC" backend="usb-headset-mic" interface="USB_AUDIO_TX"/>
     </backend_names>
     <microphone_characteristics>
         <microphone
@@ -193,3 +207,4 @@
         </input_snd_device>
     </snd_devices>
 </audio_platform_info>
+
