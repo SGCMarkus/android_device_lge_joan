@@ -23,6 +23,9 @@ persist.sys.wfd.virtual=0
 # Perf
 ro.vendor.qti.sys.fw.bg_apps_limit=48
 
+# QC framework value-adds
+ro.vendor.qti.va_aosp.support=1
+
 # Radio
 DEVICE_PROVISIONED=1
 persist.sys.fflag.override.settings_network_and_internet_v2=true

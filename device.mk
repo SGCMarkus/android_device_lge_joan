@@ -12,6 +12,7 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += $(LOCAL_PATH)/overlay-lineage/lineage-sdk
 
 # Properties
+TARGET_ODM_PROP += $(LOCAL_PATH)/odm.prop
 TARGET_SYSTEM_PROP += $(LOCAL_PATH)/system.prop
 TARGET_VENDOR_PROP += $(LOCAL_PATH)/vendor.prop
 
