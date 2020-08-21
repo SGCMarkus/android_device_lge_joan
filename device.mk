@@ -437,6 +437,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.2-service.lge
 
+# VNDK
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v28/arm64/arch-arm64-armv8-a/shared/vndk-core/libkeymaster_portable.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libleymaster_portable.so \
+
+PRODUCT_PACKAGES += \
+    libsensor-vendor \
+    libgui-vendor \
+    libui-vendor \
+    libstdc++.vendor
+
 # VR HAL
 PRODUCT_PACKAGES += \
     android.hardware.vr@1.0-impl \
