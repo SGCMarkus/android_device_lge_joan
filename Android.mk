@@ -1,6 +1,5 @@
 #
-# Copyright 2016 The CyanogenMod Project
-# Copyright 2017 The LineageOS Project
+# Copyright 2018 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,7 +16,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter h930 h932 us998,$(TARGET_DEVICE)),)
+ifneq ($(filter h930 h932 us998 joan,$(TARGET_DEVICE)),)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 

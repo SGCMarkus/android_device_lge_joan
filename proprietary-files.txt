@@ -1,3 +1,6 @@
+# Audio - Firmware
+vendor/firmware/Tfa9872.cnt
+
 # ADSP
 vendor/bin/adsprpcd
 vendor/lib/libadsprpc.so
@@ -89,6 +92,8 @@ etc/firmware/rampatch_tlv_1.3.tlv:vendor/etc/firmware/rampatch_tlv_1.3.tlv
 etc/firmware/rampatch_tlv_2.1.tlv:vendor/etc/firmware/rampatch_tlv_2.1.tlv 
 etc/firmware/rampatch_tlv_3.0.tlv:vendor/etc/firmware/rampatch_tlv_3.0.tlv 
 etc/firmware/rampatch_tlv_3.2.tlv:vendor/etc/firmware/rampatch_tlv_3.2.tlv 
+vendor/firmware/crbtfw21.tlv
+vendor/firmware/crnv21.bin
 
 # Camera
 vendor/bin/mm-qcamera-app
@@ -432,6 +437,19 @@ vendor/lib/libchromatix_s5k3m3_snapshot.so
 vendor/lib/libchromatix_s5k3m3_snapshot_raw_hdr.so
 vendor/lib/libchromatix_s5k3m3_zsl_preview_3a.so
 vendor/lib/libchromatix_s5k3m3_zsl_video_3a.so
+
+# Camera - Firmware
+vendor/firmware/cpp_firmware_v1_10_0.fw
+vendor/firmware/cpp_firmware_v1_1_1.fw
+vendor/firmware/cpp_firmware_v1_12_0.fw
+vendor/firmware/cpp_firmware_v1_1_6.fw
+vendor/firmware/cpp_firmware_v1_2_0.fw
+vendor/firmware/cpp_firmware_v1_4_0.fw
+vendor/firmware/cpp_firmware_v1_5_0.fw
+vendor/firmware/cpp_firmware_v1_5_1.fw
+vendor/firmware/cpp_firmware_v1_5_2.fw
+vendor/firmware/cpp_firmware_v1_6_0.fw
+vendor/firmware/cpp_firmware_v1_8_0.fw
 
 # Camera - OIS Firmware
 vendor/etc/camera/bu24235_dl_program_Joan_LGITAct_ICG1020S_rev0_S_data1.bin
@@ -860,6 +878,37 @@ vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc
 vendor/lib/libqdutils.so
 vendor/lib64/libqdutils.so
 
+# Graphics - Firmware
+vendor/firmware/a225p5_pm4.fw
+vendor/firmware/a225_pfp.fw
+vendor/firmware/a225_pm4.fw
+vendor/firmware/a300_pfp.fw
+vendor/firmware/a300_pm4.fw
+vendor/firmware/a330_pfp.fw
+vendor/firmware/a330_pm4.fw
+vendor/firmware/a420_pfp.fw
+vendor/firmware/a420_pm4.fw
+vendor/firmware/a530_gpmu.fw2
+vendor/firmware/a530_pfp.fw
+vendor/firmware/a530_pm4.fw
+vendor/firmware/a530v1_pfp.fw
+vendor/firmware/a530v1_pm4.fw
+vendor/firmware/a530v2_seq.fw2
+vendor/firmware/a530v3_gpmu.fw2
+vendor/firmware/a530v3_seq.fw2
+vendor/firmware/a530_zap.b00
+vendor/firmware/a530_zap.b01
+vendor/firmware/a530_zap.b02
+vendor/firmware/a530_zap.elf
+vendor/firmware/a530_zap.mdt
+vendor/firmware/a540_gpmu.fw2
+vendor/firmware/a540_zap.b00
+vendor/firmware/a540_zap.b01
+vendor/firmware/a540_zap.b02
+vendor/firmware/a540_zap.elf
+vendor/firmware/a540_zap.mdt
+
+
 # Hotword Enrollment
 -product/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk:priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk;PRESIGNED
 -product/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk:priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk;PRESIGNED
@@ -899,6 +948,10 @@ vendor/lib64/hw/vendor.qti.hardware.iop@2.0-impl.so
 # Keystore
 vendor/lib/hw/keystore.msm8998.so
 vendor/lib64/hw/keystore.msm8998.so
+
+# Leia
+vendor/firmware/leia_pfp_470.fw
+vendor/firmware/leia_pm4_470.fw
 
 # LGE - Bootproperty
 lib/vendor.lge.hardware.bootproperty@1.0.so
@@ -1001,6 +1054,10 @@ vendor/lib64/libOmxVpp.so
 vendor/lib64/libOmxWmaDec.so
 vendor/lib64/libvpphvx.so
 vendor/lib64/libvpplibrary.so
+
+# NFC
+vendor/firmware/libpn548ad_fw_64.so:vendor/lib64/libpn548ad_fw_64.so
+vendor/firmware/libpn548ad_fw.so:vendor/lib/libpn548ad_fw.so
 
 # Perf
 lib/libqti_performance.so
