@@ -19,7 +19,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Device identifiers
-PRODUCT_DEVICE := h930
+PRODUCT_DEVICE := joan
 PRODUCT_NAME := lineage_joan
 PRODUCT_BRAND := lge
 PRODUCT_MODEL := joan
@@ -44,9 +44,6 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay \
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += $(LOCAL_PATH)/overlay-lineage/lineage-sdk
-
-# Properties
-TARGET_SYSTEM_PROP += $(LOCAL_PATH)/system.prop
 
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
@@ -387,6 +384,10 @@ PRODUCT_PACKAGES += \
     rcs_service_aidl.xml \
     rcs_service_api \
     rcs_service_api.xml
+
+# Releasetools
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/releasetools/device_check.sh:install/bin/device_check.sh
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
