@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# Copyright (C) 2020 The LineageOS Project
+# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,28 +18,32 @@
 
 set -e
 
-export DEVICE=joan
-export VENDOR=lge
+DEVICE=joan
+VENDOR=lge
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
-if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
+if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
-LINEAGE_ROOT="$MY_DIR"/../../..
+LINEAGE_ROOT="${MY_DIR}/../../.."
 
-HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
-if [ ! -f "$HELPER" ]; then
-    echo "Unable to find helper script at $HELPER"
+HELPER="${LINEAGE_ROOT}/vendor/lineage/build/tools/extract_utils.sh"
+if [ ! -f "${HELPER}" ]; then
+    echo "Unable to find helper script at ${HELPER}"
     exit 1
 fi
-. "$HELPER"
+source "${HELPER}"
 
 # Default to sanitizing the vendor folder before extraction
 CLEAN_VENDOR=true
+SECTION=
+KANG=
 
 while [ "$1" != "" ]; do
-    case $1 in
+    case "$1" in
         -n | --no-cleanup )     CLEAN_VENDOR=false
+                                ;;
+        -k | --kang)            KANG="--kang"
                                 ;;
         -s | --section )        shift
                                 SECTION="$1"
@@ -50,14 +55,37 @@ while [ "$1" != "" ]; do
     shift
 done
 
-if [ -z "$SRC" ]; then
+if [ -z "${SRC}" ]; then
     SRC=adb
 fi
 
-# Initialize the helper for common device
-setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" true $CLEAN_VENDOR
+# Initialize the helper
+setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
 
-extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
+extract "${MY_DIR}/proprietary-files.txt" "${SRC}" ${KANG} --section "${SECTION}"
+
+# Do not clean the vendor folder before fetching other blobs
+CLEAN_VENDOR=false
+
+# Reinitialize the helper for H930 blobs
+echo "Gathering H930 blobs for unified build."
+echo "Please provide the path to H930 blobs."
+echo "or hit enter to attempt fetching from a connected device, adb mode."
+echo "You may run this again if fail or skip."
+echo "Without H930 blobs this build will not be unified."
+echo -n "Path:"
+read SRC
+
+
+if [ -z "${SRC}" ]; then
+    SRC=adb
+fi
+
+
+setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
+
+
+extract "${MY_DIR}/proprietary-files_h930.txt" "${SRC}" ${KANG} --section "${SECTION}"
 
 # Reinitialize the helper for H932 blobs
 echo "Gathering H932 blobs for unified build."
@@ -68,15 +96,15 @@ echo "Without H932 blobs this build will not run on T-Mobile H932 devices."
 echo -n "Path:"
 read SRC
 
-if [ -z "$SRC" ]; then
+
+if [ -z "${SRC}" ]; then
     SRC=adb
 fi
 
-# Do not clean the vendor folder before fetching h932 blobs
-CLEAN_VENDOR=false
 
-setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" false $CLEAN_VENDOR
+setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
 
-extract "$MY_DIR/../$DEVICE/proprietary-files_h932.txt" "$SRC" "$SECTION"
 
-"$MY_DIR"/setup-makefiles.sh
+extract "${MY_DIR}/proprietary-files_h932.txt" "${SRC}" ${KANG} --section "${SECTION}"
+
+"${MY_DIR}/setup-makefiles.sh"

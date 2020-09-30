@@ -903,10 +903,7 @@ vendor/firmware/a530_zap.elf
 vendor/firmware/a530_zap.mdt
 vendor/firmware/a540_gpmu.fw2
 vendor/firmware/a540_zap.b00
-vendor/firmware/a540_zap.b01
 vendor/firmware/a540_zap.b02
-vendor/firmware/a540_zap.elf
-vendor/firmware/a540_zap.mdt
 
 
 # Hotword Enrollment
