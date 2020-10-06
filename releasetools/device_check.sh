@@ -15,11 +15,9 @@
 # limitations under the License.
 #
 
-PRODUCT_MODEL=`getprop ro.boot.vendor.lge.model.name`
-
 echo "Checking if we are on a H932 (not H932PR). H932 requires specific blobs."
 
-if [ $PRODUCT_MODEL = "LG-H932" ]; then
+if cat /proc/cmdline | grep -q "LG-H932"; then
     echo "H932 detected, copying blobs..."
     mv /system/system/vendor/firmware/H932/* /system/system/vendor/firmware/
     rm -r /system/system/vendor/firmware/H932
