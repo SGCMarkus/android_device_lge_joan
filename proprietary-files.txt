@@ -752,19 +752,6 @@ vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so|944fb13834fa906f09b9b6b4c
 vendor/lib64/vendor.qti.esepowermanager@1.0.so|53c36adba1bf9102e0bd2b4b2cdb5fae248f2b9a
 
 # Fingerprint
-framework/vendor.lge.hardware.biometrics.fingerprint-V2.1-java.jar
-framework/vendor.lge.hardware.biometrics.fingerprint-V2.2-java.jar
-framework/vendor.qti.hardware.fingerprint-V1.0-java.jar
-lib64/vendor.lge.hardware.biometrics.fingerprint@2.1.so:vendor/lib64/vendor.lge.hardware.biometrics.fingerprint@2.1.so
-lib64/vendor.lge.hardware.biometrics.fingerprint@2.2.so:vendor/lib64/vendor.lge.hardware.biometrics.fingerprint@2.2.so
-lib64/vendor.qti.hardware.fingerprint@1.0.so:vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
-lib/vendor.lge.hardware.biometrics.fingerprint@2.1.so:vendor/lib/vendor.lge.hardware.biometrics.fingerprint@2.1.so
-lib/vendor.lge.hardware.biometrics.fingerprint@2.2.so:vendor/lib/vendor.lge.hardware.biometrics.fingerprint@2.2.so
-lib/vendor.qti.hardware.fingerprint@1.0.so:vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
-vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.1-service
-vendor/etc/init/hw/init.lge.fingerprints.rc
-vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.1-service.rc
-vendor/etc/permissions/android.hardware.fingerprint.xml
 vendor/lib64/hw/fingerprint.msm8998.so
 
 # FM
