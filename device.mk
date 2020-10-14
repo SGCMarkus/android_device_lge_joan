@@ -105,6 +105,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     cneapiclient
 
+# Component overrides
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
+
 # Configstore
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.1-service
