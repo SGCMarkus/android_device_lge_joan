@@ -246,8 +246,14 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster
 PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v28/arm64/arch-arm64-armv8-a/shared/vndk-core/libkeymaster_messages.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libleymaster_messages.so \
     prebuilts/vndk/v28/arm64/arch-arm64-armv8-a/shared/vndk-core/libkeymaster_portable.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libleymaster_portable.so \
+    prebuilts/vndk/v28/arm64/arch-arm64-armv8-a/shared/vndk-core/libkeymaster_messages.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libleymaster_messages.so \
     prebuilts/vndk/v28/arm64/arch-arm-armv8-a/shared/vndk-core/libkeymaster_portable.so:$(TARGET_COPY_OUT_VENDOR)/lib/libleymaster_portable.so
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/prebuilt/lib/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_VENDOR)/lib/libpuresoftleymasterdevice.so \
+    $(COMMON_PATH)/prebuilt/lib64/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libpuresoftleymasterdevice.so
 
 # Lights
 PRODUCT_PACKAGES += \
