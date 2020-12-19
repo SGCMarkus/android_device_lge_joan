@@ -124,9 +124,6 @@ BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 # Camera
 USE_CAMERA_STUB := true
 
-# Charger
-BOARD_CHARGER_ENABLE_SUSPEND := true
-
 # Custom Apns for Sprint
 CUSTOM_APNS_FILE := $(DEVICE_PATH)/sprint_apns.xml
 
