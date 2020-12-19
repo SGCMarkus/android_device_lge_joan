@@ -38,6 +38,15 @@
         </interface>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.bluetooth.audio</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>IBluetoothAudioProvidersFactory</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.camera.provider</name>
         <transport>hwbinder</transport>
         <version>2.4</version>
@@ -52,6 +61,15 @@
         <version>1.1</version>
         <interface>
             <name>ISurfaceFlingerConfigs</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.contexthub</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IContexthub</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -206,31 +224,20 @@
     <hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
-        <interface>
-            <name>IRadio</name>
-            <instance>slot1</instance>
-            <instance>slot2</instance>
-        </interface>
-        <interface>
-            <name>ISap</name>
-            <instance>slot1</instance>
-            <instance>slot2</instance>
-        </interface>
-        <fqname>@1.1::IRadio/slot1</fqname>
-        <fqname>@1.1::IRadio/slot2</fqname>
-        <fqname>@1.1::ISap/slot1</fqname>
-        <fqname>@1.1::ISap/slot2</fqname>
+        <fqname>@1.4::IRadio/slot1</fqname>
+        <fqname>@1.4::IRadio/slot2</fqname>
+        <fqname>@1.2::ISap/slot1</fqname>
+        <fqname>@1.2::ISap/slot2</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.radio.config</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IRadioConfig</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::IRadioConfig/default</fqname>
+        <fqname>@1.1::IRadioConfig/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.renderscript</name>
@@ -483,6 +490,16 @@
         </interface>
     </hal>
     <hal format="hidl">
+        <name>vendor.qti.hardware.data.iwlan</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IIWlan</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>vendor.qti.hardware.data.latency</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -583,9 +600,19 @@
         </interface>
     </hal>
     <hal format="hidl">
+        <name>vendor.qti.hardware.radio.qtiradio</name>
+        <transport>hwbinder</transport>
+        <version>2.3</version>
+        <interface>
+            <name>IQtiRadio</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>vendor.qti.hardware.radio.uim</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.2</version>
         <interface>
             <name>IUim</name>
             <instance>Uim0</instance>
@@ -682,6 +709,15 @@
         </interface>
         <interface>
             <name>IColorEnhancement</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.lineage.power</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ILineagePower</name>
             <instance>default</instance>
         </interface>
     </hal>
