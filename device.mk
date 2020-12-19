@@ -374,6 +374,10 @@ PRODUCT_PACKAGES += \
     android.hardware.radio@1.4 \
     android.hardware.radio.config@1.2 \
 
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full-vendorcompat \
+    libprotobuf-cpp-lite-vendorcompat
+
 # RCS
 PRODUCT_PACKAGES += \
     rcs_service_aidl \
