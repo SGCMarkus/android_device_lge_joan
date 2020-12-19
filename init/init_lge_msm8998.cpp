@@ -49,7 +49,9 @@
 
 using android::base::Trim;
 using android::base::GetProperty;
-using android::init::property_set;
+int property_set(const char *key, const char *value) {
+    return __system_property_set(key, value);
+}
 
 void property_override(const std::string& name, const std::string& value)
 {
@@ -70,7 +72,7 @@ void property_override(const std::string& name, const std::string& value)
 
 void init_target_properties()
 {
-    std::string device;
+    std::string model;
     std::string cmdline;
     bool unknownDevice = true;
     bool dualSim = false;
@@ -82,18 +84,18 @@ void init_target_properties()
         if (pieces.size() == 2) {
             if(pieces[0].compare("androidboot.vendor.lge.model.name") == 0)
             {
-            	device = pieces[1];
-		unknownDevice = false;
+                model = pieces[1];
+                unknownDevice = false;
             } else if(pieces[0].compare("lge.dsds") == 0 && pieces[1].compare("dsds") == 0)
             {
-		dualSim = true;
+                dualSim = true;
             }
         }
     }
 
     if(unknownDevice)
     {
-        device = "UNKNOWN";
+        model = "UNKNOWN";
     }
 
     if(dualSim)
@@ -101,9 +103,11 @@ void init_target_properties()
         property_set("persist.radio.multisim.config", "dsds");
     }
 
-    property_set("ro.product.model", device);
-    property_set("ro.vendor.product.model", device);
-    property_set("ro.product.system.model", device);
+    property_override("ro.product.model", model);
+    property_override("ro.product.odm.model", model);
+    property_override("ro.product.product.model", model);
+    property_override("ro.product.system.model", model);
+    property_override("ro.product.vendor.model", model);
 }
 
 void vendor_load_properties() {
