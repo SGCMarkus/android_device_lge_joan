@@ -968,10 +968,10 @@ vendor/lib64/vendor.qti.hardware.iop@2.0.so|4719a924b85741d449187f9bdcc7caac8c2a
 
 # Keystore
 vendor/bin/hw/android.hardware.keymaster@3.0-service
-vendor/etc/init/android.hardware.keymaster@3.0-service.rc
+vendor/etc/init/android.hardware.keymaster@3.0-service.rc|d9f0a3a06f403ba4daf0c76c8f0c079e8ea8acda
 vendor/lib64/hw/android.hardware.keymaster@3.0-impl.so
 vendor/lib64/hw/keystore.msm8998.so
-vendor/lib64/libkeymaster3device.so|af03469ed4bb142877e5e174c944729989d0143b
+vendor/lib64/libkeymaster3device.so|9103d82cdb02bafb2af3faec5ce06b02415f8777
 vendor/lib64/libkeymasterdeviceutils.so
 vendor/lib64/libkeymasterprovision.so
 vendor/lib64/libkeymasterutils.so
@@ -979,7 +979,7 @@ vendor/lib64/libqtikeymaster4.so
 vendor/lib64/libspcom.so
 vendor/lib/hw/android.hardware.keymaster@3.0-impl.so
 vendor/lib/hw/keystore.msm8998.so
-vendor/lib/libkeymaster3device.so|dc573b2bec77485d94bfb6cd9d46481b8690bbac
+vendor/lib/libkeymaster3device.so|8bb75d0068013c9b78dd4775c41bdbedab383fc8
 vendor/lib/libkeymasterdeviceutils.so
 vendor/lib/libkeymasterprovision.so
 vendor/lib/libkeymasterutils.so
