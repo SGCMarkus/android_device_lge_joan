@@ -380,7 +380,7 @@
         </module>
 
         <!-- A2DP Audio HAL -->
-        <xi:include href="bluetooth_qti_audio_policy_configuration.xml"/>
+        <xi:include href="a2dp_audio_policy_configuration.xml"/>
 
         <!-- Usb Audio HAL -->
         <module name="usb" halVersion="2.0">
