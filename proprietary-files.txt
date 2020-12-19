@@ -791,8 +791,8 @@ vendor/lib/hw/vendor.qti.gnss@3.0-impl.so|3a8ac4b9ee177fb20a042ab50444c7c11e20bb
 vendor/lib/vendor.qti.gnss@3.0-service.so|80cfffce415073fc634f133bd0a76520ef1f27f9
 vendor/lib64/hw/vendor.qti.gnss@3.0-impl.so|2a7ee3cc95d0dd90067756ca4c371cb74e01cc13
 vendor/lib64/vendor.qti.gnss@3.0-service.so|05037355fd3d481e385ca3522b1a4bd5bab1fe86
-vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml|9b2f6691d6c224bcb9ab9a0d57adfb9e52f1b53e
-vendor/etc/vintf/manifest/android.hardware.gnss@2.0-service-qti.xml|8d7eafd68db9bbe7ec7a5c4d547f026869766081
+-vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml|9b2f6691d6c224bcb9ab9a0d57adfb9e52f1b53e
+-vendor/etc/vintf/manifest/android.hardware.gnss@2.0-service-qti.xml|8d7eafd68db9bbe7ec7a5c4d547f026869766081
 vendor/bin/loc_launcher|240aec5a7fda31cb82e7698191587f6108aad160
 vendor/bin/lowi-server|441c42cc96a9f04012acb6f03c1a6a8120233ade
 vendor/bin/mlid|dd9bffcd060728ccaffd0cdbc93f439436e12cf4
