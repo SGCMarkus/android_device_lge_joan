@@ -167,6 +167,3 @@ on property:vendor.lge.vrmode=true
 
 on property:vendor.lge.hdmi.block=*
     write /sys/devices/virtual/graphics/fb2/dp_external_block ${vendor.lge.hdmi.block}
-
-on property:apexd.status=ready
-    mount none /system/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind
