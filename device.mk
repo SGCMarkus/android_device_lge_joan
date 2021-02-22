@@ -30,11 +30,11 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
-    android.hardware.audio@6.0-impl \
+    android.hardware.audio@4.0-impl \
     android.hardware.audio@2.0-service \
     android.hardware.audio.effect@2.0-impl \
-    android.hardware.audio.effect@6.0-impl \
-    android.hardware.soundtrigger@2.3-impl \
+    android.hardware.audio.effect@4.0-impl \
+    android.hardware.soundtrigger@2.1-impl \
     android.hardware.bluetooth.audio@2.0-impl \
     audio.a2dp.default \
     audio.bluetooth.default \
@@ -45,6 +45,10 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     libaudioroute \
     libhfp \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    libvolumelistener \
     tinymix \
     libtinycompress \
     libtinycompress.vendor
@@ -78,8 +82,8 @@ TARGET_SCREEN_WIDTH := 1440
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    liba2dpoffload \
-    vendor.qti.hardware.bluetooth_audio@2.0.vendor
+    android.hardware.bluetooth@1.0 \
+    libbt-vendor
 
 # Camera
 PRODUCT_COPY_FILES += \
