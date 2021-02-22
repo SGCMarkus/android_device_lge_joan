@@ -109,7 +109,7 @@ PRODUCT_PACKAGES += \
 
 # Component overrides
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
+    $(DEVICE_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
 
 # Configstore
 PRODUCT_PACKAGES += \
@@ -258,8 +258,8 @@ PRODUCT_COPY_FILES += \
     prebuilts/vndk/v28/arm64/arch-arm-armv8-a/shared/vndk-core/libkeymaster_portable.so:$(TARGET_COPY_OUT_VENDOR)/lib/libleymaster_portable.so
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/prebuilt/lib/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_VENDOR)/lib/libpuresoftleymasterdevice.so \
-    $(COMMON_PATH)/prebuilt/lib64/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libpuresoftleymasterdevice.so
+    $(DEVICE_PATH)/prebuilt/lib/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_VENDOR)/lib/libpuresoftleymasterdevice.so \
+    $(DEVICE_PATH)/prebuilt/lib64/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libpuresoftleymasterdevice.so
 
 # Lights
 PRODUCT_PACKAGES += \
