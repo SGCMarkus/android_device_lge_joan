@@ -200,10 +200,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += qcom.fmradio
 
-# Gesture handler
-PRODUCT_PACKAGES += \
-    GestureHandler
-
 # GPS
 PRODUCT_PACKAGES += \
     flp.conf \
