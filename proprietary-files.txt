@@ -703,7 +703,10 @@ vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so|944fb13834fa906f09b9b6b4c
 vendor/lib64/vendor.qti.esepowermanager@1.0.so|53c36adba1bf9102e0bd2b4b2cdb5fae248f2b9a
 
 # Fingerprint
+vendor/bin/hw/vendor.lge.hardware.biometrics.fingerprint@2.1-service
+vendor/etc/init/vendor.lge.hardware.biometrics.fingerprint@2.1-service.rc
 vendor/lib64/hw/fingerprint.msm8998.so
+vendor/lib64/vendor.lge.hardware.biometrics.fingerprint@2.1.so
 
 # FM
 lib64/libfm-hci.so

@@ -187,7 +187,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.lge_msm8998 \
+    android.hardware.biometrics.fingerprint@2.1 \
     LGEPocketMode
 
 # FM packages
