@@ -195,9 +195,6 @@ TARGET_RPM_MASTER_STAT := "/sys/kernel/debug/rpm_master_stats"
 TARGET_WLAN_POWER_STAT := "/sys/kernel/debug/wlan0/power_stats"
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/lge_touch/tap2wake"
 
-# Properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.joan
 
