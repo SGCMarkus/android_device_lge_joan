@@ -443,7 +443,8 @@ PRODUCT_PACKAGES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
+    android.hardware.usb@1.0-service \
+    android.hardware.usb.gadget@1.0
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -481,7 +482,8 @@ PRODUCT_PACKAGES += \
     libwifi-hal-qcom \
     wificond \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    WifiOverlay.lge_msm8998
 
 # Wifi IPA
 PRODUCT_PACKAGES += \

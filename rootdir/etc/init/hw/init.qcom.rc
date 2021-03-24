@@ -26,7 +26,7 @@
 #
 
 # TODO: This MUST be blocked not use in LGE device configuration.
-#import /vendor/etc/init/hw/init.qcom.usb.rc
+import /vendor/etc/init/hw/init.qcom.usb.rc
 #import /vendor/etc/init/hw/init.msm.usb.configfs.rc
 import /vendor/etc/init/hw/init.target.rc
 #import /vendor/etc/init/hw/init.qcom.factory.rc
@@ -1028,6 +1028,7 @@ service charger /system/bin/charger
     class charger
     user system
     group system graphics input
+    capabilities SYS_BOOT
     seclabel u:r:charger:s0
 
 service vendor.ssr_diag /system/vendor/bin/ssr_diag
