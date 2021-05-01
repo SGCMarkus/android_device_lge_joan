@@ -107,6 +107,20 @@ extract "${MY_DIR}/proprietary-files.txt" "${SRC}" ${KANG} --section "${SECTION}
 # Do not clean the vendor folder before fetching other blobs
 CLEAN_VENDOR=false
 
+# Reinitialize the helper for Q910 blobs
+echo "Gathering Q910 blobs"
+echo "Please provide the path to Q910 blobs"
+echo -n "Path:"
+read SRC
+
+if [ -z "${SRC}" ]; then
+    SRC=/home/markus/G7_One/system/
+fi
+
+setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
+
+extract "${MY_DIR}/proprietary-files_Q910.txt" "${SRC}" ${KANG} --section "${SECTION}"
+
 # Reinitialize the helper for H930 blobs
 echo "Gathering H930 blobs for unified build."
 echo "Please provide the path to H930 blobs."
