@@ -41,6 +41,7 @@ setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}"
 write_headers
 
 write_makefiles "${MY_DIR}"/proprietary-files.txt true
+write_makefiles "${MY_DIR}"/proprietary-files_Q910.txt true
 write_makefiles "${MY_DIR}"/proprietary-files_h930.txt true
 write_makefiles "${MY_DIR}"/proprietary-files_h932.txt true
 

@@ -96,6 +96,12 @@ function blob_fixup() {
         sed -i "s/libpuresoftkeymasterdevice.so/libpuresoftleymasterdevice.so/g" "${2}"
         sed -i "s/libkeymaster_portable.so/libleymaster_portable.so/g" "${2}"
         ;;
+	vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so)
+	    sed -i "s/libkeymasterdeviceutils.so/libkeymasterdeviceutil4.so/g" "${2}"
+		;;
+	vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so)
+	    sed -i "s/libkeymasterdeviceutils.so/libkeymasterdeviceutil4.so/g" "${2}"
+		;;
     esac
 }
 
