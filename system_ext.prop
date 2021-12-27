@@ -1,0 +1,6 @@
+#
+# system_ext props for joan
+#
+
+# DPM
+persist.vendor.dpm.feature=11

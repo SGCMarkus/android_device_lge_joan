@@ -107,9 +107,13 @@ persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac
 persist.vendor.bt.aac_frm_ctl.enabled=true
 persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxhd-aac-ldac
 persist.vendor.qcom.bluetooth.enable.splita2dp=false
+persist.vendor.qcom.bluetooth.soc=cherokee
 ro.bluetooth.a2dp_offload.supported=false
 vendor.bluetooth.soc=cherokee
 vendor.qcom.bluetooth.soc=cherokee
+
+# BPF
+ro.kernel.ebpf.supported=false
 
 # Camera
 persist.vendor.camera.expose.aux=1
@@ -134,10 +138,12 @@ ro.sf.lcd_density=480
 ro.vendor.display.cabl=2
 sdm.debug.disable_partial_split=1
 sdm.perf_hint_window=50
-vendor.display.disable_prim_rot=1
+#vendor.display.disable_skip_validate=1
 vendor.display.enable_default_color_mode=1
 vendor.display.perf_hint_window=50
-vendor.gralloc.enable_fb_ubwc=1
+
+ro.hardware.vulkan=adreno
+ro.hardware.egl=adreno
 
 # DPM
 persist.dpm.feature=0
@@ -224,6 +230,10 @@ ro.vendor.sensors.maghalcal=false
 ro.vendor.sensors.mot_detect=true
 ro.vendor.sensors.sta_detect=true
 ro.vendor.sensors.wu=false
+
+# SoC
+ro.soc.manufacturer=Qualcomm
+ro.soc.model=MSM8998
 
 # SurfaceFlinger
 debug.sf.early_app_phase_offset_ns=1500000
