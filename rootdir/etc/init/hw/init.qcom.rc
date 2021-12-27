@@ -66,6 +66,8 @@ on init
     chown root system /sys/fs/cgroup/memory/bg/tasks
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
+    setprop ro.kernel.ebpf.supported false
+
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
 
