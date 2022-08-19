@@ -550,25 +550,20 @@ vendor/firmware/a540_zap.b02
 -product/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk:priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk;PRESIGNED
 -product/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk:priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk;PRESIGNED
 
-# Keystore
-vendor/bin/hw/android.hardware.keymaster@3.0-service
-vendor/etc/init/android.hardware.keymaster@3.0-service.rc|d9f0a3a06f403ba4daf0c76c8f0c079e8ea8acda
-vendor/lib64/hw/android.hardware.keymaster@3.0-impl.so
-vendor/lib64/hw/keystore.msm8998.so
-vendor/lib64/libkeymaster3device.so|9103d82cdb02bafb2af3faec5ce06b02415f8777
-vendor/lib64/libkeymasterdeviceutils.so
-vendor/lib64/libkeymasterprovision.so
-vendor/lib64/libkeymasterutils.so
-vendor/lib64/libqtikeymaster4.so
-vendor/lib64/libspcom.so
-vendor/lib/hw/android.hardware.keymaster@3.0-impl.so
-vendor/lib/hw/keystore.msm8998.so
-vendor/lib/libkeymaster3device.so|8bb75d0068013c9b78dd4775c41bdbedab383fc8
-vendor/lib/libkeymasterdeviceutils.so
-vendor/lib/libkeymasterprovision.so
-vendor/lib/libkeymasterutils.so
-vendor/lib/libqtikeymaster4.so
-vendor/lib/libspcom.so
+# Keystore - from judypn - V405EBW 30e
+vendor/bin/hw/android.hardware.keymaster@3.0-service-qti|4814409c6294af5e6bb2007f2123596567b1f6d8
+vendor/bin/hw/android.hardware.keymaster@4.0-service-qti|34c9de73e1021f57624f1d4b58619531594b8756
+vendor/etc/init/android.hardware.keymaster@3.0-service-qti.rc|573b7392c8997008204081165cfe81a11080745d
+vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so|c64c83703286735f4395844993a917d1771567ff
+vendor/lib64/libkeymasterdeviceutils.so|5c84b7b94d70c852d0bd719e15edd2a7fc798485
+vendor/lib64/libkeymasterprovision.so|7cea83e8de317df1c701a0ab1cab2b6fa2a689ac
+vendor/lib64/libkeymasterutils.so|ec41d5af7ee313d1a52901b20b00c829a03561d0
+vendor/lib64/libqtikeymaster4.so|b320014cba9133a22697000da5e5559b4c8394fe
+vendor/lib/hw/android.hardware.keymaster@3.0-impl-qti.so|8360ee75f47d42ad882f8d28e96572a7d877c9bc
+vendor/lib/libkeymasterdeviceutils.so|1e8581398615f30330e5c2048e2eae07b2b679bd
+vendor/lib/libkeymasterprovision.so|655c07eb9e92fe19745fab006307da049700324d
+vendor/lib/libkeymasterutils.so|da82bd770b517aad685be69b33a5de458128f6d6
+vendor/lib/libqtikeymaster4.so|c732fa406a6cb52d9664edf5609b0a394acb7b91
 
 # Leia
 vendor/firmware/leia_pfp_470.fw
