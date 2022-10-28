@@ -58,7 +58,7 @@ while [ "${#}" -gt 0 ]; do
 done
 
 if [ -z "$SRC" ]; then
-    SRC=/home/markus/V30/H930_31a/
+    SRC=/home/markus/data/V30/los19_working/system/system
 fi
 
 function blob_fixup() {
@@ -88,14 +88,6 @@ function blob_fixup() {
     vendor/lib/libmmcamera_bokeh.so)
         sed -i "s/libui.so/libvi.so/g" "${2}"
         ;;
-    vendor/lib/libkeymaster3device.so)
-        sed -i "s/libpuresoftkeymasterdevice.so/libpuresoftleymasterdevice.so/g" "${2}"
-        sed -i "s/libkeymaster_portable.so/libleymaster_portable.so/g" "${2}"
-        ;;
-    vendor/lib64/libkeymaster3device.so)
-        sed -i "s/libpuresoftkeymasterdevice.so/libpuresoftleymasterdevice.so/g" "${2}"
-        sed -i "s/libkeymaster_portable.so/libleymaster_portable.so/g" "${2}"
-        ;;
 	vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so)
 	    sed -i "s/libkeymasterdeviceutils.so/libkeymasterdeviceutil4.so/g" "${2}"
 		;;
@@ -120,7 +112,7 @@ echo -n "Path:"
 read SRC
 
 if [ -z "${SRC}" ]; then
-    SRC=/home/markus/G7_One/system/
+    SRC=/home/markus/data/V30/los19_working/system/system
 fi
 
 setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
@@ -138,7 +130,7 @@ read SRC
 
 
 if [ -z "${SRC}" ]; then
-    SRC=/home/markus/V30/H930_31a/
+    SRC=/home/markus/data/V30/los19_working/system/system
 fi
 
 
@@ -158,7 +150,7 @@ read SRC
 
 
 if [ -z "${SRC}" ]; then
-    SRC=/home/markus/V30/H930_31a/
+    SRC=/home/markus/data/V30/los19_working/system/system
 fi
 
 
