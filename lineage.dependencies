@@ -1,8 +1,8 @@
 [
   {
-    "repository": "LineageOS/kernel_lge_msm8998",
+    "repository": "AlexMeiko/android_kernel_lge_msm8998",
     "target_path": "kernel/lge/msm8998",
-    "branch": "lineage-17.1"
+    "branch": "lge_opensource"
   },
   {
     "remote": "github",
